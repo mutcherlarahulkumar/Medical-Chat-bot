@@ -5,50 +5,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MediBot — AI Medical Assistant</title>
   <style>
+    /* ── Design tokens ─────────────────────────────────────────────────────
+       Font stack fix: 'Segoe UI' only exists on Windows, so every other OS
+       fell back to the browser's default serif-ish sans and the emoji section
+       headings rendered as tofu boxes. A full system stack plus explicit
+       emoji families keeps the type identical everywhere. */
+    :root{
+      --font-ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",
+                Arial,"Noto Sans","Liberation Sans",sans-serif,
+                "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji";
+      --blue:#1565c0; --blue-dark:#0d47a1; --ink:#1e293b; --muted:#64748b;
+      --line:#e2e8f0; --bg:#f8fafc;
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#e8f0fe 0%,#f0f4ff 100%);display:flex;justify-content:center;align-items:center;min-height:100vh}
-    .shell{width:100%;max-width:900px;height:96vh;background:#fff;border-radius:24px;box-shadow:0 20px 80px rgba(21,101,192,.15);display:flex;flex-direction:column;overflow:hidden}
+    html{-webkit-text-size-adjust:100%}
+    body{font-family:var(--font-ui);font-size:15px;line-height:1.6;color:var(--ink);
+         background:linear-gradient(135deg,#e8f0fe 0%,#f0f4ff 100%);
+         display:flex;justify-content:center;align-items:center;min-height:100vh;
+         -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .shell{width:100%;max-width:900px;height:96vh;background:#fff;border-radius:24px;
+           box-shadow:0 20px 80px rgba(21,101,192,.15);display:flex;flex-direction:column;overflow:hidden}
 
     /* Header */
-    .hdr{background:linear-gradient(135deg,#1565c0,#0d47a1);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:14px;flex-shrink:0}
-    .hdr-icon{width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
-    .hdr-info{flex:1}
-    .hdr h1{font-size:18px;font-weight:700}
-    .hdr p{font-size:12px;opacity:.8;margin-top:2px}
-    .hdr-badge{font-size:11px;background:rgba(105,240,174,.2);border:1px solid rgba(105,240,174,.4);color:#69f0ae;padding:3px 10px;border-radius:20px;white-space:nowrap}
-    .dot{display:inline-block;width:7px;height:7px;background:#69f0ae;border-radius:50%;margin-right:5px;animation:pulse 2s infinite}
+    .hdr{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;
+         padding:16px 24px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+    .hdr-icon{width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:50%;
+              display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+    .hdr-info{flex:1;min-width:0}
+    .hdr h1{font-size:18px;font-weight:700;letter-spacing:-.01em}
+    .hdr p{font-size:12px;opacity:.85;margin-top:2px}
+    .hdr-badge{font-size:11px;background:rgba(105,240,174,.2);border:1px solid rgba(105,240,174,.4);
+               color:#69f0ae;padding:3px 10px;border-radius:20px;white-space:nowrap;font-weight:600}
+    .hdr-badge.offline{background:rgba(255,138,128,.2);border-color:rgba(255,138,128,.5);color:#ff8a80}
+    .dot{display:inline-block;width:7px;height:7px;background:#69f0ae;border-radius:50%;
+         margin-right:5px;animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 
     /* Tabs */
     .tabs{display:flex;background:#f5f7fa;border-bottom:1px solid #e0e4ea;flex-shrink:0}
-    .tab{flex:1;padding:11px 8px;text-align:center;font-size:13px;font-weight:500;cursor:pointer;color:#64748b;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
-    .tab.active{color:#1565c0;border-bottom-color:#1565c0;background:#fff}
-    .tab:hover:not(.active){background:#edf0f5;color:#1565c0}
+    .tab{flex:1;padding:11px 8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;
+         color:var(--muted);border-bottom:3px solid transparent;transition:.2s;white-space:nowrap;
+         font-family:inherit}
+    .tab.active{color:var(--blue);border-bottom-color:var(--blue);background:#fff}
+    .tab:hover:not(.active){background:#edf0f5;color:var(--blue)}
 
     /* Chat */
-    #chatbox{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:14px;background:#f8fafc}
+    #chatbox{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;
+             gap:16px;background:var(--bg);scroll-behavior:smooth}
     .msg{display:flex;gap:10px;max-width:88%;animation:pop .25s ease}
     @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
     .msg.user{align-self:flex-end;flex-direction:row-reverse}
-    .msg.bot{align-self:flex-start}
-    .bubble{padding:13px 16px;border-radius:18px;font-size:14px;line-height:1.7;white-space:pre-wrap;max-width:100%;word-break:break-word}
-    .msg.user .bubble{background:linear-gradient(135deg,#1565c0,#1976d2);color:#fff;border-bottom-right-radius:4px}
-    .msg.bot  .bubble{background:#fff;color:#1e293b;border:1px solid #e2e8f0;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-    .ico{width:34px;height:34px;min-width:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;align-self:flex-end}
-    .msg.user .ico{background:#1565c0;color:#fff}
-    .msg.bot  .ico{background:#e8f0fe}
+    .msg.bot{align-self:flex-start;max-width:92%}
+    .bubble{padding:14px 18px;border-radius:18px;font-size:14.5px;line-height:1.65;
+            max-width:100%;overflow-wrap:anywhere}
+    .msg.user .bubble{background:linear-gradient(135deg,var(--blue),#1976d2);color:#fff;
+                      border-bottom-right-radius:4px;white-space:pre-wrap}
+    .msg.bot .bubble{background:#fff;color:var(--ink);border:1px solid var(--line);
+                     border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .ico{width:34px;height:34px;min-width:34px;border-radius:50%;display:flex;align-items:center;
+         justify-content:center;font-size:16px;align-self:flex-end}
+    /* Long structured answers read better with the avatar beside the first line
+       rather than stranded at the bottom of the bubble. */
+    .msg.bot .ico{align-self:flex-start;margin-top:4px}
+    .msg.user .ico{background:var(--blue);color:#fff}
+    .msg.bot .ico{background:#e8f0fe}
+
+    /* ── Answer sections: replaces the single pre-wrap text blob ──────────── */
+    .sec{padding-top:12px;margin-top:12px;border-top:1px solid #eef2f7}
+    .sec:first-child{padding-top:0;margin-top:0;border-top:none}
+    .sec-h{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;
+           letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+    .sec-body{font-size:14.5px;line-height:1.65;color:var(--ink)}
+    .sec-body p + p{margin-top:8px}
+    .cond-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+    .cond-list li{position:relative;padding-left:18px}
+    .cond-list li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+                          border-radius:50%;background:#90b3ff}
+    .rec-list{list-style:none;counter-reset:rec;display:flex;flex-direction:column;gap:8px}
+    .rec-list li{position:relative;padding-left:30px;counter-increment:rec}
+    .rec-list li::before{content:counter(rec);position:absolute;left:0;top:1px;width:21px;height:21px;
+                         border-radius:50%;background:#e8f0fe;color:var(--blue);font-size:11.5px;
+                         font-weight:700;display:flex;align-items:center;justify-content:center}
+    .help-box{background:#fff5f5;border-left:3px solid #fc8181;border-radius:0 8px 8px 0;
+              padding:10px 14px;font-size:14px;color:#742a2a}
+    .src-list{display:flex;flex-wrap:wrap;gap:6px}
+    .src{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:20px;padding:3px 11px;
+         font-size:11.5px;color:#475569;font-weight:500}
+    .src.trusted{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+    .disc{margin-top:14px;padding-top:10px;border-top:1px dashed #e2e8f0;font-size:11.5px;
+          line-height:1.55;color:#94a3b8}
 
     /* Severity badges */
-    .sev-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;margin-left:6px}
+    .sev-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:12px;
+               font-size:12px;font-weight:700;letter-spacing:.03em}
     .sev-low{background:#e8f5e9;color:#2e7d32}
     .sev-moderate{background:#fff3e0;color:#e65100}
     .sev-high{background:#fce4ec;color:#c62828}
+    .sev-unknown{background:#eceff1;color:#546e7a}
+    /* The X-ray model also reports 'normal' and 'mild', which previously had no
+       badge style and rendered unstyled next to the finding. */
+    .sev-normal{background:#e8f5e9;color:#2e7d32}
+    .sev-mild{background:#fffde7;color:#f57f17}
+
+    /* Degraded / error notice inside a reply */
+    .notice{display:flex;gap:9px;background:#fffbeb;border:1px solid #fde68a;border-radius:10px;
+            padding:10px 13px;font-size:13px;line-height:1.55;color:#92400e;margin-bottom:12px}
+    .notice.err{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+    .notice b{display:block;margin-bottom:2px}
 
     /* Xray result strip */
-    .xray-strip{background:linear-gradient(135deg,#e8f0fe,#dce8ff);border:1px solid #90b3ff;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:13px;color:#1a237e}
+    .xray-strip{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+                background:linear-gradient(135deg,#e8f0fe,#dce8ff);border:1px solid #90b3ff;
+                border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:13.5px;color:#1a237e}
 
     /* Typing */
-    .typing .bubble{padding:14px 16px}
+    .typing .bubble{padding:14px 18px}
     .dots{display:flex;gap:5px;align-items:center}
     .dots span{width:8px;height:8px;background:#94a3b8;border-radius:50%;animation:bounce 1.2s infinite}
     .dots span:nth-child(2){animation-delay:.2s}
@@ -56,47 +127,77 @@
     @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-7px)}}
 
     /* Status bar */
-    #status-bar{font-size:12px;text-align:center;padding:5px 16px;background:#fffbeb;border-bottom:1px solid #fde68a;color:#92400e;display:none;flex-shrink:0}
+    #status-bar{font-size:12.5px;text-align:center;padding:7px 16px;background:#fffbeb;
+                border-bottom:1px solid #fde68a;color:#92400e;display:none;flex-shrink:0;font-weight:500}
     #status-bar.show{display:block}
+    #status-bar.err{background:#fef2f2;border-bottom-color:#fecaca;color:#991b1b}
 
     /* Input panel */
     .panel{padding:14px 20px;background:#fff;border-top:1px solid #e4e8f0;flex-shrink:0}
-
-    /* Upload previews */
     .upload-row{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-    .upload-preview{display:none;align-items:center;gap:8px;background:#f0f4ff;border:1px dashed #90b3ff;border-radius:10px;padding:7px 12px;font-size:12px;color:#3b5bdb;flex:1;min-width:0}
+    .upload-preview{display:none;align-items:center;gap:8px;background:#f0f4ff;border:1px dashed #90b3ff;
+                    border-radius:10px;padding:7px 12px;font-size:12.5px;color:#3b5bdb;flex:1;min-width:0}
     .upload-preview.show{display:flex}
-    .upload-preview img.thumb{width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #c5d5ff;flex-shrink:0}
+    .upload-preview img.thumb{width:40px;height:40px;object-fit:cover;border-radius:6px;
+                              border:1px solid #c5d5ff;flex-shrink:0}
     .upload-preview .file-icon{font-size:22px;flex-shrink:0}
-    .upload-preview .fname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
-    .upload-preview .clr{background:none;border:none;cursor:pointer;color:#e53e3e;font-size:18px;padding:0 2px;flex-shrink:0}
-
-    /* Upload buttons row */
-    .upload-btns{display:none;gap:8px;margin-bottom:10px}
+    .upload-preview .fname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+    .upload-preview .clr{background:none;border:none;cursor:pointer;color:#e53e3e;font-size:18px;
+                         padding:0 2px;flex-shrink:0;font-family:inherit;line-height:1}
+    .upload-btns{display:none;gap:8px;margin-bottom:10px;flex-wrap:wrap}
     .upload-btns.show{display:flex}
-    .upload-btn-label{display:flex;align-items:center;gap:6px;background:#f0f4ff;color:#1565c0;border:1.5px dashed #90b3ff;border-radius:10px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;transition:.2s;white-space:nowrap}
-    .upload-btn-label:hover{background:#dce8ff;border-color:#1565c0}
-
-    /* Input row */
+    .upload-btn-label{display:flex;align-items:center;gap:6px;background:#f0f4ff;color:var(--blue);
+                      border:1.5px dashed #90b3ff;border-radius:10px;padding:7px 14px;font-size:13px;
+                      font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
+    .upload-btn-label:hover{background:#dce8ff;border-color:var(--blue)}
     .input-row{display:flex;gap:10px;align-items:flex-end}
-    #userInput{flex:1;border:1.5px solid #dce3ef;border-radius:22px;padding:11px 16px;font-size:14px;outline:none;resize:none;max-height:100px;font-family:inherit;transition:border .2s}
-    #userInput:focus{border-color:#1565c0}
-    .btn-icon{width:44px;height:44px;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;transition:background .2s,transform .1s}
+    #userInput{flex:1;border:1.5px solid #dce3ef;border-radius:22px;padding:11px 16px;font-size:14.5px;
+               line-height:1.5;outline:none;resize:none;max-height:120px;font-family:inherit;
+               color:var(--ink);transition:border .2s}
+    #userInput:focus{border-color:var(--blue)}
+    #userInput::placeholder{color:#a0aec0}
+    .btn-icon{width:44px;height:44px;border:none;border-radius:50%;cursor:pointer;display:flex;
+              align-items:center;justify-content:center;font-size:19px;flex-shrink:0;
+              font-family:inherit;transition:background .2s,transform .1s,opacity .2s}
     .btn-icon:active{transform:scale(.93)}
-    #attachToggle{background:#f0f4ff;color:#1565c0}
-    #attachToggle:hover{background:#dce8ff}
-    #sendBtn{background:#1565c0;color:#fff}
-    #sendBtn:hover{background:#1045a0}
+    .btn-icon:disabled{opacity:.5;cursor:not-allowed}
+    #attachToggle{background:#f0f4ff;color:var(--blue)}
+    #attachToggle:hover:not(:disabled){background:#dce8ff}
+    #sendBtn{background:var(--blue);color:#fff}
+    #sendBtn:hover:not(:disabled){background:#1045a0}
     #imgInput,#reportInput{display:none}
-    .disclaimer{text-align:center;font-size:11px;color:#94a3b8;padding:5px 16px 2px;background:#fff}
-    #chatbox::-webkit-scrollbar{width:5px}
+    .disclaimer{text-align:center;font-size:11.5px;color:#94a3b8;padding:7px 16px 2px;background:#fff}
+    #chatbox::-webkit-scrollbar{width:6px}
     #chatbox::-webkit-scrollbar-thumb{background:#cbd5e0;border-radius:10px}
 
     /* Welcome card */
-    .welcome-card{background:linear-gradient(135deg,#e8f0fe,#f0f4ff);border:1px solid #c5d5ff;border-radius:16px;padding:18px 20px;font-size:14px;color:#1a237e;line-height:1.7}
-    .welcome-card h3{margin-bottom:8px;font-size:15px}
-    .welcome-card .caps{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .cap{background:#fff;border:1px solid #90b3ff;border-radius:20px;padding:4px 12px;font-size:12px;color:#1565c0;font-weight:500}
+    .welcome-card{background:linear-gradient(135deg,#e8f0fe,#f0f4ff);border:1px solid #c5d5ff;
+                  border-radius:16px;padding:18px 20px;font-size:14.5px;color:#1a237e;line-height:1.65}
+    .welcome-card h3{margin-bottom:8px;font-size:15.5px}
+    .welcome-card .caps{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .cap{background:#fff;border:1px solid #90b3ff;border-radius:20px;padding:4px 12px;font-size:12px;
+         color:var(--blue);font-weight:600}
+    .welcome-card .fine{margin-top:12px;font-size:12.5px;line-height:1.55;color:#3949ab}
+
+    @media (max-width:640px){
+      body{align-items:stretch}
+      .shell{height:100dvh;height:100vh;border-radius:0;max-width:none}
+      .hdr{padding:12px 16px;gap:10px}
+      .hdr-icon{width:42px;height:42px;font-size:21px}
+      .hdr h1{font-size:15.5px}
+      .hdr p{font-size:11px}
+      #chatbox{padding:16px 14px}
+      .msg,.msg.bot{max-width:97%}
+      /* The four tabs did not fit on one line — "Combined" was clipped off the
+         edge because .shell hides the overflow. Wrap them into a 2x2 grid. */
+      .tabs{flex-wrap:wrap}
+      .tab{flex:1 0 50%;font-size:12px;padding:10px 4px;
+           border-bottom:2px solid transparent}
+      .tab.active{border-bottom-width:2px}
+      .panel{padding:12px 14px}
+      #userInput{font-size:14px;padding:10px 14px}
+      .upload-btn-label{font-size:12px;padding:6px 11px}
+    }
   </style>
 </head>
 <body>
@@ -108,7 +209,7 @@
       <h1>MediBot — AI Medical Assistant</h1>
       <p><span class="dot"></span>RAG · X-Ray Analysis · Medical Reports · Structured Output</p>
     </div>
-    <div class="hdr-badge">v4</div>
+    <div class="hdr-badge" id="hdr-badge">v5</div>
   </div>
 
   <div class="tabs">
@@ -118,14 +219,14 @@
     <div class="tab"        onclick="setMode('both')"   id="tab-both">🔬 Combined</div>
   </div>
 
-  <div id="status-bar">⏳ Processing... (first X-ray run may take 30-60s for model loading)</div>
+  <div id="status-bar"></div>
 
   <div id="chatbox">
     <div class="msg bot">
       <div class="ico">🏥</div>
       <div class="bubble">
         <div class="welcome-card">
-          <h3>👋 Welcome to MediBot v4</h3>
+          <h3>👋 Welcome to MediBot v5</h3>
           I'm your AI-powered medical assistant. I can help you with:
           <div class="caps">
             <span class="cap">💬 Medical Q&amp;A</span>
@@ -133,42 +234,41 @@
             <span class="cap">📄 Medical Report Review</span>
             <span class="cap">🔬 Combined Analysis</span>
           </div>
-          <br/>Use the tabs above to choose your mode, or just type your question below.
-          <br/><br/>⚠️ <strong>Disclaimer:</strong> This is an AI tool for informational purposes only. Always consult a qualified healthcare professional for diagnosis and treatment.
+          Use the tabs above to choose your mode, or just type your question below.
+          <div class="fine">⚠️ <strong>Disclaimer:</strong> This is an AI tool for informational
+          purposes only. Always consult a qualified healthcare professional for diagnosis and treatment.</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="panel">
-    <!-- Upload previews -->
     <div class="upload-row" id="upload-row" style="display:none">
       <div class="upload-preview" id="img-preview">
         <img class="thumb" id="img-thumb" src="" alt=""/>
         <span class="fname" id="img-name"></span>
-        <button class="clr" onclick="clearImage()">×</button>
+        <button class="clr" onclick="clearImage()" title="Remove image">×</button>
       </div>
       <div class="upload-preview" id="report-preview">
         <span class="file-icon">📄</span>
         <span class="fname" id="report-name"></span>
-        <button class="clr" onclick="clearReport()">×</button>
+        <button class="clr" onclick="clearReport()" title="Remove report">×</button>
       </div>
     </div>
 
-    <!-- Upload buttons -->
     <div class="upload-btns" id="upload-btns">
       <label class="upload-btn-label" for="imgInput">🩻 Add X-Ray Image</label>
       <label class="upload-btn-label" for="reportInput">📄 Add Medical Report (PDF/TXT)</label>
     </div>
 
     <input type="file" id="imgInput"    accept="image/jpeg,image/png,image/bmp" onchange="handleImageSelect(event)"/>
-    <input type="file" id="reportInput" accept=".pdf,.txt,.doc,.docx"            onchange="handleReportSelect(event)"/>
+    <input type="file" id="reportInput" accept=".pdf,.txt"                      onchange="handleReportSelect(event)"/>
 
-    <!-- Input row -->
     <div class="input-row">
       <button class="btn-icon" id="attachToggle" onclick="toggleAttach()" title="Attach files">📎</button>
-      <textarea id="userInput" rows="1" placeholder="Type your medical question here..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-      <button class="btn-icon" id="sendBtn" onclick="send()">➤</button>
+      <textarea id="userInput" rows="1" placeholder="Ask a medical question..."
+                onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="btn-icon" id="sendBtn" onclick="send()" title="Send">➤</button>
     </div>
     <div class="disclaimer">⚠️ MediBot provides informational content only. Not a substitute for professional medical advice.</div>
   </div>
@@ -179,40 +279,58 @@
   let selectedImage = null;
   let selectedReport = null;
   let attachOpen = false;
+  let busy = false;
 
   const modeConfig = {
-    text:   { placeholder:'Type your medical question...', showAttach:false },
-    image:  { placeholder:'Describe symptoms or ask about the X-ray... (optional)', showAttach:true, autoOpenAttach:true },
-    report: { placeholder:'Ask about the report or leave blank for auto-analysis...', showAttach:true, autoOpenAttach:true },
-    both:   { placeholder:'Add X-ray and/or report, then ask your question...', showAttach:true, autoOpenAttach:true },
+    text:   { placeholder:'Ask a medical question...',                          showAttach:false },
+    image:  { placeholder:'Attach an X-ray, add symptoms (optional)...',  showAttach:true, needs:'image'  },
+    report: { placeholder:'Attach a report, or ask about it...',                    showAttach:true, needs:'report' },
+    both:   { placeholder:'Add X-ray and/or report, then ask...',     showAttach:true },
   };
 
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  const $ = id => document.getElementById(id);
+
+  function el(tag, cls, text) {
+    const node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined && text !== null) node.textContent = text;   // never innerHTML: model output is untrusted
+    return node;
+  }
+
+  function setStatus(message, kind) {
+    const bar = $('status-bar');
+    if (!message) { bar.classList.remove('show', 'err'); bar.textContent = ''; return; }
+    bar.textContent = message;
+    bar.classList.toggle('err', kind === 'err');
+    bar.classList.add('show');
+  }
+
+  function setBusy(state) {
+    busy = state;
+    $('sendBtn').disabled = state;
+    $('attachToggle').disabled = state;
+    $('sendBtn').textContent = state ? '⏳' : '➤';
+  }
+
+  // ── Mode / attachments ─────────────────────────────────────────────────────
   function setMode(mode) {
     currentMode = mode;
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tab-' + mode).classList.add('active');
+    $('tab-' + mode).classList.add('active');
 
     const cfg = modeConfig[mode];
-    document.getElementById('userInput').placeholder = cfg.placeholder;
+    $('userInput').placeholder = cfg.placeholder;
 
-    if (cfg.showAttach) {
-      document.getElementById('upload-btns').classList.add('show');
-      document.getElementById('upload-row').style.display = 'flex';
-      attachOpen = true;
-    } else {
-      document.getElementById('upload-btns').classList.remove('show');
-      if (!selectedImage && !selectedReport) {
-        document.getElementById('upload-row').style.display = 'none';
-      }
-      attachOpen = false;
-    }
+    attachOpen = !!cfg.showAttach;
+    $('upload-btns').classList.toggle('show', attachOpen);
+    $('upload-row').style.display = (attachOpen || selectedImage || selectedReport) ? 'flex' : 'none';
   }
 
   function toggleAttach() {
     attachOpen = !attachOpen;
-    document.getElementById('upload-btns').classList.toggle('show', attachOpen);
-    document.getElementById('upload-row').style.display =
-      (attachOpen || selectedImage || selectedReport) ? 'flex' : 'none';
+    $('upload-btns').classList.toggle('show', attachOpen);
+    $('upload-row').style.display = (attachOpen || selectedImage || selectedReport) ? 'flex' : 'none';
   }
 
   function handleImageSelect(e) {
@@ -221,10 +339,10 @@
     selectedImage = file;
     const reader = new FileReader();
     reader.onload = ev => {
-      document.getElementById('img-thumb').src = ev.target.result;
-      document.getElementById('img-name').textContent = file.name;
-      document.getElementById('img-preview').classList.add('show');
-      document.getElementById('upload-row').style.display = 'flex';
+      $('img-thumb').src = ev.target.result;
+      $('img-name').textContent = file.name;
+      $('img-preview').classList.add('show');
+      $('upload-row').style.display = 'flex';
     };
     reader.readAsDataURL(file);
   }
@@ -233,113 +351,234 @@
     const file = e.target.files[0];
     if (!file) return;
     selectedReport = file;
-    document.getElementById('report-name').textContent = file.name;
-    document.getElementById('report-preview').classList.add('show');
-    document.getElementById('upload-row').style.display = 'flex';
+    $('report-name').textContent = file.name;
+    $('report-preview').classList.add('show');
+    $('upload-row').style.display = 'flex';
   }
 
   function clearImage() {
     selectedImage = null;
-    document.getElementById('imgInput').value = '';
-    document.getElementById('img-preview').classList.remove('show');
-    document.getElementById('img-thumb').src = '';
-    if (!selectedReport) document.getElementById('upload-row').style.display = attachOpen ? 'flex' : 'none';
+    $('imgInput').value = '';
+    $('img-preview').classList.remove('show');
+    $('img-thumb').removeAttribute('src');
+    if (!selectedReport) $('upload-row').style.display = attachOpen ? 'flex' : 'none';
   }
 
   function clearReport() {
     selectedReport = null;
-    document.getElementById('reportInput').value = '';
-    document.getElementById('report-preview').classList.remove('show');
-    if (!selectedImage) document.getElementById('upload-row').style.display = attachOpen ? 'flex' : 'none';
+    $('reportInput').value = '';
+    $('report-preview').classList.remove('show');
+    if (!selectedImage) $('upload-row').style.display = attachOpen ? 'flex' : 'none';
   }
 
   function handleKey(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
   }
 
-  function autoResize(el) {
-    el.style.height = 'auto';
-    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  function autoResize(elm) {
+    elm.style.height = 'auto';
+    elm.style.height = Math.min(elm.scrollHeight, 120) + 'px';
   }
 
-  function addMsg(role, html, extra) {
-    const box = document.getElementById('chatbox');
-    const div = document.createElement('div');
-    div.className = 'msg ' + role;
-
-    const ico = document.createElement('div');
-    ico.className = 'ico';
-    ico.textContent = role === 'user' ? '👤' : '🤖';
-
-    const bub = document.createElement('div');
-    bub.className = 'bubble';
-
-    if (extra && extra.xray) {
-      const strip = document.createElement('div');
-      strip.className = 'xray-strip';
-      const sev = extra.xray.severity || 'unknown';
-      strip.innerHTML = `🩻 <strong>${extra.xray.finding}</strong> — ${extra.xray.confidence}% confidence <span class="sev-badge sev-${sev}">${sev.toUpperCase()}</span>`;
-      bub.appendChild(strip);
-    }
-
-    const txt = document.createElement('span');
-    txt.textContent = html;
-    bub.appendChild(txt);
-
-    div.appendChild(ico);
-    div.appendChild(bub);
-    box.appendChild(div);
+  // ── Message rendering ──────────────────────────────────────────────────────
+  function appendMsg(role, buildBody) {
+    const box = $('chatbox');
+    const wrap = el('div', 'msg ' + role);
+    const ico = el('div', 'ico', role === 'user' ? '👤' : '🤖');
+    const bub = el('div', 'bubble');
+    buildBody(bub);
+    wrap.appendChild(ico);
+    wrap.appendChild(bub);
+    box.appendChild(wrap);
     box.scrollTop = box.scrollHeight;
-    return div;
+    return wrap;
+  }
+
+  function addUserMsg(text) {
+    return appendMsg('user', bub => { bub.textContent = text; });
+  }
+
+  function addPlainBotMsg(text, kind) {
+    return appendMsg('bot', bub => {
+      if (kind) {
+        const n = el('div', 'notice ' + kind);
+        n.appendChild(el('span', null, '⚠️'));
+        n.appendChild(el('span', null, text));
+        bub.appendChild(n);
+      } else {
+        bub.style.whiteSpace = 'pre-wrap';
+        bub.textContent = text;
+      }
+    });
+  }
+
+  function section(icon, title, bodyNode) {
+    const sec = el('div', 'sec');
+    const head = el('div', 'sec-h');
+    head.appendChild(el('span', null, icon));
+    head.appendChild(el('span', null, title));
+    sec.appendChild(head);
+    const body = el('div', 'sec-body');
+    body.appendChild(bodyNode);
+    sec.appendChild(body);
+    return sec;
+  }
+
+  function paragraphs(text) {
+    const frag = document.createDocumentFragment();
+    String(text).split(/\n{2,}/).forEach(chunk => {
+      const t = chunk.trim();
+      if (t) frag.appendChild(el('p', null, t));
+    });
+    return frag;
+  }
+
+  function list(items, cls) {
+    const ul = el('ul', cls);
+    items.forEach(item => ul.appendChild(el('li', null, String(item).trim())));
+    return ul;
+  }
+
+  /* Renders the structured answer as real sections instead of one pre-wrap blob.
+     That is the reading-flow fix: headings, numbered steps and a severity badge
+     rather than an unbroken wall of emoji-prefixed text. */
+  function addBotAnswer(data) {
+    return appendMsg('bot', bub => {
+      const s = data.structured || {};
+
+      if (data.degraded || (data.error && !s.problem_summary)) {
+        const n = el('div', 'notice err');
+        n.appendChild(el('span', null, '⚠️'));
+        const body = el('div');
+        body.appendChild(el('b', null, 'No AI answer was generated'));
+        body.appendChild(el('span', null,
+          data.error || 'The model did not respond. The text below is a system message, not a medical assessment.'));
+        n.appendChild(body);
+        bub.appendChild(n);
+      }
+
+      if (data.xray_summary) {
+        const x = data.xray_summary;
+        const sev = (x.severity || 'unknown').toLowerCase();
+        const strip = el('div', 'xray-strip');
+        strip.appendChild(el('span', null, '🩻'));
+        strip.appendChild(el('strong', null, x.finding));
+        strip.appendChild(el('span', null, `— ${x.confidence}% confidence`));
+        strip.appendChild(el('span', 'sev-badge sev-' + sev, sev.toUpperCase()));
+        bub.appendChild(strip);
+      }
+
+      if (!s.problem_summary && !s.recommendations) {
+        bub.appendChild(el('div', 'sec-body', data.answer || 'No response received.'));
+        return;
+      }
+
+      if (s.problem_summary)
+        bub.appendChild(section('📋', 'Summary', paragraphs(s.problem_summary)));
+
+      if (Array.isArray(s.possible_conditions) && s.possible_conditions.length)
+        bub.appendChild(section('🔍', 'Possible conditions', list(s.possible_conditions, 'cond-list')));
+
+      const sev = String(s.severity_level || 'moderate').toLowerCase();
+      const emoji = { low:'🟢', moderate:'🟡', high:'🔴' }[sev] || '⚪';
+      const badge = el('span', 'sev-badge sev-' + (['low','moderate','high'].includes(sev) ? sev : 'unknown'));
+      badge.appendChild(el('span', null, emoji));
+      badge.appendChild(el('span', null, sev.toUpperCase()));
+      bub.appendChild(section('⚠️', 'Severity', badge));
+
+      if (Array.isArray(s.recommendations) && s.recommendations.length)
+        bub.appendChild(section('💊', 'Recommendations', list(s.recommendations, 'rec-list')));
+
+      if (s.when_to_seek_help)
+        bub.appendChild(section('🚨', 'When to seek help', el('div', 'help-box', s.when_to_seek_help)));
+
+      if (data.lab_values && Object.keys(data.lab_values).length) {
+        const chips = el('div', 'src-list');
+        Object.entries(data.lab_values).forEach(([k, v]) =>
+          chips.appendChild(el('span', 'src', `${k.replace(/_/g, ' ')}: ${v}`)));
+        bub.appendChild(section('🧪', 'Detected values', chips));
+      }
+
+      if (s._sources) {
+        const chips = el('div', 'src-list');
+        String(s._sources).split('\n').forEach(line => {
+          const t = line.trim();
+          if (!t || t.toLowerCase().startsWith('knowledge sources')) return;
+          const trusted = t.includes('✓ Trusted');
+          chips.appendChild(el('span', 'src' + (trusted ? ' trusted' : ''),
+            t.replace(/^\[.*?\]\s*/, '')));
+        });
+        if (chips.childNodes.length) bub.appendChild(section('📚', 'Knowledge sources', chips));
+      }
+
+      bub.appendChild(el('div', 'disc',
+        '⚠️ This AI analysis is for informational purposes only. Always consult a qualified ' +
+        'healthcare professional for diagnosis, treatment, or interpretation of medical results.'));
+    });
   }
 
   function addTyping() {
-    const box = document.getElementById('chatbox');
-    const div = document.createElement('div');
-    div.className = 'msg bot typing';
-    div.innerHTML = '<div class="ico">🤖</div><div class="bubble"><div class="dots"><span></span><span></span><span></span></div></div>';
-    box.appendChild(div);
+    const box = $('chatbox');
+    const wrap = el('div', 'msg bot typing');
+    const ico = el('div', 'ico', '🤖');
+    const bub = el('div', 'bubble');
+    const dots = el('div', 'dots');
+    for (let i = 0; i < 3; i++) dots.appendChild(el('span'));
+    bub.appendChild(dots);
+    wrap.appendChild(ico);
+    wrap.appendChild(bub);
+    box.appendChild(wrap);
     box.scrollTop = box.scrollHeight;
-    return div;
+    return wrap;
   }
 
+  // ── Send ───────────────────────────────────────────────────────────────────
   async function send() {
-    const input = document.getElementById('userInput');
-    const query = input.value.trim();
+    if (busy) return;
 
+    const input = $('userInput');
+    const query = input.value.trim();
     const hasImage  = !!selectedImage;
     const hasReport = !!selectedReport;
 
     if (!query && !hasImage && !hasReport) {
-      input.placeholder = '⚠️ Please type a question or attach a file first.';
-      setTimeout(() => input.placeholder = modeConfig[currentMode].placeholder, 2000);
+      flashPlaceholder('⚠️ Type a question or attach a file first.');
+      return;
+    }
+    // Flow fix: the tab used to be cosmetic — picking "X-Ray Analysis" and
+    // sending text alone silently ran a plain text query.
+    const needs = modeConfig[currentMode].needs;
+    if (needs === 'image' && !hasImage) {
+      flashPlaceholder('⚠️ Attach an X-ray image, or switch to "Ask a Question".');
+      return;
+    }
+    if (needs === 'report' && !hasReport) {
+      flashPlaceholder('⚠️ Attach a PDF/TXT report, or switch to "Ask a Question".');
       return;
     }
 
-    // Show user message
     const userLabel = [
       query || '',
       hasImage  ? `📎 ${selectedImage.name}`  : '',
       hasReport ? `📄 ${selectedReport.name}` : '',
     ].filter(Boolean).join('\n');
-    addMsg('user', userLabel);
+    addUserMsg(userLabel);
 
     input.value = '';
     input.style.height = 'auto';
+    setBusy(true);
 
     const typing = addTyping();
-    const statusBar = document.getElementById('status-bar');
-    if (hasImage) statusBar.classList.add('show');
+    if (hasImage) setStatus('⏳ Analysing X-ray… the first run may take 30–60s while the model loads.');
 
     const useMultimodal = hasImage || hasReport;
     const endpoint = useMultimodal ? '/analyze-multimodal' : '/analyze';
 
     try {
       let body, headers = {};
-
       if (useMultimodal) {
         const fd = new FormData();
-        if (query)       fd.append('query',  query);
+        if (query)          fd.append('query',  query);
         if (selectedImage)  fd.append('image',  selectedImage);
         if (selectedReport) fd.append('report', selectedReport);
         body = fd;
@@ -349,24 +588,64 @@
       }
 
       const resp = await fetch(endpoint, { method: 'POST', headers, body });
-      const data = await resp.json();
+      const data = await resp.json().catch(() => ({}));
 
       typing.remove();
-      statusBar.classList.remove('show');
+      setStatus('');
 
-      const extra = data.xray_summary ? { xray: data.xray_summary } : null;
-      addMsg('bot', data.answer || data.error || 'No response received.', extra);
+      if (!resp.ok && data.error && !data.structured) {
+        addPlainBotMsg(data.error, 'err');
+      } else {
+        addBotAnswer(data);
+      }
+
+      // The in-bubble notice scrolls away on a long answer, so pin the reason
+      // to the status bar for as long as the model is not answering.
+      if (data.degraded) {
+        setStatus(data.error || 'The AI model did not answer — showing knowledge-base text only.', 'err');
+        const badge = $('hdr-badge');
+        badge.textContent = data.llm_online ? 'limited' : 'offline';
+        badge.classList.add('offline');
+      }
+
+      // Only clear attachments once the request actually went through, so a
+      // failed send does not force the user to re-pick their files.
+      clearImage();
+      clearReport();
 
     } catch (err) {
       typing.remove();
-      statusBar.classList.remove('show');
-      addMsg('bot', '⚠️ Network error. Please check the server is running and try again.');
+      setStatus('');
+      addPlainBotMsg('Network error — check that the server is running, then try again. Your attachment was kept.', 'err');
+    } finally {
+      setBusy(false);
+      input.focus();
     }
-
-    // Clear attachments after send
-    clearImage();
-    clearReport();
   }
+
+  function flashPlaceholder(message) {
+    const input = $('userInput');
+    input.placeholder = message;
+    setTimeout(() => input.placeholder = modeConfig[currentMode].placeholder, 2500);
+  }
+
+  // ── Startup health check ───────────────────────────────────────────────────
+  // Tells the user up front when the model is not configured, instead of
+  // letting every question come back with the same fallback paragraph.
+  (async function checkHealth() {
+    try {
+      const resp = await fetch('/health');
+      const h = await resp.json();
+      const badge = $('hdr-badge');
+      if (h.status === 'ok') return;
+      badge.textContent = h.llm ? 'limited' : 'offline';
+      badge.classList.add('offline');
+      setStatus(h.message || 'Some subsystems are unavailable — answers may be limited.',
+                h.status === 'down' ? 'err' : null);
+    } catch (e) {
+      /* health endpoint unreachable — the first send will surface it */
+    }
+  })();
 </script>
 </body>
 </html>

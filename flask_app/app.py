@@ -1,14 +1,21 @@
 """
-flask_app/app.py — MediBot v5
+flask_app/app.py — MediBot
 --------------------------------
-EXTENSION of original app.py.
-✅ All original routes preserved (/analyze, /analyze-multimodal, /).
-✅ New: uses enhanced file_utils, preprocess_image_bytes, extract_report_text.
-✅ New: /health endpoint extended with RAG stats.
-✅ New: lab value extraction shown in API response.
+Routes: /  /analyze  /analyze-multimodal  /health
+
+Fixes in this revision
+----------------------
+* Startup no longer dies when no API key is set. The vector store is built
+  independently of the LLM, so the app can still answer from the knowledge
+  base. Previously a missing key killed `multimodal`, and every single request
+  fell through to one hard-coded paragraph — which is why every input produced
+  the same output.
+* Responses carry `degraded` + `error` so the UI can say the model did not
+  answer instead of presenting a system message as a medical answer.
+* /health reports the real state of each subsystem.
 """
 
-import sys, os, logging, traceback, json
+import sys, os, logging, traceback
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if ROOT not in sys.path:
@@ -17,7 +24,7 @@ if ROOT not in sys.path:
 from flask import Flask, render_template, request, jsonify
 from werkzeug.exceptions import RequestEntityTooLarge
 
-from services.llm_service import get_llm, call_llm_with_fallback, _default_structured
+from services.llm_service import try_get_llm, _default_structured
 from rag.rag_engine import build_rag_chain, get_vectorstore
 from multimodal_handler import MultimodalHandler, _format_structured_html
 from prompts.system_prompts import MEDICAL_RAG_PROMPT
@@ -25,7 +32,6 @@ from utils.file_utils import (
     is_valid_image, validate_image_size,
     is_valid_report, validate_report_size,
     extract_report_text, preprocess_image_bytes,
-    has_report_content,
 )
 
 logging.basicConfig(
@@ -39,20 +45,52 @@ app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 20 * 1024 * 1024  # 20 MB
 
 # ── Startup ───────────────────────────────────────────────────────────────────
-llm        = None
-rag_chain  = None
-multimodal = None
-_startup_error = None
+llm          = None
+rag_chain    = None
+vectorstore  = None
+multimodal   = None
+_llm_error   = None
+_rag_error   = None
 
+# 1. LLM — non-fatal. Without it we still serve knowledge-base answers.
+llm, _llm_error = try_get_llm()
+if _llm_error:
+    logger.error(f"⚠️  LLM unavailable: {_llm_error}")
+
+# 2. Vector store — independent of the LLM.
 try:
-    llm        = get_llm()
-    rag_chain   = build_rag_chain(llm, MEDICAL_RAG_PROMPT)
     vectorstore = get_vectorstore()
-    multimodal  = MultimodalHandler(rag_chain, llm=llm, vectorstore=vectorstore)
-    logger.info("✅ MediBot v5 ready — Enhanced RAG with trusted sources active.")
+    logger.info("✅ Vector store loaded.")
 except Exception as e:
-    _startup_error = str(e)
-    logger.error(f"❌ Startup failed: {e}\n{traceback.format_exc()}")
+    _rag_error = str(e)
+    logger.error(f"❌ Vector store failed to load: {e}\n{traceback.format_exc()}")
+
+# 3. RAG chain — only possible with both.
+if llm is not None and vectorstore is not None:
+    try:
+        rag_chain = build_rag_chain(llm, MEDICAL_RAG_PROMPT)
+    except Exception as e:
+        _rag_error = (_rag_error or "") + f" | rag_chain: {e}"
+        logger.error(f"❌ RAG chain failed: {e}")
+
+# 4. Handler — works with whatever is available.
+multimodal = MultimodalHandler(rag_chain, llm=llm, vectorstore=vectorstore)
+
+if llm is not None and vectorstore is not None:
+    logger.info("✅ MediBot ready — LLM + enhanced RAG with trusted sources active.")
+elif vectorstore is not None:
+    logger.warning("⚠️  MediBot running in KNOWLEDGE-BASE-ONLY mode (no LLM configured).")
+else:
+    logger.warning("⚠️  MediBot running DEGRADED — no LLM and no vector index.")
+
+
+def _startup_summary() -> str:
+    problems = []
+    if llm is None:
+        problems.append("No AI model configured — set OPENROUTER_API_KEY or GROQ_API_KEY in .env.")
+    if vectorstore is None:
+        problems.append("Medical knowledge index not loaded — run: python build_index.py --force")
+    return " ".join(problems)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -66,45 +104,63 @@ def index():
 
 @app.route("/health")
 def health():
-    """Extended health check with RAG and LLM status."""
+    """Health check reporting the real state of each subsystem."""
+    if llm is not None and vectorstore is not None:
+        status = "ok"
+    elif vectorstore is not None or llm is not None:
+        status = "degraded"
+    else:
+        status = "down"
+
     return jsonify({
-        "status":          "ok" if multimodal else "degraded",
-        "rag":             rag_chain  is not None,
+        "status":          status,
+        "llm":             llm is not None,
+        "llm_error":       _llm_error or None,
+        "rag":             vectorstore is not None,
+        "rag_chain":       rag_chain is not None,
+        "rag_error":       _rag_error or None,
         "multimodal":      multimodal is not None,
-        "llm":             llm        is not None,
-        "trusted_sources": True,   # always true in v5
+        "trusted_sources": vectorstore is not None,
         "version":         "5.0",
-        "startup_error":   _startup_error,
+        "message":         _startup_summary() or "All subsystems operational.",
     })
+
+
+def _response_payload(result: dict) -> dict:
+    payload = {
+        "answer":     result.get("answer", ""),
+        "structured": result.get("structured", {}),
+        "mode":       result.get("mode", "text"),
+        "rag_used":   result.get("rag_used", False),
+        "degraded":   bool(result.get("degraded")),
+        "error":      result.get("error"),
+        "lab_values": result.get("lab_values", {}),
+        "llm_online": llm is not None,
+    }
+    if payload["degraded"] and not payload["error"]:
+        payload["error"] = _startup_summary() or "The AI model did not return an answer."
+
+    xa = result.get("xray_analysis")
+    if xa:
+        payload["xray_summary"] = {
+            "finding":    xa.get("primary_finding", "Unknown"),
+            "confidence": round(xa.get("confidence", 0) * 100, 1),
+            "severity":   xa.get("severity", "unknown"),
+        }
+    return payload
 
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
-    """Original text-only endpoint — interface preserved."""
+    """Text-only endpoint — interface preserved."""
     try:
         data  = request.get_json(silent=True) or {}
         query = (data.get("query", "") or request.form.get("query", "")).strip()
         if not query:
             return jsonify({"error": "No query provided."}), 400
 
-        if multimodal:
-            result = multimodal.process(text_query=query)
-        else:
-            structured = call_llm_with_fallback(llm, query) if llm else _default_structured(query)
-            result = {
-                "answer":     _format_structured_html(structured),
-                "structured": structured,
-                "mode":       "text",
-                "rag_used":   False,
-                "error":      None,
-            }
-
-        return jsonify({
-            "answer":     result["answer"],
-            "structured": result.get("structured", {}),
-            "mode":       result["mode"],
-            "rag_used":   result["rag_used"],
-        })
+        result = multimodal.process(text_query=query)
+        return jsonify(_response_payload(result))
 
     except Exception as e:
         logger.error(f"/analyze error: {e}\n{traceback.format_exc()}")
@@ -114,13 +170,17 @@ def analyze():
             "structured": safe,
             "mode":       "error_fallback",
             "rag_used":   False,
-        })
+            "degraded":   True,
+            "error":      f"Server error: {e}",
+            "lab_values": {},
+            "llm_online": llm is not None,
+        }), 500
 
 
 @app.route("/analyze-multimodal", methods=["POST"])
 def analyze_multimodal():
     """
-    Enhanced multimodal endpoint.
+    Multimodal endpoint.
     Supports: text | X-ray image | PDF/TXT report | any combination.
     """
     try:
@@ -139,7 +199,7 @@ def analyze_multimodal():
             valid, msg  = validate_image_size(raw_bytes)
             if not valid:
                 return jsonify({"error": msg}), 400
-            image_bytes = preprocess_image_bytes(raw_bytes)  # NEW: preprocess
+            image_bytes = preprocess_image_bytes(raw_bytes)
             image_name  = image_file.filename
             logger.info(f"X-ray received: {image_name} ({len(image_bytes)//1024} KB)")
 
@@ -151,7 +211,7 @@ def analyze_multimodal():
             valid, msg   = validate_report_size(report_bytes)
             if not valid:
                 return jsonify({"error": msg}), 400
-            report_text = extract_report_text(report_bytes, report_file.filename)  # NEW
+            report_text = extract_report_text(report_bytes, report_file.filename)
             logger.info(f"Report received: {report_file.filename} ({len(report_text)} chars)")
 
             if report_text:
@@ -169,45 +229,12 @@ def analyze_multimodal():
 
         logger.info(f"Processing — image:{bool(image_bytes)} report:{bool(report_text)} query:{bool(query)}")
 
-        # ── Process ───────────────────────────────────────────────────────────
-        if multimodal:
-            result = multimodal.process(
-                text_query=query,
-                image_bytes=image_bytes,
-                image_filename=image_name,
-            )
-        else:
-            # Degraded mode
-            effective_query = query or "X-ray analysis requested."
-            structured = call_llm_with_fallback(llm, effective_query) if llm else _default_structured(effective_query)
-            result = {
-                "answer":        _format_structured_html(structured),
-                "structured":    structured,
-                "mode":          "degraded",
-                "xray_analysis": None,
-                "rag_used":      False,
-                "lab_values":    {},
-                "error":         "System initialisation error",
-            }
-
-        response_data = {
-            "answer":     result["answer"],
-            "structured": result.get("structured", {}),
-            "mode":       result["mode"],
-            "rag_used":   result["rag_used"],
-            "error":      result.get("error"),
-            "lab_values": result.get("lab_values", {}),   # NEW: expose detected lab values
-        }
-
-        if result.get("xray_analysis"):
-            xa = result["xray_analysis"]
-            response_data["xray_summary"] = {
-                "finding":    xa.get("primary_finding", "Unknown"),
-                "confidence": round(xa.get("confidence", 0) * 100, 1),
-                "severity":   xa.get("severity", "unknown"),
-            }
-
-        return jsonify(response_data)
+        result = multimodal.process(
+            text_query=query,
+            image_bytes=image_bytes,
+            image_filename=image_name,
+        )
+        return jsonify(_response_payload(result))
 
     except RequestEntityTooLarge:
         return jsonify({"error": "File too large. Max 20 MB."}), 413
@@ -219,5 +246,8 @@ def analyze_multimodal():
             "structured": safe,
             "mode":       "error_fallback",
             "rag_used":   False,
-            "error":      None,
-        })
+            "degraded":   True,
+            "error":      f"Server error: {e}",
+            "lab_values": {},
+            "llm_online": llm is not None,
+        }), 500
