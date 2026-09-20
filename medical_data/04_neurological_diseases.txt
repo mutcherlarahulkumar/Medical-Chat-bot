@@ -1,0 +1,82 @@
+NEUROLOGICAL DISEASES - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== EPILEPSY AND SEIZURES ===
+Definition: Epilepsy is a neurological disorder with recurrent unprovoked seizures due to abnormal electrical brain activity.
+Seizure Types:
+Focal (Partial): Start in one brain area. Focal aware (consciousness preserved), Focal impaired awareness (dyscognitive).
+Generalized: Both hemispheres involved simultaneously. Tonic-clonic (grand mal), Absence (petit mal - brief staring spells), Myoclonic, Tonic, Atonic (drop attacks).
+Causes: Idiopathic (genetic), symptomatic (structural - tumors, vascular malformations, trauma, infection, metabolic).
+Status Epilepticus: Seizure lasting >5 min or 2+ seizures without recovery. Emergency. Lorazepam IV → Fosphenytoin → Phenobarbital → General anesthesia.
+Diagnosis: EEG, MRI brain, blood tests (electrolytes, glucose, calcium, toxicology screen), LP if infection suspected.
+Treatment: Antiepileptic drugs (AEDs): Valproate (broad spectrum), Lamotrigine, Levetiracetam, Carbamazepine (focal), Phenytoin, Topiramate, Ethosuximide (absence). Ketogenic diet, VNS, surgery for refractory cases.
+Driving restrictions: Generally seizure-free 6-12 months before driving allowed.
+First aid for seizure: Time the seizure, keep safe, turn to recovery position after, DO NOT restrain, DO NOT put anything in mouth, call emergency if >5 min.
+
+=== PARKINSON'S DISEASE ===
+Definition: Progressive neurodegenerative disorder affecting dopaminergic neurons in substantia nigra.
+Cardinal Features (TRAP): Tremor (resting, 4-6 Hz, "pill-rolling"), Rigidity (cogwheel), Akinesia/Bradykinesia, Postural instability.
+Other features: Masked facies, micrographia, shuffling gait, festination, freezing, hypophonia, dysphagia, depression, anxiety, cognitive decline (Parkinson's dementia), autonomic dysfunction (constipation, orthostatic hypotension), REM sleep behavior disorder.
+Diagnosis: Clinical diagnosis. MRI to exclude other causes. DaTscan (dopamine transporter imaging).
+Treatment:
+Dopaminergic: Levodopa/carbidopa (gold standard), Dopamine agonists (pramipexole, ropinirole), COMT inhibitors (entacapone), MAO-B inhibitors (selegiline, rasagiline).
+Non-motor: Antidepressants, clonazepam for REM disorder, laxatives for constipation, fludrocortisone for orthostatic hypotension.
+Advanced: Deep Brain Stimulation (DBS) - subthalamic nucleus, Duodopa (levodopa gel), Focused ultrasound.
+Exercise: Regular aerobic and physiotherapy crucial for quality of life.
+
+=== ALZHEIMER'S DISEASE AND DEMENTIA ===
+Definition: Progressive neurodegenerative disease causing memory loss and cognitive decline. Most common dementia (60-80%).
+Pathology: Amyloid plaques (Aβ) and neurofibrillary tangles (tau protein) → neuronal loss.
+Risk factors: Age (main factor), family history, APOE ε4 gene, Down syndrome, cardiovascular risk factors, head trauma, low education.
+Stages: Mild (memory lapses, getting lost), Moderate (increasing confusion, behavioral changes, need for assistance), Severe (complete dependence, loss of speech, immobility).
+Symptoms: Memory loss disrupting daily life, difficulty planning, trouble with familiar tasks, confusion with time/place, visual/spatial problems, language problems, misplacing things, poor judgment, withdrawal, mood/personality changes.
+Diagnosis: Clinical assessment, MMSE/MoCA cognitive testing, MRI brain (hippocampal atrophy, excluding other causes), PET scan, CSF biomarkers (Aβ42, p-tau, t-tau), blood biomarkers (emerging).
+Treatment: Cholinesterase inhibitors (donepezil, rivastigmine, galantamine - mild to moderate), NMDA antagonist (memantine - moderate to severe), Lecanemab/Donanemab (new disease-modifying anti-amyloid antibodies), Behavioral and psychological symptoms management.
+Other dementias: Vascular dementia (post-stroke), Lewy Body dementia (visual hallucinations, parkinsonism, fluctuating cognition), Frontotemporal dementia (personality/behavioral changes), Mixed dementia.
+
+=== MULTIPLE SCLEROSIS (MS) ===
+Definition: Autoimmune demyelinating disease of CNS. T-cell mediated destruction of myelin sheath.
+Types: Relapsing-Remitting MS (RRMS - 85%), Primary Progressive MS (PPMS), Secondary Progressive MS (SPMS).
+Symptoms: Visual disturbances (optic neuritis - pain with eye movement, unilateral vision loss), motor weakness, sensory disturbances (numbness, tingling), cerebellar ataxia, fatigue (most common), bladder/bowel dysfunction, cognitive impairment, Lhermitte's sign (electric shock with neck flexion), trigeminal neuralgia.
+Uhthoff's phenomenon: Worsening with heat/exercise.
+Diagnosis: McDonald criteria: MRI (white matter lesions disseminated in space and time), CSF analysis (oligoclonal bands, elevated IgG index), VEPs.
+Treatment: Acute relapse: IV methylprednisolone. Disease-Modifying Therapies (DMTs): Interferons (beta-1a, beta-1b), Glatiramer acetate (first-line), Natalizumab, Alemtuzumab, Ocrelizumab (PPMS), Siponimod (SPMS), Cladribine, Ofatumumab. Symptomatic: baclofen for spasticity, amantadine for fatigue, oxybutynin for bladder.
+
+=== MIGRAINE ===
+Definition: Recurring headache disorder, often unilateral, pulsating, moderate-severe intensity.
+Types: Migraine without aura (common migraine), Migraine with aura (classic - visual/sensory symptoms before headache), Hemiplegic migraine, Vestibular migraine, Chronic migraine (≥15 headache days/month).
+Aura: Visual (fortification spectra, scotomas), sensory (tingling), motor, speech - typically 20-60 minutes.
+Phases: Prodrome (hours-days before - mood change, food cravings, yawning), Aura, Headache (4-72 hrs), Postdrome (fatigue, concentration difficulty).
+Triggers: Hormonal changes (menstruation), certain foods (cheese, chocolate, red wine, MSG, caffeine), fasting, sleep disturbance, stress, sensory stimuli, physical exertion, weather changes.
+Treatment: Acute: NSAIDs, paracetamol, triptans (sumatriptan, rizatriptan - first-line specific therapy), antiemetics (metoclopramide), CGRP antagonists (rimegepant, ubrogepant), lasmiditan. Preventive (≥4 attacks/month): Topiramate, valproate, propranolol, amitriptyline, CGRP monoclonal antibodies (erenumab, fremanezumab, galcanezumab).
+
+=== MENINGITIS ===
+Definition: Inflammation of meninges (membranes covering brain and spinal cord). Medical emergency.
+Types: Bacterial (most serious), Viral (most common), Fungal, Tuberculous.
+Bacterial causes: Neisseria meningitidis (teens/young adults), Streptococcus pneumoniae (all ages), Listeria (elderly/immunocompromised), Haemophilus influenzae (unvaccinated children), Group B Streptococcus (neonates).
+Symptoms: Classic triad: severe headache, neck stiffness (meningism), high fever. Also: photophobia, phonophobia, nausea, vomiting, altered consciousness, seizures. Meningococcal: non-blanching petechial/purpuric rash - EMERGENCY.
+Kernig's sign: Cannot extend knee when hip flexed. Brudzinski's sign: Neck flexion causes hip flexion.
+Diagnosis: LP (CSF analysis - opening pressure, appearance, cells, protein, glucose, culture, PCR). CT before LP if papilledema, focal neurology, or immunocompromised. Blood cultures before antibiotics.
+Treatment: DO NOT DELAY antibiotics for CT/LP. IV ceftriaxone + dexamethasone (bacterial). Acyclovir for viral (HSV). Liposomal amphotericin B for fungal.
+Prevention: Vaccines (meningococcal ACWY and B, pneumococcal, Hib vaccines).
+
+=== BRAIN TUMORS ===
+Primary brain tumors: Glioblastoma (GBM - grade IV, most aggressive), Astrocytoma, Oligodendroglioma, Meningioma (usually benign), Pituitary adenoma, Acoustic neuroma, Medulloblastoma (children).
+Secondary (metastatic): Lung cancer (most common source), breast, melanoma, kidney, colorectal.
+Symptoms: Headache (worse in morning, with coughing/bending), seizures, focal neurological deficits, cognitive changes, personality change, nausea/vomiting (raised ICP), visual changes, speech problems.
+Diagnosis: MRI with gadolinium (gold standard), CT, biopsy for histology and molecular markers.
+Treatment: Surgery (maximal safe resection), radiotherapy, chemotherapy (temozolomide for GBM), targeted therapy, steroids (dexamethasone for cerebral edema), anti-epileptics.
+
+=== PERIPHERAL NEUROPATHY ===
+Definition: Damage to peripheral nerves causing weakness, numbness, pain (usually hands/feet).
+Causes: Diabetes (most common), alcohol, B12 deficiency, hypothyroidism, kidney failure, hereditary (Charcot-Marie-Tooth), inflammatory (Guillain-Barré, CIDP), medications (chemotherapy), infections (HIV, leprosy).
+Types: Sensory (numbness, tingling, pain), Motor (weakness), Autonomic (orthostatic hypotension, sweating, bladder issues).
+Diagnosis: Nerve conduction studies (NCS), EMG, blood tests, nerve biopsy.
+Treatment: Treat underlying cause. Pain: gabapentin, pregabalin, duloxetine, TCAs, topical lidocaine/capsaicin. Physiotherapy.
+Guillain-Barré Syndrome: Acute ascending demyelinating polyneuropathy, often post-infection. Ascending weakness/areflexia. CSF: cytoalbuminous dissociation. Treatment: IVIg or plasmapheresis.
+
+=== MOTOR NEURON DISEASE (ALS) ===
+Definition: Progressive degeneration of upper and lower motor neurons. Most common MND.
+Symptoms: Progressive muscle weakness, wasting, fasciculations, spasticity, dysarthria, dysphagia, respiratory failure. NO sensory, sphincter, cognitive involvement (usually).
+Diagnosis: Clinical + EMG (denervation in ≥3 regions), MRI (exclude structural).
+Treatment: No cure. Riluzole (slows progression), Edaravone (reduces decline). Multidisciplinary: NIV (respiratory support), PEG (nutritional support), communication aids, physiotherapy, palliative care.
+Prognosis: Median survival 2-5 years from symptom onset.

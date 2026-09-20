@@ -1,0 +1,115 @@
+SOURCE: National Institutes of Health (NIH) + MedlinePlus — Official US Health Information
+AUTHORITY: Highest-priority trusted source (US National Institutes of Health)
+CATEGORY: Evidence-based clinical information, drug information, lab values
+
+=== NIH/MedlinePlus: NORMAL LAB VALUES REFERENCE ===
+TOPIC: Laboratory Medicine | Reference Ranges
+SOURCE_URL: https://medlineplus.gov/lab-tests
+
+COMPLETE BLOOD COUNT (CBC):
+- White Blood Cells (WBC): 4,500–11,000 cells/mcL. HIGH (leukocytosis) = infection/inflammation. LOW (leukopenia) = bone marrow problem, autoimmune.
+- Red Blood Cells (RBC): Men 4.5–5.9 million/mcL; Women 4.1–5.1 million/mcL.
+- Hemoglobin (Hgb): Men 13.5–17.5 g/dL; Women 12.0–15.5 g/dL. LOW = anemia.
+- Hematocrit (Hct): Men 41–53%; Women 36–46%.
+- Platelets (PLT): 150,000–400,000/mcL. LOW (thrombocytopenia) = bleeding risk. HIGH = clotting risk.
+- MCV (Mean Corpuscular Volume): 80–100 fL. LOW = iron deficiency/thalassemia. HIGH = B12/folate deficiency.
+- Neutrophils: 50–70% (2,500–8,000/mcL). HIGH = bacterial infection.
+- Lymphocytes: 20–40% (1,000–4,800/mcL). HIGH = viral infection.
+- Eosinophils: 1–4%. HIGH = allergy, parasitic infection.
+
+BASIC METABOLIC PANEL (BMP):
+- Sodium (Na): 136–145 mEq/L. LOW (hyponatremia) <136. HIGH (hypernatremia) >145.
+- Potassium (K): 3.5–5.0 mEq/L. LOW (hypokalemia) <3.5 — muscle weakness, arrhythmia. HIGH (hyperkalemia) >5.0 — cardiac risk.
+- Chloride (Cl): 98–107 mEq/L.
+- Bicarbonate (HCO3): 22–29 mEq/L.
+- Blood Urea Nitrogen (BUN): 7–25 mg/dL. HIGH = kidney disease, dehydration.
+- Creatinine: Men 0.74–1.35 mg/dL; Women 0.59–1.04 mg/dL. HIGH = kidney disease.
+- eGFR: >60 mL/min/1.73m² normal. 15–29 = Stage 4 CKD. <15 = kidney failure.
+- Glucose (fasting): 70–99 mg/dL. 100–125 = prediabetes. ≥126 = diabetes.
+- Calcium (Ca): 8.5–10.5 mg/dL. LOW (hypocalcemia) = muscle cramps, tetany. HIGH (hypercalcemia) = kidney stones, bone pain.
+
+LIVER FUNCTION TESTS (LFTs):
+- ALT (Alanine Aminotransferase): Men 7–56 U/L; Women 7–45 U/L. HIGH = liver damage, hepatitis.
+- AST (Aspartate Aminotransferase): 10–40 U/L. HIGH = liver, heart, or muscle damage.
+- Alkaline Phosphatase (ALP): 44–147 U/L. HIGH = liver/bone disease.
+- Total Bilirubin: 0.1–1.2 mg/dL. HIGH = jaundice, liver/bile duct disease.
+- Direct Bilirubin: 0.0–0.3 mg/dL.
+- Albumin: 3.5–5.0 g/dL. LOW = liver disease, malnutrition, inflammation.
+- Total Protein: 6.3–8.2 g/dL.
+
+THYROID FUNCTION:
+- TSH (Thyroid Stimulating Hormone): 0.4–4.0 mIU/L. HIGH = hypothyroidism. LOW = hyperthyroidism.
+- Free T4 (FT4): 0.9–1.7 ng/dL. LOW + HIGH TSH = primary hypothyroidism.
+- Free T3 (FT3): 2.0–4.4 pg/mL.
+
+LIPID PANEL:
+- Total Cholesterol: Desirable <200 mg/dL. Borderline 200–239. High ≥240.
+- LDL Cholesterol: Optimal <100 mg/dL. Near optimal 100–129. Borderline 130–159. High 160–189. Very high ≥190.
+- HDL Cholesterol: Low (risk) <40 mg/dL men, <50 women. High (protective) ≥60 mg/dL.
+- Triglycerides: Normal <150 mg/dL. Borderline 150–199. High 200–499. Very high ≥500.
+
+CARDIAC MARKERS:
+- Troponin I: Normal <0.04 ng/mL. Elevated = heart muscle damage, myocardial infarction.
+- Troponin T: Normal <0.01 ng/mL.
+- CK-MB: Normal 0–25 IU/L. HIGH = cardiac or skeletal muscle injury.
+- BNP (B-type Natriuretic Peptide): <100 pg/mL normal. >400 = heart failure likely.
+- NT-proBNP: <300 pg/mL normal.
+
+URINALYSIS:
+- pH: 4.5–8.0.
+- Protein: Negative/trace. Positive = kidney disease, UTI.
+- Glucose: Negative. Positive = diabetes or renal glucosuria.
+- Ketones: Negative. Positive = DKA, starvation.
+- Blood (RBCs): Negative. Positive = UTI, kidney stones, glomerulonephritis.
+- Leukocyte esterase: Negative. Positive = UTI.
+- Nitrites: Negative. Positive = gram-negative bacterial UTI.
+- WBCs: 0–4/hpf. >5/hpf = pyuria (UTI).
+
+COAGULATION:
+- PT (Prothrombin Time): 11–13 seconds.
+- INR (International Normalized Ratio): 0.9–1.1 normal. 2–3 = therapeutic range for warfarin.
+- aPTT: 25–35 seconds. Prolonged = heparin therapy or coagulation disorder.
+
+INFLAMMATORY MARKERS:
+- CRP (C-Reactive Protein): <1.0 mg/L low risk; 1–3 average risk; >3 high risk (cardiovascular). >10 mg/L = significant inflammation/infection.
+- ESR (Erythrocyte Sedimentation Rate): Men <15 mm/hr (age <50), <20 mm/hr (age ≥50). Women <20 mm/hr (<50), <30 mm/hr (≥50).
+- Procalcitonin: <0.1 ng/mL = bacterial infection unlikely. 0.1–0.25 = possible. 0.25–0.5 = probable. >0.5 = systemic bacterial infection likely.
+
+BLOOD GAS:
+- pH: 7.35–7.45. <7.35 = acidosis. >7.45 = alkalosis.
+- PaO2: 80–100 mmHg. <60 = respiratory failure.
+- PaCO2: 35–45 mmHg. HIGH = respiratory acidosis. LOW = respiratory alkalosis.
+- SpO2: 95–100% normal. <90% = significant hypoxia.
+- HCO3: 22–26 mEq/L.
+
+=== NIH: KIDNEY DISEASE (CKD) ===
+TOPIC: Renal Disease | Chronic Kidney Disease
+SOURCE_URL: https://www.niddk.nih.gov/health-information/kidney-disease
+CKD STAGES by eGFR:
+- Stage 1: eGFR ≥90 (kidney damage with normal function)
+- Stage 2: eGFR 60–89 (mild reduction)
+- Stage 3a: eGFR 45–59 (mild-moderate reduction)
+- Stage 3b: eGFR 30–44 (moderate-severe reduction)
+- Stage 4: eGFR 15–29 (severe reduction)
+- Stage 5: eGFR <15 (kidney failure — dialysis/transplant needed)
+MANAGEMENT: Blood pressure control (ACE inhibitors/ARBs), HbA1c control in diabetes, dietary protein restriction, phosphate restriction, erythropoiesis-stimulating agents for anemia.
+
+=== NIH: ANEMIA ===
+TOPIC: Hematology | Anemia
+SOURCE_URL: https://medlineplus.gov/anemia.html
+DEFINITION: Hemoglobin <13.5 g/dL men, <12.0 g/dL women.
+SYMPTOMS: Fatigue, weakness, pale skin, shortness of breath, dizziness, cold hands/feet, chest pain.
+TYPES AND CAUSES:
+- Iron deficiency: MCV low, serum ferritin low, TIBC high. Treat: oral iron (ferrous sulfate 325 mg TID).
+- B12/Folate deficiency: MCV high (macrocytic), hypersegmented neutrophils. Treat: B12 injections or oral B12 1000 mcg/day.
+- Anemia of chronic disease: Normal/low MCV, low serum iron, low TIBC, normal/high ferritin.
+- Hemolytic anemia: Elevated LDH, low haptoglobin, elevated indirect bilirubin, positive DAT.
+
+=== NIH/MedlinePlus: BLOOD PRESSURE INTERPRETATION ===
+TOPIC: Cardiovascular | Blood Pressure Values
+Normal: <120/80 mmHg
+Elevated: Systolic 120–129 and diastolic <80 mmHg
+High BP Stage 1: Systolic 130–139 or diastolic 80–89 mmHg
+High BP Stage 2: Systolic ≥140 or diastolic ≥90 mmHg
+Hypertensive Crisis: Systolic >180 and/or diastolic >120 mmHg — seek emergency care immediately
+Hypotension: Systolic <90 mmHg — may cause dizziness, fainting

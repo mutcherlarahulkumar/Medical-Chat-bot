@@ -1,0 +1,68 @@
+SOURCE: World Health Organization (WHO) — Official Clinical Guidelines
+AUTHORITY: Highest-priority trusted source
+CATEGORY: International public health guidelines
+
+=== WHO: PNEUMONIA ===
+TOPIC: Respiratory Disease | Pneumonia
+SOURCE_URL: https://www.who.int/news-room/fact-sheets/detail/pneumonia
+Pneumonia is the single largest infectious cause of death in children worldwide. Pneumonia killed 808,000 children under the age of 5 in 2017. Pneumonia is caused by bacteria, viruses, or fungi.
+SIGNS AND SYMPTOMS: The symptoms of pneumonia include cough (with mucus), fever, chills, and difficulty breathing. For very severe pneumonia in children: cough or difficulty breathing PLUS at least one of the following — central cyanosis or SpO2 < 90%, severe respiratory distress, inability to breastfeed or drink.
+WHO CLASSIFICATION:
+- Non-severe pneumonia: Fast breathing (tachypnoea). Age 2–11 months: ≥50 breaths/min. Age 1–5 years: ≥40 breaths/min.
+- Severe pneumonia: Lower chest wall indrawing.
+- Very severe pneumonia: Any general danger sign (not able to drink/breastfeed, lethargy, convulsions, vomiting everything).
+WHO TREATMENT PROTOCOL: Amoxicillin 40 mg/kg/day for non-severe pneumonia. Benzylpenicillin or ampicillin plus gentamicin for severe pneumonia. Oxygen therapy for SpO2 < 90%.
+WHO PREVENTION: Vaccines (pneumococcal conjugate, Hib, influenza, measles, pertussis vaccines). Exclusive breastfeeding for 6 months. Zinc supplementation. Reducing indoor air pollution.
+
+=== WHO: TUBERCULOSIS (TB) ===
+TOPIC: Infectious Disease | Tuberculosis
+SOURCE_URL: https://www.who.int/news-room/fact-sheets/detail/tuberculosis
+TB is one of the top 10 causes of death worldwide and the leading killer from a single infectious agent. In 2019, an estimated 10 million people fell ill with TB. 1.4 million people died from TB in 2019.
+DIAGNOSIS: Rapid molecular diagnostic test (Xpert MTB/RIF) recommended as initial test. Sputum smear microscopy. Culture and drug-susceptibility testing.
+WHO TREATMENT: Standard 6-month regimen: 2 months isoniazid + rifampicin + pyrazinamide + ethambutol, then 4 months isoniazid + rifampicin. Drug-resistant TB: bedaquiline-containing regimens.
+WHO TARGET: END TB Strategy aims to reduce TB incidence by 80% and deaths by 90% by 2030.
+
+=== WHO: DIABETES MELLITUS ===
+TOPIC: Endocrine Disease | Diabetes
+SOURCE_URL: https://www.who.int/news-room/fact-sheets/detail/diabetes
+422 million people worldwide have diabetes. 1.5 million deaths are directly attributed to diabetes each year. The number of people with diabetes has risen from 108 million in 1980 to 422 million in 2014.
+WHO DIAGNOSTIC CRITERIA:
+- Fasting plasma glucose ≥ 7.0 mmol/L (126 mg/dL)
+- 2-hour plasma glucose ≥ 11.1 mmol/L (200 mg/dL) during OGTT
+- HbA1c ≥ 48 mmol/mol (6.5%)
+- Random plasma glucose ≥ 11.1 mmol/L with symptoms
+PREDIABETES: Fasting glucose 6.1–6.9 mmol/L (110–125 mg/dL) OR 2-hour OGTT glucose 7.8–11.0 mmol/L.
+COMPLICATIONS: Retinopathy (leading cause of blindness), nephropathy (leading cause of kidney failure), neuropathy, cardiovascular disease, foot ulcers and amputation.
+WHO MANAGEMENT: Healthy diet, physical activity, maintaining normal body weight, avoiding tobacco. Medication: metformin, insulin, SGLT2 inhibitors, GLP-1 agonists. Blood pressure control (target <140/90 mmHg), lipid management.
+
+=== WHO: HYPERTENSION ===
+TOPIC: Cardiovascular Disease | Hypertension
+SOURCE_URL: https://www.who.int/news-room/fact-sheets/detail/hypertension
+Hypertension affects more than 1.13 billion people worldwide. Only 1 in 5 adults with hypertension have it under control.
+WHO CLASSIFICATION:
+- Normal: Systolic <120 mmHg AND diastolic <80 mmHg
+- Elevated: Systolic 120–129 mmHg AND diastolic <80 mmHg
+- Stage 1: Systolic 130–139 mmHg OR diastolic 80–89 mmHg
+- Stage 2: Systolic ≥140 mmHg OR diastolic ≥90 mmHg
+- Hypertensive crisis: Systolic >180 and/or diastolic >120 mmHg
+MANAGEMENT: Lifestyle changes (DASH diet, reduce sodium to <5g/day, physical activity ≥150 min/week, limit alcohol, stop smoking). Medications: ACE inhibitors, ARBs, calcium channel blockers, thiazide diuretics, beta-blockers.
+WHO RISK: Uncontrolled hypertension is a major cause of heart attacks, strokes, kidney failure, and blindness.
+
+=== WHO: MALARIA ===
+TOPIC: Infectious Disease | Malaria
+SOURCE_URL: https://www.who.int/news-room/fact-sheets/detail/malaria
+In 2020, there were an estimated 241 million cases of malaria worldwide. The estimated number of malaria deaths stood at 627,000.
+SYMPTOMS: Fever, headache, chills (appear 10–15 days after infective mosquito bite). Severe malaria: cerebral malaria (impaired consciousness, seizures), severe anaemia, haemoglobinuria, acute kidney injury.
+DIAGNOSIS: Microscopic examination of blood smear (gold standard). Rapid diagnostic tests (RDTs). PCR for confirmation.
+WHO TREATMENT: Artemisinin-based combination therapies (ACTs) for uncomplicated malaria. IV artesunate for severe malaria. Chloroquine for P. vivax where sensitivity remains.
+PREVENTION: Insecticide-treated mosquito nets (ITNs), indoor residual spraying (IRS), malaria vaccines (RTS,S/AS01 approved by WHO for children in sub-Saharan Africa), chemoprevention.
+
+=== WHO: COVID-19 ===
+TOPIC: Infectious Disease | COVID-19
+SOURCE_URL: https://www.who.int/health-topics/coronavirus
+SARS-CoV-2 causes COVID-19. Declared a pandemic on March 11, 2020.
+SYMPTOMS: Fever, dry cough, tiredness. Less common: aches and pains, sore throat, diarrhoea, conjunctivitis, headache, loss of taste/smell, rash, discolouration of fingers/toes.
+SEVERE SYMPTOMS: Difficulty breathing, loss of speech/movement/confusion, chest pain. Seek immediate care.
+WHO TREATMENT: Nirmatrelvir with ritonavir (Paxlovid) for high-risk non-severe COVID-19. Remdesivir (intravenous). Dexamethasone for severe and critical COVID-19. Baricitinib for severe and critical.
+WHO PREVENTION: Stay home if sick. Wear a well-fitted mask. Ensure good ventilation. Wash hands frequently. Vaccination (highest priority for older adults, immunocompromised).
+LONG COVID: Post-COVID condition (Long COVID) occurs in 10-20% of patients, with symptoms persisting beyond 12 weeks.

@@ -1,0 +1,69 @@
+SOURCE: Centers for Disease Control and Prevention (CDC) — Official Health Guidelines
+AUTHORITY: Highest-priority trusted source (US Federal public health agency)
+CATEGORY: Disease prevention, epidemiology, clinical recommendations
+
+=== CDC: INFLUENZA (FLU) ===
+TOPIC: Respiratory Disease | Influenza
+SOURCE_URL: https://www.cdc.gov/flu
+Influenza is a contagious respiratory illness caused by influenza viruses. CDC estimates that flu causes millions of illnesses, hundreds of thousands of hospitalizations, and tens of thousands of deaths in the US annually.
+SYMPTOMS: Fever (100–104°F), chills, cough, sore throat, runny/stuffy nose, muscle/body aches, headaches, fatigue. Vomiting and diarrhea more common in children.
+EMERGENCY SIGNS IN ADULTS: Trouble breathing, persistent pain/pressure in chest, confusion/altered mental status, inability to keep fluids down, severe or persistent vomiting.
+CDC ANTIVIRAL TREATMENT: Oseltamivir (Tamiflu) — 75 mg twice daily x5 days. Zanamivir (Relenza) — inhaled. Peramivir (Rapivab) — single IV dose. Baloxavir (Xofluza) — single oral dose. Start within 48 hours of symptom onset.
+CDC PREVENTION: Annual flu vaccination is the best preventive step. All persons 6 months and older should get vaccinated. Frequent handwashing. Avoid close contact with sick individuals.
+
+=== CDC: SEPSIS ===
+TOPIC: Critical Care | Sepsis
+SOURCE_URL: https://www.cdc.gov/sepsis
+At least 1.7 million adults develop sepsis annually in the US. Nearly 270,000 Americans die as a result of sepsis each year.
+CDC DEFINITION: Sepsis is the body's extreme response to an infection. It is life-threatening.
+SIGNS (GET AHEAD OF SEPSIS): Time matters. Signs include: confusion or disorientation, shortness of breath, high heart rate, fever/shivering/feeling very cold, extreme pain or discomfort, clammy/sweaty skin.
+qSOFA SCORE (bedside): Respiratory rate ≥22/min + altered mentation + systolic BP ≤100 mmHg. Score ≥2 = sepsis risk.
+SEPTIC SHOCK: Sepsis + need for vasopressor + lactate >2 mmol/L despite adequate fluid resuscitation. Mortality ~40%.
+CDC TREATMENT: Hour-1 Bundle — Blood cultures, broad-spectrum antibiotics, 30 mL/kg crystalloid for hypotension/lactate ≥4, vasopressors for persistent hypotension.
+HIGH-RISK GROUPS: Adults ≥65, children <1 year, chronic conditions (diabetes, lung/kidney/liver disease), weakened immune system.
+
+=== CDC: STROKE ===
+TOPIC: Neurological Disease | Stroke
+SOURCE_URL: https://www.cdc.gov/stroke
+Stroke is the fifth leading cause of death in the US. Someone has a stroke every 40 seconds. About 795,000 people have a stroke each year.
+CDC F.A.S.T. RECOGNITION:
+F — Face drooping (one side drooping or numb?)
+A — Arm weakness (one arm weak or numb?)
+S — Speech difficulty (slurred, unable to speak, hard to understand?)
+T — Time to call 911 immediately
+ADDITIONAL SYMPTOMS: Sudden numbness/weakness in face/arm/leg on one side, sudden confusion, trouble seeing in one/both eyes, sudden trouble walking/dizziness/loss of balance, sudden severe headache with no known cause.
+TYPES: Ischemic stroke (87%) — blood clot blocks artery. Hemorrhagic stroke — blood vessel bursts. TIA (mini-stroke) — temporary, no permanent damage but high risk for stroke.
+CDC TREATMENT: Ischemic — IV alteplase (tPA) within 4.5 hours, mechanical thrombectomy up to 24 hours. Hemorrhagic — Blood pressure management, surgery.
+RISK FACTORS: High blood pressure (leading), smoking, diabetes, high cholesterol, obesity, atrial fibrillation, physical inactivity.
+
+=== CDC: HEART DISEASE ===
+TOPIC: Cardiovascular Disease | Coronary Artery Disease
+SOURCE_URL: https://www.cdc.gov/heartdisease
+Heart disease is the leading cause of death in the US. About 697,000 people in the US die of heart disease each year (1 in 5 deaths).
+HEART ATTACK WARNING SIGNS: Chest pain (pressure, squeezing, fullness, or pain lasting >5 min or going away and returning), discomfort in upper body (arms, back, neck, jaw, stomach), shortness of breath, cold sweat, nausea, lightheadedness.
+WOMEN'S SYMPTOMS may differ: unusual fatigue, sleep disturbances, shortness of breath, indigestion, anxiety.
+CALL 911 IMMEDIATELY for heart attack symptoms. Do not drive yourself.
+CDC RISK FACTORS: High blood pressure, high LDL cholesterol, smoking, diabetes, obesity/overweight, poor diet, physical inactivity, excessive alcohol use.
+PRIMARY PREVENTION: Blood pressure target <130/80. LDL-C lowering with statins. Aspirin (only if 10-year CVD risk ≥10% and not at increased bleeding risk). Smoking cessation. Cardiac rehab.
+
+=== CDC: DIABETES TYPE 2 ===
+TOPIC: Endocrine Disease | Type 2 Diabetes
+SOURCE_URL: https://www.cdc.gov/diabetes
+More than 37 million Americans have diabetes (about 1 in 10). 90-95% have type 2. Another 96 million American adults have prediabetes.
+CDC DIAGNOSTIC VALUES:
+- Fasting blood sugar ≥126 mg/dL (7.0 mmol/L) on 2 separate tests
+- Random blood sugar ≥200 mg/dL (11.1 mmol/L) with symptoms
+- A1C ≥6.5%
+- 2-hour OGTT ≥200 mg/dL
+PREDIABETES: A1C 5.7–6.4%, fasting glucose 100–125 mg/dL.
+MANAGEMENT TARGETS: HbA1c <7% (most adults), Blood pressure <140/90 mmHg, LDL <100 mg/dL.
+MEDICATIONS: Metformin (first-line), SGLT2 inhibitors (empagliflozin, dapagliflozin — also cardioprotective), GLP-1 agonists (semaglutide, liraglutide — also weight loss), sulfonylureas, insulin.
+COMPLICATIONS PREVENTION: Annual eye exam (retinopathy), urine albumin (nephropathy), foot exam, lipid panel, dental care.
+
+=== CDC: OPIOID OVERDOSE ===
+TOPIC: Emergency | Opioid Overdose
+SOURCE_URL: https://www.cdc.gov/drugoverdose
+Overdose deaths involving opioids have quadrupled since 1999. More than 75% of drug overdose deaths in 2020 involved an opioid.
+SIGNS OF OPIOID OVERDOSE: Unresponsive, slow/shallow/stopped breathing, choking/gurgling sounds, limp body, pale/blue/cold skin, pinpoint pupils.
+CDC RESPONSE PROTOCOL: Call 911. Give naloxone (Narcan) if available. Do rescue breathing. Put in recovery position. Stay until help arrives. Give additional naloxone if no response in 2–3 minutes.
+NALOXONE DOSING: Nasal spray — 4 mg in one nostril, may repeat in 2–3 min. IM injection — 0.4 mg, may repeat every 2–3 min.

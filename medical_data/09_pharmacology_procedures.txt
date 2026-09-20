@@ -1,0 +1,56 @@
+PHARMACOLOGY AND MEDICAL PROCEDURES - COMPREHENSIVE REFERENCE
+
+=== ANTIBIOTIC CLASSES AND USES ===
+Penicillins: Amoxicillin (respiratory, ENT, UTI), Flucloxacillin (Staphylococcal infections), Co-amoxiclav (broad spectrum). Side effects: allergy (1-10% penicillin allergy), diarrhea. Mechanism: inhibit cell wall synthesis (beta-lactam ring).
+Cephalosporins: 1st gen (cefazolin - surgical prophylaxis), 2nd gen (cefuroxime), 3rd gen (ceftriaxone - meningitis, severe infections, ceftazidime - Pseudomonas), 4th gen (cefepime). Cross-reactivity with penicillin allergy ~1-2%.
+Macrolides: Azithromycin, Clarithromycin, Erythromycin. Uses: atypical pneumonia, H. pylori, STIs, pertussis. QTc prolongation risk. Mechanism: inhibit 50S ribosomal subunit.
+Fluoroquinolones: Ciprofloxacin (gram-negatives, UTI, anthrax), Levofloxacin (respiratory). Side effects: Achilles tendon rupture, QTc prolongation, CNS effects. Use with caution in elderly.
+Tetracyclines: Doxycycline (malaria prophylaxis, atypical pneumonia, Lyme disease, STIs, acne), Minocycline. Photosensitivity. Avoid in pregnancy and children <8 years.
+Aminoglycosides: Gentamicin, Amikacin (serious gram-negative infections). Monitoring: levels (trough <2 mg/L), nephrotoxicity, ototoxicity.
+Metronidazole: Anaerobes, protozoal infections (Trichomonas, Giardia, Entamoeba), C. difficile, H. pylori. Alcohol interaction (disulfiram-like reaction).
+Carbapenems: Meropenem, Imipenem, Ertapenem. Broadest spectrum. Reserve for multi-drug resistant organisms.
+Vancomycin: MRSA, serious Gram-positive infections, C. difficile (oral). Monitoring: trough levels. Red man syndrome (infuse slowly).
+Antifungals: Fluconazole (Candida, cryptococcal meningitis prophylaxis), Itraconazole, Voriconazole (Aspergillus), Amphotericin B (severe systemic fungal, nephrotoxic), Terbinafine (dermatophytes).
+Antivirals: Acyclovir (HSV, VZV), Oseltamivir (influenza), Tenofovir/Emtricitabine (HIV, HBV), Sofosbuvir-based (HCV), Remdesivir (COVID-19), Nirmatrelvir/ritonavir (COVID-19).
+
+=== COMMON DRUG INTERACTIONS ===
+Warfarin interacts with: NSAIDs (bleeding risk), Antibiotics (alter gut flora - increased INR), Amiodarone (increased INR), Statins, Antifungals, Rifampicin (decreased INR).
+SSRIs + Triptans: Serotonin syndrome risk.
+MAOIs + Tyramine-rich foods: Hypertensive crisis.
+ACE inhibitors + Potassium-sparing diuretics + NSAIDs: Hyperkalemia.
+Statins + CYP3A4 inhibitors (clarithromycin, azole antifungals): Increased statin levels - myopathy risk.
+Digoxin + Amiodarone/Verapamil: Increased digoxin toxicity.
+Methotrexate + NSAIDs: Reduced MTX excretion - toxicity.
+Lithium + NSAIDs/Thiazides: Increased lithium levels - toxicity.
+QT-prolonging drugs together (macrolides, fluoroquinolones, antipsychotics, tricyclics, methadone): Torsades de pointes risk.
+Rifampicin: Enzyme inducer - reduces levels of OCP, warfarin, many HIV drugs.
+
+=== PAIN MANAGEMENT (WHO ANALGESIC LADDER) ===
+Step 1: Non-opioid analgesics. Paracetamol (acetaminophen) - 1g QDS, max 4g/day. NSAIDs (ibuprofen 400mg TDS, naproxen, diclofenac) - anti-inflammatory, antipyretic. Caution: renal disease, GI ulcer, CVD (avoid COX-2 inhibitors), elderly. Topical NSAIDs preferred for local musculoskeletal pain.
+Step 2: Weak opioids. Codeine (30-60mg QDS), Tramadol (50-100mg QDS, max 400mg/day), Dihydrocodeine. Side effects: constipation, nausea, drowsiness, respiratory depression.
+Step 3: Strong opioids. Morphine (oral - 5-20mg 4 hourly, modified release for chronic), Oxycodone, Hydromorphone, Buprenorphine (patch/sublingual), Fentanyl patch (for stable opioid requirements). Naloxone (antidote for overdose - 0.4-2mg IV/IM/SC/IN).
+Adjuvants: Tricyclics (amitriptyline) and Gabapentinoids (gabapentin, pregabalin) for neuropathic pain. Antidepressants (duloxetine). Muscle relaxants (baclofen for spasticity). Ketamine, lidocaine infusions.
+
+=== COMMON MEDICAL PROCEDURES ===
+ECG Interpretation: Rate (300/number of large squares between R waves), Rhythm (regular/irregular, P waves before each QRS), Axis, P wave, PR interval (0.12-0.20s), QRS complex (<0.12s), ST segment, T waves, QT interval. Key abnormalities: AF (absent P waves, irregular), STEMI (ST elevation in territory), LBBB (broad QRS, M pattern V5-V6), RBBB (broad QRS, RSR in V1).
+Arterial Blood Gas (ABG) Interpretation: pH (normal 7.35-7.45), PaO2 (normal 10-13 kPa), PaCO2 (normal 4.7-6.0 kPa), HCO3 (normal 22-26 mmol/L), BE (-2 to +2). Disorders: Respiratory acidosis (pH↓ PaCO2↑), Respiratory alkalosis (pH↑ PaCO2↓), Metabolic acidosis (pH↓ HCO3↓), Metabolic alkalosis (pH↑ HCO3↑). Anion gap = Na - (Cl + HCO3), normal 8-12.
+Urine Dipstick: Nitrites (gram-negative bacteria), Leukocytes (infection/inflammation), Protein (glomerular disease, infection), Blood (UTI, renal calculi, malignancy, glomerulonephritis), Glucose (diabetes, Fanconi syndrome), Ketones (DKA, starvation).
+Lumbar Puncture (LP): CSF analysis - Normal: clear, WBC <5 (all lymphocytes), protein 0.15-0.45 g/L, glucose >50% serum (>2.2 mmol/L), no organisms. Bacterial meningitis: turbid, WBC elevated (neutrophils), high protein, low glucose, organisms. Viral meningitis: clear, WBC elevated (lymphocytes), mildly elevated protein, normal glucose. TB meningitis: xanthochromic, lymphocytes, very high protein, very low glucose.
+
+=== BLOOD TRANSFUSION ===
+Indications: Hb <7 g/dL (general), <8 in cardiac disease or surgical. Symptoms rather than threshold in chronic anemia.
+Blood products: RBCs (1 unit raises Hb ~10 g/L), FFP (coagulation factors), Platelets, Cryoprecipitate (fibrinogen, Factor VIII, vWF).
+Transfusion reactions: Febrile non-hemolytic (most common - paracetamol, slow transfusion), Allergic/urticaria (antihistamine, if mild continue), Anaphylaxis (stop, IM epinephrine), Acute hemolytic (stop immediately, fluids, inform blood bank), TACO (circulatory overload - diurese), TRALI (non-cardiogenic pulmonary edema - stop, supportive).
+Massive Transfusion Protocol (MTP): 1:1:1 ratio of RBCs:FFP:Platelets. Tranexamic acid <3 hours from injury. Target Hb >7, fibrinogen >1.5, PT ratio <1.5, platelets >50.
+
+=== VACCINES - COMPREHENSIVE SCHEDULE ===
+Childhood routine: BCG (TB), HepB, DTP (diphtheria, tetanus, pertussis), Hib, Polio, PCV (pneumococcal), MMR (measles, mumps, rubella), Varicella, HPV.
+Travel vaccines: Typhoid, Hepatitis A, Yellow fever, Rabies, Japanese encephalitis, Meningococcal, Cholera, Tick-borne encephalitis.
+Adult/elderly: Annual influenza, Pneumococcal (PCV15/PCV20 then PPSV23), Herpes zoster (Shingrix - 2 doses, age ≥50), COVID-19 boosters, Tdap (pertussis booster in pregnancy).
+Contraindications: Live vaccines (MMR, Varicella, Oral typhoid, Yellow fever, BCG) contraindicated in pregnancy, severe immunosuppression. Gelatin allergy: consult specialist.
+
+=== FLUID MANAGEMENT ===
+IV fluid types: Normal saline (0.9% NaCl - 154 mmol/L Na, Cl), Hartmann's/Ringer's Lactate (more physiological, preferred for resuscitation), Dextrose 5% (free water - maintenance, hyponatremia care), Dextrose-saline (4% dextrose, 0.18% saline - maintenance), Colloids (albumin, gelatin, starch).
+Indications: Resuscitation (sepsis, hemorrhage - crystalloid first), Maintenance (unable to drink - 25-30 ml/kg/day), Replacement (ongoing losses - diarrhea, vomiting, drains).
+Electrolyte requirements: Sodium 1 mmol/kg/day, Potassium 1 mmol/kg/day, Glucose 50-100g/day.
+Monitoring: Urine output (target 0.5-1 ml/kg/hr), electrolytes, fluid balance, weight, CVP (if available), lactate clearance.

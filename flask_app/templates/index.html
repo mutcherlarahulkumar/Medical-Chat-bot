@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediBot — AI Medical Assistant</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#e8f0fe 0%,#f0f4ff 100%);display:flex;justify-content:center;align-items:center;min-height:100vh}
+    .shell{width:100%;max-width:900px;height:96vh;background:#fff;border-radius:24px;box-shadow:0 20px 80px rgba(21,101,192,.15);display:flex;flex-direction:column;overflow:hidden}
+
+    /* Header */
+    .hdr{background:linear-gradient(135deg,#1565c0,#0d47a1);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+    .hdr-icon{width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+    .hdr-info{flex:1}
+    .hdr h1{font-size:18px;font-weight:700}
+    .hdr p{font-size:12px;opacity:.8;margin-top:2px}
+    .hdr-badge{font-size:11px;background:rgba(105,240,174,.2);border:1px solid rgba(105,240,174,.4);color:#69f0ae;padding:3px 10px;border-radius:20px;white-space:nowrap}
+    .dot{display:inline-block;width:7px;height:7px;background:#69f0ae;border-radius:50%;margin-right:5px;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+    /* Tabs */
+    .tabs{display:flex;background:#f5f7fa;border-bottom:1px solid #e0e4ea;flex-shrink:0}
+    .tab{flex:1;padding:11px 8px;text-align:center;font-size:13px;font-weight:500;cursor:pointer;color:#64748b;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+    .tab.active{color:#1565c0;border-bottom-color:#1565c0;background:#fff}
+    .tab:hover:not(.active){background:#edf0f5;color:#1565c0}
+
+    /* Chat */
+    #chatbox{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:14px;background:#f8fafc}
+    .msg{display:flex;gap:10px;max-width:88%;animation:pop .25s ease}
+    @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+    .msg.user{align-self:flex-end;flex-direction:row-reverse}
+    .msg.bot{align-self:flex-start}
+    .bubble{padding:13px 16px;border-radius:18px;font-size:14px;line-height:1.7;white-space:pre-wrap;max-width:100%;word-break:break-word}
+    .msg.user .bubble{background:linear-gradient(135deg,#1565c0,#1976d2);color:#fff;border-bottom-right-radius:4px}
+    .msg.bot  .bubble{background:#fff;color:#1e293b;border:1px solid #e2e8f0;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .ico{width:34px;height:34px;min-width:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;align-self:flex-end}
+    .msg.user .ico{background:#1565c0;color:#fff}
+    .msg.bot  .ico{background:#e8f0fe}
+
+    /* Severity badges */
+    .sev-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;margin-left:6px}
+    .sev-low{background:#e8f5e9;color:#2e7d32}
+    .sev-moderate{background:#fff3e0;color:#e65100}
+    .sev-high{background:#fce4ec;color:#c62828}
+
+    /* Xray result strip */
+    .xray-strip{background:linear-gradient(135deg,#e8f0fe,#dce8ff);border:1px solid #90b3ff;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:13px;color:#1a237e}
+
+    /* Typing */
+    .typing .bubble{padding:14px 16px}
+    .dots{display:flex;gap:5px;align-items:center}
+    .dots span{width:8px;height:8px;background:#94a3b8;border-radius:50%;animation:bounce 1.2s infinite}
+    .dots span:nth-child(2){animation-delay:.2s}
+    .dots span:nth-child(3){animation-delay:.4s}
+    @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-7px)}}
+
+    /* Status bar */
+    #status-bar{font-size:12px;text-align:center;padding:5px 16px;background:#fffbeb;border-bottom:1px solid #fde68a;color:#92400e;display:none;flex-shrink:0}
+    #status-bar.show{display:block}
+
+    /* Input panel */
+    .panel{padding:14px 20px;background:#fff;border-top:1px solid #e4e8f0;flex-shrink:0}
+
+    /* Upload previews */
+    .upload-row{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+    .upload-preview{display:none;align-items:center;gap:8px;background:#f0f4ff;border:1px dashed #90b3ff;border-radius:10px;padding:7px 12px;font-size:12px;color:#3b5bdb;flex:1;min-width:0}
+    .upload-preview.show{display:flex}
+    .upload-preview img.thumb{width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #c5d5ff;flex-shrink:0}
+    .upload-preview .file-icon{font-size:22px;flex-shrink:0}
+    .upload-preview .fname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+    .upload-preview .clr{background:none;border:none;cursor:pointer;color:#e53e3e;font-size:18px;padding:0 2px;flex-shrink:0}
+
+    /* Upload buttons row */
+    .upload-btns{display:none;gap:8px;margin-bottom:10px}
+    .upload-btns.show{display:flex}
+    .upload-btn-label{display:flex;align-items:center;gap:6px;background:#f0f4ff;color:#1565c0;border:1.5px dashed #90b3ff;border-radius:10px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;transition:.2s;white-space:nowrap}
+    .upload-btn-label:hover{background:#dce8ff;border-color:#1565c0}
+
+    /* Input row */
+    .input-row{display:flex;gap:10px;align-items:flex-end}
+    #userInput{flex:1;border:1.5px solid #dce3ef;border-radius:22px;padding:11px 16px;font-size:14px;outline:none;resize:none;max-height:100px;font-family:inherit;transition:border .2s}
+    #userInput:focus{border-color:#1565c0}
+    .btn-icon{width:44px;height:44px;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;transition:background .2s,transform .1s}
+    .btn-icon:active{transform:scale(.93)}
+    #attachToggle{background:#f0f4ff;color:#1565c0}
+    #attachToggle:hover{background:#dce8ff}
+    #sendBtn{background:#1565c0;color:#fff}
+    #sendBtn:hover{background:#1045a0}
+    #imgInput,#reportInput{display:none}
+    .disclaimer{text-align:center;font-size:11px;color:#94a3b8;padding:5px 16px 2px;background:#fff}
+    #chatbox::-webkit-scrollbar{width:5px}
+    #chatbox::-webkit-scrollbar-thumb{background:#cbd5e0;border-radius:10px}
+
+    /* Welcome card */
+    .welcome-card{background:linear-gradient(135deg,#e8f0fe,#f0f4ff);border:1px solid #c5d5ff;border-radius:16px;padding:18px 20px;font-size:14px;color:#1a237e;line-height:1.7}
+    .welcome-card h3{margin-bottom:8px;font-size:15px}
+    .welcome-card .caps{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .cap{background:#fff;border:1px solid #90b3ff;border-radius:20px;padding:4px 12px;font-size:12px;color:#1565c0;font-weight:500}
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="hdr">
+    <div class="hdr-icon">🏥</div>
+    <div class="hdr-info">
+      <h1>MediBot — AI Medical Assistant</h1>
+      <p><span class="dot"></span>RAG · X-Ray Analysis · Medical Reports · Structured Output</p>
+    </div>
+    <div class="hdr-badge">v4</div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="setMode('text')"   id="tab-text">💬 Ask a Question</div>
+    <div class="tab"        onclick="setMode('image')"  id="tab-image">🩻 X-Ray Analysis</div>
+    <div class="tab"        onclick="setMode('report')" id="tab-report">📄 Medical Report</div>
+    <div class="tab"        onclick="setMode('both')"   id="tab-both">🔬 Combined</div>
+  </div>
+
+  <div id="status-bar">⏳ Processing... (first X-ray run may take 30-60s for model loading)</div>
+
+  <div id="chatbox">
+    <div class="msg bot">
+      <div class="ico">🏥</div>
+      <div class="bubble">
+        <div class="welcome-card">
+          <h3>👋 Welcome to MediBot v4</h3>
+          I'm your AI-powered medical assistant. I can help you with:
+          <div class="caps">
+            <span class="cap">💬 Medical Q&amp;A</span>
+            <span class="cap">🩻 X-Ray Analysis</span>
+            <span class="cap">📄 Medical Report Review</span>
+            <span class="cap">🔬 Combined Analysis</span>
+          </div>
+          <br/>Use the tabs above to choose your mode, or just type your question below.
+          <br/><br/>⚠️ <strong>Disclaimer:</strong> This is an AI tool for informational purposes only. Always consult a qualified healthcare professional for diagnosis and treatment.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <!-- Upload previews -->
+    <div class="upload-row" id="upload-row" style="display:none">
+      <div class="upload-preview" id="img-preview">
+        <img class="thumb" id="img-thumb" src="" alt=""/>
+        <span class="fname" id="img-name"></span>
+        <button class="clr" onclick="clearImage()">×</button>
+      </div>
+      <div class="upload-preview" id="report-preview">
+        <span class="file-icon">📄</span>
+        <span class="fname" id="report-name"></span>
+        <button class="clr" onclick="clearReport()">×</button>
+      </div>
+    </div>
+
+    <!-- Upload buttons -->
+    <div class="upload-btns" id="upload-btns">
+      <label class="upload-btn-label" for="imgInput">🩻 Add X-Ray Image</label>
+      <label class="upload-btn-label" for="reportInput">📄 Add Medical Report (PDF/TXT)</label>
+    </div>
+
+    <input type="file" id="imgInput"    accept="image/jpeg,image/png,image/bmp" onchange="handleImageSelect(event)"/>
+    <input type="file" id="reportInput" accept=".pdf,.txt,.doc,.docx"            onchange="handleReportSelect(event)"/>
+
+    <!-- Input row -->
+    <div class="input-row">
+      <button class="btn-icon" id="attachToggle" onclick="toggleAttach()" title="Attach files">📎</button>
+      <textarea id="userInput" rows="1" placeholder="Type your medical question here..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="btn-icon" id="sendBtn" onclick="send()">➤</button>
+    </div>
+    <div class="disclaimer">⚠️ MediBot provides informational content only. Not a substitute for professional medical advice.</div>
+  </div>
+</div>
+
+<script>
+  let currentMode = 'text';
+  let selectedImage = null;
+  let selectedReport = null;
+  let attachOpen = false;
+
+  const modeConfig = {
+    text:   { placeholder:'Type your medical question...', showAttach:false },
+    image:  { placeholder:'Describe symptoms or ask about the X-ray... (optional)', showAttach:true, autoOpenAttach:true },
+    report: { placeholder:'Ask about the report or leave blank for auto-analysis...', showAttach:true, autoOpenAttach:true },
+    both:   { placeholder:'Add X-ray and/or report, then ask your question...', showAttach:true, autoOpenAttach:true },
+  };
+
+  function setMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + mode).classList.add('active');
+
+    const cfg = modeConfig[mode];
+    document.getElementById('userInput').placeholder = cfg.placeholder;
+
+    if (cfg.showAttach) {
+      document.getElementById('upload-btns').classList.add('show');
+      document.getElementById('upload-row').style.display = 'flex';
+      attachOpen = true;
+    } else {
+      document.getElementById('upload-btns').classList.remove('show');
+      if (!selectedImage && !selectedReport) {
+        document.getElementById('upload-row').style.display = 'none';
+      }
+      attachOpen = false;
+    }
+  }
+
+  function toggleAttach() {
+    attachOpen = !attachOpen;
+    document.getElementById('upload-btns').classList.toggle('show', attachOpen);
+    document.getElementById('upload-row').style.display =
+      (attachOpen || selectedImage || selectedReport) ? 'flex' : 'none';
+  }
+
+  function handleImageSelect(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    selectedImage = file;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      document.getElementById('img-thumb').src = ev.target.result;
+      document.getElementById('img-name').textContent = file.name;
+      document.getElementById('img-preview').classList.add('show');
+      document.getElementById('upload-row').style.display = 'flex';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function handleReportSelect(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    selectedReport = file;
+    document.getElementById('report-name').textContent = file.name;
+    document.getElementById('report-preview').classList.add('show');
+    document.getElementById('upload-row').style.display = 'flex';
+  }
+
+  function clearImage() {
+    selectedImage = null;
+    document.getElementById('imgInput').value = '';
+    document.getElementById('img-preview').classList.remove('show');
+    document.getElementById('img-thumb').src = '';
+    if (!selectedReport) document.getElementById('upload-row').style.display = attachOpen ? 'flex' : 'none';
+  }
+
+  function clearReport() {
+    selectedReport = null;
+    document.getElementById('reportInput').value = '';
+    document.getElementById('report-preview').classList.remove('show');
+    if (!selectedImage) document.getElementById('upload-row').style.display = attachOpen ? 'flex' : 'none';
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  function addMsg(role, html, extra) {
+    const box = document.getElementById('chatbox');
+    const div = document.createElement('div');
+    div.className = 'msg ' + role;
+
+    const ico = document.createElement('div');
+    ico.className = 'ico';
+    ico.textContent = role === 'user' ? '👤' : '🤖';
+
+    const bub = document.createElement('div');
+    bub.className = 'bubble';
+
+    if (extra && extra.xray) {
+      const strip = document.createElement('div');
+      strip.className = 'xray-strip';
+      const sev = extra.xray.severity || 'unknown';
+      strip.innerHTML = `🩻 <strong>${extra.xray.finding}</strong> — ${extra.xray.confidence}% confidence <span class="sev-badge sev-${sev}">${sev.toUpperCase()}</span>`;
+      bub.appendChild(strip);
+    }
+
+    const txt = document.createElement('span');
+    txt.textContent = html;
+    bub.appendChild(txt);
+
+    div.appendChild(ico);
+    div.appendChild(bub);
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const box = document.getElementById('chatbox');
+    const div = document.createElement('div');
+    div.className = 'msg bot typing';
+    div.innerHTML = '<div class="ico">🤖</div><div class="bubble"><div class="dots"><span></span><span></span><span></span></div></div>';
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+    return div;
+  }
+
+  async function send() {
+    const input = document.getElementById('userInput');
+    const query = input.value.trim();
+
+    const hasImage  = !!selectedImage;
+    const hasReport = !!selectedReport;
+
+    if (!query && !hasImage && !hasReport) {
+      input.placeholder = '⚠️ Please type a question or attach a file first.';
+      setTimeout(() => input.placeholder = modeConfig[currentMode].placeholder, 2000);
+      return;
+    }
+
+    // Show user message
+    const userLabel = [
+      query || '',
+      hasImage  ? `📎 ${selectedImage.name}`  : '',
+      hasReport ? `📄 ${selectedReport.name}` : '',
+    ].filter(Boolean).join('\n');
+    addMsg('user', userLabel);
+
+    input.value = '';
+    input.style.height = 'auto';
+
+    const typing = addTyping();
+    const statusBar = document.getElementById('status-bar');
+    if (hasImage) statusBar.classList.add('show');
+
+    const useMultimodal = hasImage || hasReport;
+    const endpoint = useMultimodal ? '/analyze-multimodal' : '/analyze';
+
+    try {
+      let body, headers = {};
+
+      if (useMultimodal) {
+        const fd = new FormData();
+        if (query)       fd.append('query',  query);
+        if (selectedImage)  fd.append('image',  selectedImage);
+        if (selectedReport) fd.append('report', selectedReport);
+        body = fd;
+      } else {
+        headers['Content-Type'] = 'application/json';
+        body = JSON.stringify({ query });
+      }
+
+      const resp = await fetch(endpoint, { method: 'POST', headers, body });
+      const data = await resp.json();
+
+      typing.remove();
+      statusBar.classList.remove('show');
+
+      const extra = data.xray_summary ? { xray: data.xray_summary } : null;
+      addMsg('bot', data.answer || data.error || 'No response received.', extra);
+
+    } catch (err) {
+      typing.remove();
+      statusBar.classList.remove('show');
+      addMsg('bot', '⚠️ Network error. Please check the server is running and try again.');
+    }
+
+    // Clear attachments after send
+    clearImage();
+    clearReport();
+  }
+</script>
+</body>
+</html>

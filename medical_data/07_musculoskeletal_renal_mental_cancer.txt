@@ -1,0 +1,123 @@
+MUSCULOSKELETAL DISEASES - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== RHEUMATOID ARTHRITIS (RA) ===
+Definition: Chronic systemic autoimmune inflammatory arthritis affecting synovial joints.
+Features: Symmetrical joint involvement (small joints of hands/feet - PIPs, MCPs, wrists), morning stiffness >1 hour, soft tissue swelling, warm joints. Extra-articular: rheumatoid nodules, vasculitis, pericarditis, pleuritis, scleritis, Felty syndrome, peripheral neuropathy.
+Diagnosis: Clinical + RF (rheumatoid factor, 70% sensitive), Anti-CCP antibodies (most specific, 95%), X-rays (juxta-articular osteopenia, joint space narrowing, erosions), CRP/ESR elevated, synovial fluid analysis.
+Treatment: Methotrexate (first-line DMARD), Hydroxychloroquine, Sulfasalazine, Leflunomide. Biologics: TNF inhibitors (etanercept, infliximab, adalimumab), IL-6 inhibitors (tocilizumab), CD20 inhibitor (rituximab), CTLA4-Ig (abatacept), JAK inhibitors (tofacitinib, baricitinib). NSAIDs and steroids for bridging.
+Target: Disease remission (DAS28 <2.6) or low disease activity.
+
+=== OSTEOARTHRITIS (OA) ===
+Definition: Degenerative joint disease - cartilage breakdown and bony changes. Most common form of arthritis.
+Risk factors: Age, obesity, female sex, joint injury, genetics, repetitive joint use, muscle weakness.
+Joints: Weight-bearing (knees, hips), hands (DIP - Heberden's nodes, PIP - Bouchard's nodes, CMC joint of thumb), spine.
+Symptoms: Pain worsening with activity, improving with rest (unlike RA), brief morning stiffness (<30 min), crepitus, joint enlargement, decreased range of motion.
+Diagnosis: Clinical + X-ray (joint space narrowing, subchondral sclerosis, osteophytes, subchondral cysts). No significant blood test abnormalities.
+Treatment: Non-pharmacological (weight loss, exercise, physiotherapy, hot/cold therapy, aids/splints). Pharmacological: Paracetamol (first-line), NSAIDs (topical preferred for knee/hand), duloxetine, intra-articular corticosteroid, hyaluronic acid injections. Surgery: joint replacement (arthroplasty) for severe/refractory.
+
+=== GOUT ===
+Definition: Metabolic disease caused by deposition of monosodium urate (MSU) crystals in joints and tissues due to hyperuricemia.
+Risk factors: Male sex, age, obesity, alcohol (especially beer and spirits), high purine diet (red meat, organ meat, seafood), diuretics, hypertension, diabetes, renal disease, fructose intake.
+Acute Gout Attack: Sudden severe joint pain (often wakes from sleep), redness, warmth, swelling, exquisite tenderness. First MTP joint (podagra - classic), ankle, knee, wrist. May have fever.
+Chronic Tophaceous Gout: Tophi (MSU deposits) in soft tissues, chronic arthritis.
+Diagnosis: Joint aspiration (gold standard - needle-shaped negatively birefringent MSU crystals), serum uric acid (may be normal during attack), X-ray, ultrasound (double contour sign), dual-energy CT.
+Treatment: Acute attack: NSAIDs (naproxen, indomethacin), Colchicine (within 12-24 hrs), Corticosteroids (if NSAIDs/colchicine contraindicated). Urate-lowering therapy (start after acute attack settles): Allopurinol (first-line, XO inhibitor), Febuxostat, Probenecid (uricosuric). Target: uric acid <360 μmol/L (<300 for tophaceous gout).
+
+=== OSTEOPOROSIS ===
+Definition: Reduced bone mineral density and microarchitectural deterioration, increasing fracture risk.
+Risk factors: Female sex, postmenopause, age >65, family history, low BMI, prolonged corticosteroid use, smoking, excessive alcohol, calcium/vitamin D deficiency, inactivity, celiac disease, inflammatory conditions.
+Fragility fracture sites: Hip (most serious - 20% die within 1 year), vertebral (back pain, height loss, kyphosis - Dowager's hump), wrist (Colles' fracture), shoulder.
+Diagnosis: DXA scan (T-score: normal ≥-1.0, osteopenia -1.0 to -2.5, osteoporosis ≤-2.5), FRAX score (10-year fracture risk), blood tests to exclude secondary causes.
+Treatment: Calcium (1000-1200mg/day) + Vitamin D (800-1000 IU/day), exercise (weight-bearing + resistance), fall prevention. Medications: Bisphosphonates (alendronate, risedronate, zoledronic acid - first-line), Denosumab, Teriparatide/Abaloparatide (anabolic), Romosozumab, Raloxifene (postmenopausal women).
+
+=== SYSTEMIC LUPUS ERYTHEMATOSUS (SLE) ===
+Definition: Chronic autoimmune disease affecting multiple organ systems. More common in women (9:1) and certain ethnicities.
+Features (ACR/EULAR criteria): Malar rash (butterfly rash), discoid rash, photosensitivity, oral ulcers, arthritis, serositis (pleuritis/pericarditis), renal involvement (lupus nephritis), neurological (seizures, psychosis), hemolytic anemia, leukopenia/lymphopenia, thrombocytopenia.
+Antibodies: ANA (sensitive, not specific), Anti-dsDNA (specific, correlates with activity), Anti-Sm (most specific), Anti-Ro/La, Antiphospholipid antibodies.
+Treatment: Hydroxychloroquine (all patients, reduces flares and organ damage), NSAIDs, Corticosteroids (flares), Azathioprine, Mycophenolate mofetil (especially lupus nephritis), Belimumab, Anifrolumab, Cyclophosphamide (severe disease).
+Monitoring: CBC, renal function, complement (C3, C4), anti-dsDNA, urinalysis.
+Antiphospholipid Syndrome (APS): Recurrent thrombosis/miscarriages + positive antiphospholipid antibodies. Treatment: anticoagulation (warfarin/DOAC).
+
+=== LOW BACK PAIN ===
+Definition: One of most common medical complaints worldwide, affecting 60-80% of adults at some point.
+Types: Acute (<6 weeks), Subacute (6-12 weeks), Chronic (>12 weeks).
+Causes: Mechanical (most common - muscle strain, disc herniation, facet joint OA, spondylolisthesis, spinal stenosis), Inflammatory (ankylosing spondylitis - morning stiffness, young men), Infectious (discitis, vertebral osteomyelitis), Malignant (metastases), Osteoporotic fracture.
+Red flags requiring urgent investigation: Severe constant progressive pain, night pain, cauda equina syndrome (bladder/bowel dysfunction, saddle anesthesia - EMERGENCY), fever, weight loss, history of malignancy, age >50, trauma, IV drug use, immunosuppression.
+Disc Herniation: Nucleus pulposus protrudes through annulus fibrosus, compresses nerve root. L4/L5 most common (sciatic pain, foot drop). L5/S1 (sciatic pain, weak plantar flexion). Diagnosis: MRI. Treatment: Conservative (rest, analgesia, physiotherapy), epidural steroid injections, surgery (microdiscectomy) if neurological deficit or refractory.
+Treatment: NSAIDs, paracetamol, weak opioids (short-term), muscle relaxants, physiotherapy, exercise, cognitive behavioral therapy for chronic pain, surgery for structural causes.
+
+==============================================
+RENAL DISEASES - COMPREHENSIVE KNOWLEDGE BASE
+==============================================
+
+=== CHRONIC KIDNEY DISEASE (CKD) ===
+Definition: Abnormalities of kidney structure or function persisting >3 months with implications for health.
+Stages by GFR (eGFR): G1 ≥90 (normal/high), G2 60-89 (mildly decreased), G3a 45-59, G3b 30-44, G4 15-29 (severely decreased), G5 <15 (kidney failure).
+Causes: Diabetic nephropathy (most common), hypertensive nephropathy, glomerulonephritis, polycystic kidney disease, obstructive uropathy, recurrent pyelonephritis.
+Symptoms: Early asymptomatic, Later: fatigue, edema, dyspnea, nausea, decreased appetite, pruritus (uremic itch), muscle cramps, sleep disturbance, decreased urine output, hypertension.
+Diagnosis: eGFR, urine ACR (albumin:creatinine ratio), urinalysis, renal imaging (USS), renal biopsy.
+Complications: Cardiovascular disease (leading cause of death in CKD), anemia (EPO deficiency - treat with ESAs/IV iron), renal osteodystrophy (secondary hyperparathyroidism - treat with phosphate binders, vitamin D, calcimimetics), hypertension, electrolyte disturbances (hyperkalemia, metabolic acidosis), fluid overload.
+Treatment: Treat underlying cause, BP control (<130/80, ACE inhibitor/ARB first-line), SGLT2 inhibitors (kidney protective), diabetes control, lipid management, dietary modification (protein restriction, phosphate restriction, potassium restriction in advanced), treat complications, dialysis (hemodialysis or peritoneal dialysis) when GFR <15, kidney transplantation.
+
+==============================================
+MENTAL HEALTH - COMPREHENSIVE KNOWLEDGE BASE
+==============================================
+
+=== DEPRESSION ===
+Definition: Major Depressive Disorder (MDD) - mood disorder causing persistent sadness and loss of interest.
+Diagnosis (DSM-5): ≥5 symptoms for ≥2 weeks including depressed mood or anhedonia. Symptoms: depressed mood, anhedonia (loss of interest/pleasure), weight/appetite change, sleep disturbance (insomnia or hypersomnia), psychomotor agitation/retardation, fatigue, worthlessness/guilt, concentration difficulty, suicidal ideation.
+PHQ-9: Standard screening tool.
+Subtypes: Mild/Moderate/Severe (with/without psychotic features), Atypical, Melancholic, Seasonal (SAD), Postpartum/Peripartum, Persistent Depressive Disorder (dysthymia).
+Treatment: Mild: Psychotherapy (CBT first-line), exercise, lifestyle. Moderate-Severe: Antidepressants (SSRIs first-line - sertraline, escitalopram, fluoxetine; SNRIs - venlafaxine, duloxetine; TCAs - amitriptyline; MAOIs; mirtazapine; bupropion) + Psychotherapy. Severe/Refractory: Augmentation (lithium, atypical antipsychotics), ECT, TMS, Esketamine (nasal spray).
+
+=== ANXIETY DISORDERS ===
+Types: Generalized Anxiety Disorder (GAD), Panic Disorder, Social Anxiety Disorder, Specific Phobia, Agoraphobia, Separation Anxiety.
+GAD: Excessive, uncontrollable worry about multiple domains ≥6 months, with ≥3 symptoms (restlessness, fatigue, concentration difficulty, irritability, muscle tension, sleep disturbance).
+Panic Disorder: Recurrent unexpected panic attacks + persistent concern about future attacks or maladaptive behavior change. Panic attack: sudden intense surge of fear with physical symptoms (palpitations, sweating, trembling, SOB, chest pain, dizziness, fear of dying/losing control).
+Treatment: Psychotherapy (CBT most effective), SSRIs/SNRIs (first-line pharmacotherapy for GAD/panic), Buspirone (GAD), Benzodiazepines (short-term only - addiction risk), Beta-blockers (situational anxiety).
+
+=== SCHIZOPHRENIA ===
+Definition: Chronic psychotic disorder affecting thinking, emotions, and behavior.
+Symptoms: Positive (hallucinations - auditory most common, delusions, disorganized speech/behavior, thought disorder), Negative (flat affect, alogia, avolition, anhedonia, asociality), Cognitive impairment.
+Diagnosis: ≥2 symptoms for ≥1 month, with at least 1 being positive, causing functional decline for ≥6 months.
+Treatment: Antipsychotics (cornerstone - block dopamine D2 receptors). Typical/FGA: haloperidol, chlorpromazine. Atypical/SGA: risperidone, olanzapine, quetiapine, aripiprazole, clozapine (refractory schizophrenia - most effective). Psychosocial rehabilitation, CBT, family therapy.
+Side effects: FGA - extrapyramidal (EPS: akathisia, dystonia, parkinsonism), tardive dyskinesia. SGA - metabolic syndrome, weight gain (especially olanzapine), QTc prolongation. Clozapine: agranulocytosis (mandatory CBC monitoring), seizures, myocarditis.
+
+=== BIPOLAR DISORDER ===
+Types: Bipolar I (manic episodes ≥7 days), Bipolar II (hypomanic + depressive), Cyclothymia.
+Manic episode: Elevated/expansive/irritable mood, decreased sleep need, grandiosity, pressured speech, racing thoughts, increased goal-directed activity, risky behavior.
+Treatment: Acute mania: Mood stabilizers (lithium, valproate) + antipsychotic (olanzapine, risperidone). Acute depression: Quetiapine, lamotrigine, lithium, lurasidone. Maintenance: Lithium (gold standard for relapse prevention), valproate, lamotrigine, atypical antipsychotics.
+Lithium monitoring: Narrow therapeutic window (0.6-1.0 mmol/L maintenance, 0.8-1.2 acute mania). Monitor renal function, thyroid function, and lithium levels.
+
+==============================================
+ONCOLOGY - COMPREHENSIVE KNOWLEDGE BASE
+==============================================
+
+=== BREAST CANCER ===
+Most common cancer in women worldwide. Types: Ductal carcinoma in situ (DCIS), Invasive ductal carcinoma (IDC - most common), Invasive lobular carcinoma, Inflammatory breast cancer, Paget's disease.
+Receptors: ER+/PR+ (hormone receptor positive - 70%), HER2+ (20%), Triple negative (15% - worst prognosis).
+Risk factors: Female, age, BRCA1/2 mutation (10% of cases), family history, dense breast tissue, early menarche, late menopause, nulliparity, HRT, alcohol, obesity (postmenopausal), radiation exposure.
+Symptoms: Painless breast lump (most common), skin dimpling/peau d'orange, nipple discharge/inversion, skin/nipple changes, axillary lymphadenopathy.
+Diagnosis: Triple assessment - Clinical examination + Imaging (mammogram, USS) + Biopsy (core needle or FNA). MRI for high-risk screening. Staging: CT chest/abdomen/pelvis, bone scan, PET.
+Treatment: Surgery (BCS + radiotherapy or mastectomy), Radiotherapy, Endocrine therapy (tamoxifen premenopausal, aromatase inhibitors postmenopausal, ovarian suppression), Chemotherapy (anthracyclines, taxanes), Targeted therapy (trastuzumab/Herceptin for HER2+, CDK4/6 inhibitors for ER+), Immunotherapy (pembrolizumab for TNBC).
+
+=== PROSTATE CANCER ===
+Most common cancer in men (excluding skin). Risk factors: age, Black race, family history, BRCA2.
+Symptoms: Often asymptomatic early. Later: urinary symptoms (frequency, hesitancy, nocturia, weak stream, retention), hematuria, bone pain (metastasis), weight loss.
+Screening: PSA test (controversial) + digital rectal exam (DRE).
+Diagnosis: PSA, MRI prostate (mpMRI), TRUS-guided or MRI-targeted biopsy (Gleason score grading).
+Treatment: Active surveillance (low-risk, Gleason ≤6), Radical prostatectomy (laparoscopic/robotic), Radiotherapy (EBRT, brachytherapy), Hormone therapy (ADT - LHRH agonists/antagonists, anti-androgens), Chemotherapy (docetaxel for metastatic), PARP inhibitors (for BRCA mutations), Immunotherapy.
+
+=== CERVICAL CANCER ===
+Caused by Human Papillomavirus (HPV) - high-risk types 16 and 18 (70% of cases).
+Prevention: HPV vaccination (Gardasil 9 - protects against HPV 6,11,16,18,31,33,45,52,58), Cervical screening (Pap smear/cytology + HPV testing), Regular screening.
+Symptoms: Abnormal vaginal bleeding (especially post-coital), vaginal discharge, pelvic pain (advanced).
+Diagnosis: Colposcopy + biopsy, staging by MRI/CT/PET.
+Treatment: Early (surgery - radical hysterectomy), Advanced (chemoradiation - cisplatin-based).
+
+=== GENERAL CANCER PRINCIPLES ===
+Cancer Warning Signs (CAUTION): Change in bowel/bladder habits, A sore that doesn't heal, Unusual bleeding/discharge, Thickening/lump, Indigestion or dysphagia, Obvious change in wart/mole, Nagging cough/hoarseness.
+Tumor Markers: PSA (prostate), CEA (colorectal), CA-125 (ovarian), AFP (liver/germ cell), HCG (gestational trophoblastic), CA 19-9 (pancreatic), CA 15-3 (breast).
+Cancer staging: TNM system. Stage I (localized) to Stage IV (metastatic).
+Paraneoplastic syndromes: Remote effects of cancer not due to direct invasion or metastasis.
+Palliative care: Quality of life focus for advanced cancer - pain management (WHO analgesic ladder), symptom control, psychological support.

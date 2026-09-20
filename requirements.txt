@@ -1,0 +1,33 @@
+# MediBot v5 — Requirements
+# Run: pip install -r requirements.txt
+
+# Core web framework
+flask>=3.0.0
+python-dotenv>=1.0.0
+
+# LangChain stack
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-openai>=0.1.0
+langchain-groq>=0.1.0
+langchain-core>=0.2.0
+
+# Vector database
+faiss-cpu>=1.7.4
+
+# Embeddings
+sentence-transformers>=2.7.0
+
+# Deep learning (X-ray model)
+transformers>=4.40.0
+torch>=2.2.0
+
+# Image processing
+Pillow>=10.0.0
+
+# PDF extraction (NEW in v5)
+pypdf>=4.0.0
+pdfplumber>=0.10.0
+
+# Optional: for .doc/.docx report support
+# python-docx>=1.0.0

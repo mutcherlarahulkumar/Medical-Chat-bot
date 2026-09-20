@@ -1,0 +1,64 @@
+GASTROINTESTINAL AND LIVER DISEASES - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== GASTROESOPHAGEAL REFLUX DISEASE (GERD) ===
+Definition: Chronic condition where stomach acid frequently flows back into the esophagus, irritating its lining.
+Symptoms: Heartburn (burning chest pain after eating, worse when lying down), regurgitation, dysphagia, chest pain, chronic cough, laryngitis, new/worsening asthma, sleep disruption.
+Alarm symptoms (require urgent investigation): Dysphagia, odynophagia, weight loss, hematemesis, anemia, palpable mass.
+Causes/Risk factors: Lower esophageal sphincter (LES) weakness, hiatus hernia, obesity, pregnancy, smoking, alcohol, certain foods (spicy, fatty, citrus, chocolate, caffeine, peppermint), medications (NSAIDs, calcium channel blockers).
+Diagnosis: Clinical diagnosis often sufficient. Endoscopy (EGD) if alarm symptoms or treatment failure. 24-hr pH monitoring (gold standard for diagnosis), pH-impedance monitoring, manometry.
+Complications: Esophagitis, Barrett's esophagus (pre-malignant - intestinal metaplasia), esophageal adenocarcinoma, esophageal stricture.
+Treatment: Lifestyle: weight loss, elevate head of bed, avoid trigger foods, avoid eating 2-3 hrs before bed, stop smoking. Medications: Antacids (short-term relief), H2 blockers (ranitidine, famotidine), PPIs (omeprazole, lansoprazole, esomeprazole - most effective, for erosive disease), prokinetics. Surgery: Nissen fundoplication for refractory disease.
+
+=== PEPTIC ULCER DISEASE (PUD) ===
+Definition: Open sore in lining of stomach (gastric ulcer) or upper small intestine (duodenal ulcer).
+Causes: H. pylori infection (70-90% of duodenal, 60-70% of gastric ulcers), NSAIDs/aspirin use, stress ulcers (critical illness), Zollinger-Ellison syndrome (gastrinoma - rare).
+Symptoms: Burning/gnawing epigastric pain. Duodenal: pain relieved by food (fasting pain). Gastric: pain worsened by food. Nausea, bloating, belching, weight loss.
+Complications: Bleeding (hematemesis, melena - most common complication), perforation (sudden severe abdominal pain, rigid abdomen - surgical emergency), penetration, gastric outlet obstruction, malignancy.
+Diagnosis: Endoscopy (EGD - gold standard, allows biopsy for H. pylori and malignancy), H. pylori testing (urea breath test, stool antigen, biopsy urease test, serology), Barium meal.
+Treatment: H. pylori eradication: Triple therapy (PPI + Amoxicillin + Clarithromycin for 14 days) or Quadruple therapy (PPI + Bismuth + Metronidazole + Tetracycline). PPI for acid suppression 4-8 weeks. Stop NSAIDs. Endoscopic hemostasis for bleeding ulcers. Surgery for perforation/refractory bleeding.
+
+=== INFLAMMATORY BOWEL DISEASE (IBD) ===
+Crohn's Disease: Transmural inflammation affecting any part of GI tract (most commonly terminal ileum and colon), "skip lesions," cobblestone appearance, fistulae, strictures.
+Ulcerative Colitis: Mucosal inflammation limited to colon, continuous from rectum, pseudopolyps.
+Symptoms: Abdominal pain and cramping, persistent diarrhea (may have blood/mucus in UC), weight loss, fatigue, fever. Extraintestinal: arthritis, uveitis, episcleritis, pyoderma gangrenosum, erythema nodosum, primary sclerosing cholangitis (PSC especially with UC), anemia.
+Diagnosis: Colonoscopy with biopsy (gold standard), CT/MRI enterography (Crohn's - assess bowel, fistulae), blood tests (CRP, ESR, CBC, albumin), fecal calprotectin (inflammation marker), CRP.
+Treatment: 5-ASA agents (sulfasalazine, mesalazine - UC mild-moderate), Corticosteroids (budesonide, prednisolone - induction only), Immunomodulators (azathioprine, 6-mercaptopurine, methotrexate - maintenance), Biologics (TNF inhibitors: infliximab, adalimumab; anti-integrin: vedolizumab; anti-IL-12/23: ustekinumab; JAK inhibitors: tofacitinib). Surgery: colectomy (UC - curative), bowel resection (Crohn's - not curative).
+Colorectal cancer surveillance: Colonoscopy every 1-3 years after 8 years of disease.
+
+=== IRRITABLE BOWEL SYNDROME (IBS) ===
+Definition: Functional gut disorder characterized by abdominal pain related to bowel habits, with change in stool frequency/form, without structural abnormality.
+Types: IBS-C (constipation predominant), IBS-D (diarrhea predominant), IBS-M (mixed), IBS-U (unsubtyped).
+Rome IV criteria: Recurrent abdominal pain ≥1 day/week (last 3 months), associated with ≥2: related to defecation, change in stool frequency, change in stool form.
+Red flags (exclude IBS): Age >50 at onset, rectal bleeding, weight loss, fever, family history of colorectal cancer/IBD, nocturnal symptoms.
+Diagnosis: Clinical diagnosis after excluding organic disease. Tests to exclude: CRP, CBC, TTG antibodies (celiac), stool tests.
+Treatment: Dietary modifications (low-FODMAP diet - highly effective), soluble fiber supplements, probiotics, antispasmodics (hyoscine, mebeverine), laxatives (IBS-C), loperamide (IBS-D), antidepressants (low-dose TCAs or SSRIs), Linaclotide/Plecanatide (IBS-C), Rifaximin (IBS-D), psychological therapies (CBT, hypnotherapy).
+
+=== LIVER CIRRHOSIS ===
+Definition: Advanced liver scarring (fibrosis) causing distortion of liver architecture and loss of function.
+Causes: Alcohol (most common in Western countries), NASH/NAFLD (rapidly rising), Hepatitis B and C, Autoimmune hepatitis, Primary biliary cholangitis, Primary sclerosing cholangitis, Wilson's disease, Hemochromatosis, Budd-Chiari syndrome.
+Compensated cirrhosis: No complications, may be asymptomatic.
+Decompensated cirrhosis: Complications present (ascites, variceal bleeding, hepatic encephalopathy, jaundice, SBP, hepatorenal syndrome).
+Symptoms: Fatigue, weakness, loss of appetite, nausea, jaundice, spider angiomas, palmar erythema, leukonychia, clubbing, gynecomastia, testicular atrophy, hepatomegaly then small liver, splenomegaly, ascites, caput medusae, peripheral edema.
+Diagnosis: Liver function tests (elevated bilirubin, low albumin, elevated PT/INR), FibroScan (elastography - non-invasive), liver biopsy (gold standard for staging), endoscopy (varices), imaging (USS, CT, MRI), MELD score for severity.
+Complications: Ascites (treat: salt restriction + diuretics - spironolactone + furosemide, paracentesis for refractory), Spontaneous Bacterial Peritonitis (SBP - cefotaxime, prophylaxis with norfloxacin), Variceal bleeding (IV terlipressin + antibiotics + urgent endoscopy - band ligation, TIPS), Hepatic Encephalopathy (lactulose, rifaximin, treat precipitant), Hepatorenal Syndrome (terlipressin + albumin), Hepatocellular Carcinoma (6-monthly USS + AFP surveillance).
+Treatment: Treat underlying cause, alcohol abstinence, antiviral therapy for HBV/HCV, liver transplantation (only cure for decompensated cirrhosis).
+
+=== ACUTE PANCREATITIS ===
+Definition: Acute inflammation of pancreas. Ranges from mild to life-threatening.
+Causes: Gallstones (45%), Alcohol (35%), Idiopathic, Hypertriglyceridemia, Hypercalcemia, Medications, ERCP, Trauma, Autoimmune.
+Symptoms: Sudden severe epigastric pain (boring through to back), nausea, vomiting, fever, tachycardia, abdominal tenderness. Severe: Grey Turner's sign (flank bruising), Cullen's sign (periumbilical bruising) - retroperitoneal hemorrhage.
+Diagnosis: Serum amylase/lipase (>3x upper limit of normal - lipase more specific), CT abdomen with contrast (Balthazar scoring for severity), CRP (>150 at 48hrs suggests severe), USS (gallstones), CBC, renal function.
+Severity: Mild (no organ failure, no local complications), Moderately severe (transient organ failure <48hrs or local complications), Severe (persistent organ failure >48hrs).
+Treatment: IV fluids (aggressive hydration - Lactated Ringer's preferred), analgesia, nil by mouth initially then early enteral nutrition (nasojejunal), ERCP for gallstone pancreatitis with cholangitis, antibiotics only for infected necrosis, surgery/endoscopy for complications.
+Complications: Pancreatic necrosis (infected necrosis = severe complication), pseudocyst, walled-off necrosis, abscesses, ARDS, multi-organ failure.
+
+=== COLORECTAL CANCER ===
+Definition: Cancer arising from colon or rectum. 3rd most common cancer worldwide.
+Risk factors: Age >50, family history, Lynch syndrome/FAP, IBD, obesity, red/processed meat, alcohol, smoking, T2DM, sedentary lifestyle.
+Precursor lesion: Adenomatous polyps (adenoma-carcinoma sequence).
+Symptoms: Change in bowel habit (persisting), rectal bleeding, dark stool, abdominal pain, unexplained weight loss, fatigue (anemia), palpable mass, tenesmus.
+Right-sided CRC: More commonly presents with iron deficiency anemia, weight loss. Left-sided: rectal bleeding, change in bowel habit, obstruction.
+Diagnosis: Colonoscopy (gold standard - allows biopsy), CT colonography, sigmoidoscopy, CT chest/abdomen/pelvis (staging), CEA (tumor marker - monitoring), MRI rectum (rectal cancer staging).
+Staging: TNM/Duke's staging. Stage I-IV.
+Treatment: Surgery (colectomy - curative intent for non-metastatic), chemotherapy (FOLFOX, FOLFIRI, CAPOX), targeted therapy (bevacizumab/VEGF, cetuximab/EGFR for RAS wild-type), immunotherapy (pembrolizumab for MSI-H/dMMR), radiotherapy (rectal cancer).
+Screening: Colonoscopy every 10 years from age 45-50 (average risk), earlier/more frequent for high-risk.

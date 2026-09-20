@@ -1,0 +1,83 @@
+INFECTIOUS DISEASES - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== MALARIA ===
+Definition: Life-threatening parasitic disease transmitted by female Anopheles mosquito.
+Causative agents: Plasmodium falciparum (most dangerous, cerebral malaria), P. vivax, P. ovale, P. malariae, P. knowlesi.
+Symptoms: Cyclical fever (every 48-72 hrs depending on species), chills, rigors, sweating, headache, muscle aches, fatigue, nausea, vomiting, anemia, jaundice, splenomegaly.
+Severe malaria (P. falciparum): Cerebral malaria (coma, seizures), severe anemia (Hb <7), respiratory distress, renal failure, hypoglycemia, circulatory collapse, abnormal bleeding, hyperparasitemia.
+Diagnosis: Blood smear microscopy (gold standard - thick and thin), Rapid Diagnostic Test (RDT - HRP2 antigen), PCR for confirmation, CBC (anemia, thrombocytopenia).
+Treatment: Uncomplicated P. falciparum: Artemisinin-based combination therapy (ACT) - artemether-lumefantrine (first-line), artesunate-amodiaquine. P. vivax/ovale: Chloroquine + Primaquine (for hypnozoites). Severe malaria: IV artesunate (preferred) or IV quinine.
+Prevention: Insecticide-treated bed nets (ITNs), indoor residual spraying, chemoprophylaxis for travelers (atovaquone-proguanil, doxycycline, mefloquine), R21/Matrix-M vaccine.
+
+=== HIV/AIDS ===
+Definition: Human Immunodeficiency Virus infects CD4+ T cells, causing progressive immune deficiency. AIDS defined as CD4 <200 cells/μL or AIDS-defining illness.
+Transmission: Unprotected sexual contact (most common), contaminated needles/syringes, mother-to-child (vertical), blood transfusion.
+Stages: Acute HIV infection (2-6 weeks - flu-like illness, high viral load), Chronic HIV infection (clinical latency, years), AIDS.
+Symptoms: Acute: fever, lymphadenopathy, pharyngitis, rash, myalgia, headache. Chronic: asymptomatic. AIDS: opportunistic infections (Pneumocystis pneumonia, CMV, toxoplasmosis, cryptococcosis, MAC, TB), cancers (Kaposi sarcoma, lymphoma), wasting syndrome, HIV dementia.
+Diagnosis: HIV Ab/Ag ELISA (4th generation test), Western blot (confirmatory), HIV RNA viral load, CD4 count, resistance testing before ART.
+Treatment: Antiretroviral Therapy (ART) - ALL patients regardless of CD4 count. Standard regimen: 2 NRTIs + 1 INSTI (preferred): Tenofovir/Emtricitabine + Dolutegravir/Bictegravir.
+Goal: Undetectable viral load (<50 copies/mL), CD4 recovery.
+U=U: Undetectable = Untransmittable.
+PrEP: Pre-exposure prophylaxis for high-risk HIV-negative individuals (Tenofovir/Emtricitabine daily).
+PEP: Post-exposure prophylaxis within 72 hours of exposure.
+Monitoring: Viral load + CD4 count every 3-6 months.
+
+=== DENGUE FEVER ===
+Definition: Viral infection transmitted by Aedes aegypti and Aedes albopictus mosquitoes. Endemic in tropical/subtropical regions.
+Serotypes: DENV 1-4. Secondary infection with different serotype increases severe dengue risk (antibody-dependent enhancement).
+Symptoms: Sudden high fever (39-40°C), severe headache, retro-orbital pain, myalgia, arthralgia ("breakbone fever"), flushing, nausea, vomiting, skin rash (maculopapular, petechiae), positive tourniquet test.
+Warning signs (severe dengue): Abdominal pain/tenderness, persistent vomiting, clinical fluid accumulation, mucosal bleeding, lethargy, liver enlargement >2cm, rising hematocrit with rapid platelet decline.
+Severe Dengue: Severe plasma leakage (shock - Dengue Shock Syndrome), severe bleeding, severe organ impairment.
+Diagnosis: NS1 antigen (days 1-5), Dengue IgM/IgG antibodies (from day 4-5), RT-PCR, CBC (leukopenia, thrombocytopenia, rising hematocrit).
+Treatment: No specific antiviral. Supportive: paracetamol (NOT NSAIDs/aspirin due to bleeding risk), oral rehydration, IV fluids for severe dengue, monitor platelet and hematocrit closely.
+Prevention: Mosquito control (remove standing water), protective clothing, repellents (DEET), Dengvaxia vaccine (seropositive individuals only).
+
+=== TYPHOID FEVER ===
+Definition: Systemic bacterial infection caused by Salmonella typhi (transmitted feco-oral route - contaminated food/water).
+Symptoms: Gradual onset fever (stepladder pattern), headache, malaise, abdominal discomfort, relative bradycardia (pulse-temperature dissociation), rose spots (faint salmon-colored spots on trunk), splenomegaly, coated tongue, constipation initially then diarrhea.
+Complications: Intestinal perforation, gastrointestinal hemorrhage, encephalopathy, hepatitis, myocarditis, bone marrow suppression.
+Diagnosis: Blood culture (gold standard - weeks 1-2), bone marrow culture (most sensitive), Widal test (unreliable), stool/urine culture, PCR.
+Treatment: Azithromycin (uncomplicated, preferred in outpatient), Ceftriaxone IV (severe/complicated), Ciprofloxacin (resistance increasing). Dexamethasone for severe disease with encephalopathy.
+Prevention: Typhoid vaccine (Ty21a oral or Vi capsular polysaccharide), safe water and food handling, proper sanitation.
+
+=== CHOLERA ===
+Definition: Acute diarrheal illness caused by Vibrio cholerae O1/O139 serotypes. Transmitted through contaminated water/food.
+Symptoms: Sudden onset profuse watery diarrhea ("rice-water stools"), painless, vomiting, rapid dehydration, muscle cramps, sunken eyes, skin tenting, hypotension, shock. No fever typically.
+Diagnosis: Stool culture (gold standard), RDT for field diagnosis, dark-field microscopy.
+Treatment: REHYDRATION IS KEY. Oral Rehydration Solution (ORS) for mild-moderate. IV Ringer's Lactate for severe. Antibiotics shorten illness (doxycycline, azithromycin, ciprofloxacin).
+Prevention: Safe water (boil, chlorinate), proper sanitation, hand hygiene, OCV (oral cholera vaccine).
+
+=== HEPATITIS ===
+Hepatitis A: HAV, feco-oral, self-limiting. No chronic state. Vaccine available. Supportive treatment.
+Hepatitis B (HBV): Sexual, parenteral, vertical transmission. Can be acute or chronic (>6 months). Markers: HBsAg (infection), anti-HBs (immunity), HBeAg (high replication), HBV DNA (viral load), anti-HBc. Complications: cirrhosis, hepatocellular carcinoma. Treatment: Tenofovir or entecavir (first-line for chronic HBV), pegylated interferon-alpha. Vaccine available - 3 doses.
+Hepatitis C (HCV): Primarily blood-borne (IV drug use, contaminated equipment). Usually asymptomatic until advanced. Complications: cirrhosis, HCC. Diagnosis: anti-HCV antibody → HCV RNA (confirmatory). Treatment: Direct-acting antivirals (DAAs) - sofosbuvir-based regimens (sofosbuvir/velpatasvir, sofosbuvir/ledipasvir) - >95% cure rate. No vaccine.
+Hepatitis D: Only with HBV co-infection (requires HBsAg). Most severe form. HBV vaccine prevents HDV.
+Hepatitis E: HEV, feco-oral, usually self-limiting. Dangerous in pregnancy (fulminant hepatic failure). No specific treatment. Prevention: clean water, sanitation.
+
+=== SEPSIS AND SEPTIC SHOCK ===
+Definition: Sepsis = life-threatening organ dysfunction from dysregulated host response to infection. Septic shock = sepsis + vasopressor requirement + lactate >2 mmol/L.
+qSOFA criteria (for screening outside ICU): Altered consciousness, respiratory rate ≥22, systolic BP ≤100.
+Sources: Pneumonia, UTI, abdominal infection, skin/soft tissue, central line infection, meningitis.
+Common organisms: Gram-negative (E. coli, Klebsiella, Pseudomonas), Gram-positive (Staphylococcus, Streptococcus, Enterococcus), Candida (immunocompromised).
+Diagnosis: Blood cultures (before antibiotics), lactate, CBC, renal function, liver function, CRP, procalcitonin, coagulation studies. Source identification (imaging, urinalysis, chest X-ray).
+Treatment (Surviving Sepsis Bundle - 1 hour): Blood cultures → Broad-spectrum antibiotics → Lactate measurement → 30mL/kg IV crystalloid → Vasopressors (norepinephrine first choice) if refractory hypotension.
+Antibiotics: Cover suspected source - piperacillin-tazobactam or carbapenems for broad coverage. Narrow when culture results available.
+Complications: Acute kidney injury, ARDS, DIC, multi-organ failure.
+
+=== URINARY TRACT INFECTIONS (UTI) ===
+Types: Uncomplicated UTI (cystitis - lower UTI in healthy non-pregnant women), Complicated UTI (men, pregnancy, catheter, structural abnormalities, diabetes), Pyelonephritis (upper UTI - kidney infection), Urosepsis.
+Common organisms: E. coli (80%), Klebsiella, Proteus, Staphylococcus saprophyticus (young women).
+Symptoms: Cystitis: dysuria (burning), frequency, urgency, suprapubic pain, hematuria, cloudy malodorous urine, no fever. Pyelonephritis: fever, rigors, flank pain, CVA tenderness, nausea, vomiting, same lower symptoms.
+Diagnosis: Urinalysis (pyuria, bacteriuria, nitrites, leukocyte esterase), urine culture (>10^5 CFU/mL), blood cultures for pyelonephritis/sepsis.
+Treatment: Uncomplicated cystitis: Nitrofurantoin (5-7 days), Trimethoprim-sulfamethoxazole (3 days), Fosfomycin (single dose). Pyelonephritis: Ciprofloxacin or ceftriaxone IV, 7-14 days. Complicated UTI: Broad spectrum initially, guided by culture.
+Recurrent UTI prevention: Good hygiene, post-coital voiding, cranberry juice/supplements, prophylactic low-dose antibiotics.
+Asymptomatic bacteriuria: DO NOT treat unless pregnant or pre-urological procedure.
+
+=== INFLUENZA ===
+Definition: Acute respiratory illness caused by influenza viruses (A, B, C). Seasonal epidemics, occasional pandemics.
+Symptoms: Abrupt onset fever, chills, headache, myalgia, malaise, dry cough, sore throat, rhinorrhea. Unlike common cold - more sudden, more severe systemic symptoms.
+High-risk groups for complications: Elderly, young children (<5), pregnant women, immunocompromised, chronic medical conditions.
+Complications: Pneumonia (primary influenza or secondary bacterial), myocarditis, encephalitis, acute kidney injury, Reye syndrome (aspirin in children).
+Diagnosis: Rapid influenza diagnostic tests (RIDT), PCR (most accurate), throat swab culture.
+Treatment: Antivirals (within 48 hours of symptom onset - greatest benefit): Oseltamivir (Tamiflu - oral), Zanamivir (inhaled), Baloxavir. Supportive: rest, fluids, analgesics/antipyretics.
+Prevention: Annual influenza vaccine (strongly recommended for high-risk groups), hand hygiene, respiratory etiquette.

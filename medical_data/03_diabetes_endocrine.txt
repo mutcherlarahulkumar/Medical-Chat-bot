@@ -1,0 +1,77 @@
+DIABETES AND ENDOCRINE DISORDERS - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== TYPE 1 DIABETES MELLITUS ===
+Definition: Autoimmune destruction of pancreatic beta cells causing absolute insulin deficiency.
+Onset: Usually childhood/adolescence but can occur at any age. Accounts for 5-10% of all diabetes.
+Pathophysiology: T-cell mediated destruction of beta cells, positive autoantibodies (GAD65, IA-2, ZnT8, IAA).
+Symptoms: Polyuria (excessive urination), polydipsia (excessive thirst), polyphagia (excessive hunger), unexplained weight loss, fatigue, blurred vision, slow-healing sores, frequent infections.
+Diagnosis: Fasting plasma glucose ≥126 mg/dL, 2-hour glucose ≥200 mg/dL (OGTT), HbA1c ≥6.5%, Random glucose ≥200 mg/dL with symptoms, C-peptide (low/absent), positive autoantibodies.
+Treatment: Insulin (mandatory - basal-bolus regimen), carbohydrate counting, blood glucose monitoring (CGM preferred), insulin pump therapy (CSII), regular exercise, diabetic education.
+Insulin types: Rapid-acting (lispro, aspart, glulisine), Short-acting (regular), Intermediate (NPH), Long-acting (glargine, detemir, degludec).
+DKA (Diabetic Ketoacidosis): Life-threatening complication. Symptoms: nausea, vomiting, abdominal pain, fruity breath, Kussmaul breathing, altered consciousness. Treatment: IV fluids, insulin drip, electrolyte replacement (especially potassium).
+HbA1c target: <7.0% (most patients), <7.5% (children), individualized for elderly/hypoglycemia-prone.
+
+=== TYPE 2 DIABETES MELLITUS ===
+Definition: Insulin resistance with relative insulin deficiency. Most common form (90-95% of diabetes). Affects 463 million people worldwide.
+Risk factors: Obesity (especially abdominal), physical inactivity, family history, age >45, prediabetes, gestational diabetes history, PCOS, hypertension, dyslipidemia, certain ethnicities (South Asian, African, Hispanic).
+Pathophysiology: Peripheral insulin resistance + progressive beta cell dysfunction + increased hepatic glucose production.
+Symptoms: Often asymptomatic for years. May include polyuria, polydipsia, fatigue, blurred vision, slow healing, recurrent infections, acanthosis nigricans.
+Prediabetes: Fasting glucose 100-125 mg/dL (IFG) or 2-hr glucose 140-199 mg/dL (IGT) or HbA1c 5.7-6.4%.
+Diagnosis: Same criteria as T1DM.
+Treatment Step-Up:
+1. Lifestyle modification (diet, exercise, weight loss) + Metformin
+2. Add second agent: SGLT2 inhibitor (empagliflozin, dapagliflozin - CV/renal benefit), GLP-1 RA (semaglutide, liraglutide - weight loss benefit), DPP-4 inhibitor, sulfonylurea, TZD, insulin
+3. Triple therapy
+4. Insulin (basal insulin first, then basal-bolus)
+HbA1c targets: <7% (most), <8% (elderly/limited life expectancy), <6.5% (young, no hypoglycemia risk).
+Complications: Macrovascular (CAD, stroke, PAD), Microvascular (nephropathy, retinopathy, neuropathy).
+Monitoring: HbA1c every 3 months initially, then every 6 months; annual eye exam, foot exam, urine microalbumin, lipids, BP check.
+
+=== DIABETIC COMPLICATIONS ===
+Diabetic Nephropathy: Leading cause of end-stage renal disease. Stages: microalbuminuria → macroalbuminuria → declining GFR → ESRD. Treatment: ACE inhibitors/ARBs, SGLT2 inhibitors, blood pressure control, glucose control.
+Diabetic Retinopathy: Leading cause of blindness in working-age adults. Non-proliferative → Proliferative. Treatment: laser photocoagulation, anti-VEGF injections, vitrectomy. Annual dilated eye exam essential.
+Diabetic Neuropathy: Most common complication. Types: peripheral (painful, burning, "stocking and glove"), autonomic (gastroparesis, orthostatic hypotension, erectile dysfunction, bladder dysfunction), focal.
+Diabetic Foot: Combination of neuropathy + peripheral vascular disease. Can lead to ulcers, Charcot arthropathy, amputation. Daily foot inspection essential.
+Hypoglycemia: Blood glucose <70 mg/dL. Rule of 15: 15g fast carbs, recheck in 15 minutes. Severe (unconscious): glucagon injection or IV dextrose.
+
+=== GESTATIONAL DIABETES MELLITUS (GDM) ===
+Definition: Diabetes diagnosed in 2nd or 3rd trimester, not pre-existing.
+Screening: 75g OGTT at 24-28 weeks. Diagnosis: fasting ≥92, 1-hr ≥180, 2-hr ≥153 mg/dL.
+Risks: Large-for-gestational-age baby, preeclampsia, C-section, neonatal hypoglycemia, future T2DM risk (50% develop T2DM within 10 years).
+Treatment: Medical nutrition therapy, moderate exercise, insulin (first-line pharmacotherapy), metformin/glyburide (alternatives).
+
+=== HYPOTHYROIDISM ===
+Definition: Underactive thyroid - insufficient thyroid hormone production.
+Causes: Hashimoto's thyroiditis (most common - autoimmune), thyroidectomy, radioiodine therapy, medications (lithium, amiodarone), iodine deficiency.
+Symptoms: Fatigue, weight gain, cold intolerance, constipation, dry skin, hair loss, bradycardia, hoarse voice, depression, memory impairment, menstrual irregularities, goiter.
+Diagnosis: TSH (elevated), Free T4 (low), thyroid antibodies (anti-TPO, anti-Tg for Hashimoto's).
+Treatment: Levothyroxine (T4) replacement. Start low, increase gradually. Monitor TSH every 6-8 weeks until stable, then annually. Target TSH 0.5-2.5 mIU/L.
+Myxedema Coma: Severe life-threatening hypothyroidism. IV levothyroxine + T3 + corticosteroids.
+Subclinical Hypothyroidism: Elevated TSH, normal free T4. Treat if TSH >10 or symptomatic.
+
+=== HYPERTHYROIDISM ===
+Definition: Overactive thyroid - excess thyroid hormone production.
+Causes: Graves' disease (most common autoimmune, TSH receptor antibodies), toxic multinodular goiter, toxic adenoma, thyroiditis, iodine excess, amiodarone.
+Symptoms: Weight loss despite increased appetite, heat intolerance, sweating, palpitations, tremor, anxiety, irritability, insomnia, frequent bowel movements, muscle weakness, goiter, exophthalmos (Graves').
+Diagnosis: TSH (suppressed/undetectable), Free T4/T3 (elevated), TSH receptor antibodies, thyroid scan.
+Treatment: Antithyroid drugs (methimazole first-line, propylthiouracil in pregnancy), radioactive iodine (RAI - definitive), thyroidectomy, beta-blockers for symptom control.
+Thyroid Storm: Life-threatening emergency. Fever, extreme tachycardia, altered consciousness. ICU care, PTU, iodine (after PTU), beta-blockers, corticosteroids.
+
+=== ADRENAL DISORDERS ===
+Cushing's Syndrome: Excess cortisol. Causes: pituitary adenoma (Cushing's disease), adrenal adenoma/carcinoma, ectopic ACTH, exogenous steroids. Symptoms: central obesity, moon face, buffalo hump, striae, hypertension, diabetes, osteoporosis, hirsutism. Diagnosis: 24-hr urine free cortisol, overnight dexamethasone suppression test. Treatment: surgery (transsphenoidal, adrenalectomy), medications (ketoconazole, metyrapone).
+Addison's Disease: Primary adrenal insufficiency. Causes: autoimmune (most common), TB, HIV. Symptoms: fatigue, weight loss, hyperpigmentation, hypotension, salt craving, nausea, hypoglycemia. Diagnosis: morning cortisol (low), ACTH stimulation test (gold standard). Treatment: hydrocortisone + fludrocortisone. Addisonian Crisis: IV hydrocortisone + fluids.
+Pheochromocytoma: Catecholamine-secreting tumor (adrenal medulla). Symptoms: episodic hypertension, headache, palpitations, sweating (classic triad). Diagnosis: plasma/urine metanephrines. Treatment: alpha-blockade first (phenoxybenzamine), then surgery.
+Primary Hyperaldosteronism (Conn's): Excess aldosterone. Symptoms: hypertension, hypokalemia, muscle weakness. Diagnosis: aldosterone-renin ratio. Treatment: adrenalectomy (unilateral) or spironolactone.
+
+=== POLYCYSTIC OVARY SYNDROME (PCOS) ===
+Definition: Most common endocrine disorder in women of reproductive age.
+Diagnostic criteria (Rotterdam): 2 of 3 - oligo/anovulation, clinical/biochemical hyperandrogenism, polycystic ovaries on ultrasound.
+Symptoms: Irregular periods, excess androgen (hirsutism, acne, alopecia), polycystic ovaries, obesity, infertility, insulin resistance.
+Associated risks: T2DM, cardiovascular disease, endometrial cancer, depression.
+Treatment: Lifestyle modification (weight loss 5-10% improves symptoms), OCP (regulate periods, reduce androgens), metformin (insulin resistance, ovulation induction), clomiphene/letrozole (fertility), spironolactone (hirsutism).
+
+=== OBESITY ===
+Definition: BMI ≥30 kg/m². Overweight: BMI 25-29.9. Morbid obesity: BMI ≥40.
+Causes: Caloric excess, physical inactivity, genetic factors, endocrine disorders, medications, psychological factors.
+Associated conditions: T2DM, hypertension, dyslipidemia, OSA, NAFLD, GERD, osteoarthritis, certain cancers, depression, cardiovascular disease.
+Treatment: Dietary modification (500-1000 kcal/day deficit), physical activity, behavioral therapy, pharmacotherapy (orlistat, phentermine-topiramate, naltrexone-bupropion, semaglutide/liraglutide), bariatric surgery (BMI ≥40 or ≥35 with comorbidities).

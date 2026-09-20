@@ -1,0 +1,43 @@
+WOMEN'S HEALTH AND REPRODUCTIVE MEDICINE - COMPREHENSIVE KNOWLEDGE BASE
+
+=== OBSTETRIC CONDITIONS ===
+Preeclampsia: New-onset hypertension (≥140/90) + proteinuria (≥0.3g/24hrs) or end-organ damage after 20 weeks. Features: severe headache, visual disturbances, epigastric pain, edema. Lab: thrombocytopenia, elevated LFTs, elevated creatinine. Management: magnesium sulfate (seizure prophylaxis), antihypertensives (labetalol, nifedipine, hydralazine), delivery (definitive treatment), low-dose aspirin from 12 weeks for prevention in high-risk.
+Eclampsia: Preeclampsia + seizures. Treatment: IV magnesium sulfate, control BP, deliver baby.
+Gestational Diabetes: See endocrine section. Screen with OGTT 24-28 weeks.
+Placenta Praevia: Placenta covers internal os. Painless antepartum hemorrhage. Manage: bed rest, cesarean section delivery.
+Placental Abruption: Premature separation of placenta. Painful antepartum hemorrhage, uterine tenderness. Fetal distress. Emergency management.
+Ectopic Pregnancy: Implantation outside uterus (usually fallopian tube). Triad: amenorrhea, pelvic pain, vaginal bleeding. Can rupture → hemorrhagic shock emergency. Diagnosis: transvaginal USS + serum βhCG. Treatment: methotrexate (unruptured, criteria met) or surgery (salpingectomy/salpingotomy).
+Postpartum Hemorrhage (PPH): Blood loss >500ml after vaginal birth or >1000ml after C-section. Causes (4Ts): Tone (uterine atony - 70%), Trauma, Tissue (retained products), Thrombin (coagulopathy). Treatment: Oxytocin, ergometrine, carboprost, misoprostol, tranexamic acid, bimanual compression, Bakri balloon, B-Lynch suture, hysterectomy.
+
+=== CONTRACEPTION ===
+Barrier methods: Condoms (male - 98% typical use; female condom), diaphragm/cervical cap + spermicide. Only method protecting against STIs.
+Combined oral contraceptive pill (COCP): Estrogen + progestogen. 99.7% effective. Contraindications: migraine with aura, history of DVT/PE/stroke, smoker >35 years, uncontrolled hypertension, breastfeeding <6 weeks postpartum, breast cancer. Benefits: reduced ovarian/endometrial cancer, dysmenorrhea, acne, ectopic pregnancy risk.
+Progestogen-only pill (POP/mini-pill): Suitable when estrogen contraindicated. Cerazette (desogestrel) extends window to 12 hours.
+Injectable contraceptive: Depo-Provera (DMPA) every 12 weeks. May cause irregular bleeding, bone density loss.
+Implant: Nexplanon (etonogestrel) - subdermal, 3 years, most effective (>99.9%). Irregular bleeding common.
+Intrauterine devices (IUD): Copper IUD (non-hormonal, 10 years, emergency contraception within 5 days), Hormonal IUS (Mirena - 5-8 years, reduces menstrual bleeding).
+Emergency contraception: Levonorgestrel (up to 72 hrs, >75% effective), Ulipristal acetate (ellaOne, up to 120 hrs, more effective than LNG), Copper IUD (most effective, up to 5 days).
+
+=== MENSTRUAL DISORDERS ===
+Dysmenorrhoea: Painful periods. Primary (no pathology - prostaglandins), Secondary (pathology - endometriosis, fibroids, adenomyosis). Treatment: NSAIDs (first-line), COCP, progestogens, treat underlying cause.
+Endometriosis: Endometrial tissue outside uterus. Symptoms: severe dysmenorrhoea, deep dyspareunia, chronic pelvic pain, subfertility, dyschezia, dysuria. Diagnosis: laparoscopy (gold standard). Treatment: NSAIDs, COCP, GnRH analogues, dienogest, laparoscopic excision, hysterectomy.
+Fibroids (Uterine Leiomyomata): Benign smooth muscle tumors. Most common gynecological tumor in women of reproductive age. Symptoms: heavy menstrual bleeding, bulk symptoms (urinary frequency, constipation), pelvic pain, subfertility. Treatment: NSAIDs, TXA (tranexamic acid), COCP, IUS (Mirena), GnRH analogues, UAE (uterine artery embolization), myomectomy, hysterectomy.
+Heavy Menstrual Bleeding (HMB): >80ml per cycle. Causes: fibroids, polyps, adenomyosis, PCOS, thyroid, coagulopathy (VWD), endometrial pathology. Treatment: TXA, NSAIDs, COCP, IUS (most effective medical treatment), endometrial ablation, hysterectomy.
+Amenorrhea: Primary (failure to menstruate by age 16 with secondary sex characteristics or 14 without), Secondary (cessation of previously normal menses for >3 months). Causes: pregnancy (rule out first!), hypothalamic (stress, weight loss, exercise), pituitary (prolactinoma, Sheehan's), ovarian (PCOS, POI/premature ovarian insufficiency), anatomical (Asherman's, cervical stenosis).
+Premature Ovarian Insufficiency (POI): Ovarian failure before age 40. Menopausal symptoms. HRT recommended until natural menopause age.
+
+=== MENOPAUSE ===
+Definition: Permanent cessation of menstruation for 12 months, average age 51 years.
+Perimenopause: Transition phase (irregular cycles, hormonal fluctuations).
+Symptoms: Vasomotor (hot flushes, night sweats - most common), Urogenital atrophy (vaginal dryness, dyspareunia, recurrent UTIs), Sleep disturbance, Mood changes (anxiety, depression), Cognitive symptoms, Musculoskeletal (joint aches), Sexual dysfunction. Long-term: osteoporosis, cardiovascular disease risk.
+Hormone Replacement Therapy (HRT): Most effective treatment for menopausal symptoms. Types: Combined (estrogen + progestogen for women with uterus), Estrogen-only (after hysterectomy). Routes: oral, transdermal (patch, gel - lower DVT/stroke risk than oral), vaginal (local symptoms only). Benefits: symptom relief, fracture prevention, reduced cardiovascular risk if started <60 years. Risks: breast cancer (small increased risk with combined HRT), VTE (lower with transdermal), endometrial cancer (prevented by progestogen).
+Non-hormonal options: SSRIs/SNRIs (venlafaxine for hot flushes), gabapentin, clonidine.
+
+=== SEXUALLY TRANSMITTED INFECTIONS (STIs) ===
+Chlamydia: Chlamydia trachomatis. Most common STI in UK. Often asymptomatic. Symptoms: discharge, dysuria, pelvic pain. Complications: PID, infertility, ectopic pregnancy, Reiter syndrome. Treatment: Azithromycin 1g single dose or Doxycycline 100mg BD 7 days.
+Gonorrhoea: Neisseria gonorrhoeae. Purulent discharge, dysuria. Increasingly resistant. Treatment: Ceftriaxone 500mg IM single dose (+ azithromycin if chlamydia not excluded).
+Syphilis: Treponema pallidum. Primary: painless chancre. Secondary: rash (palms/soles), condylomata lata, systemic symptoms. Latent. Tertiary: gummas, cardiovascular, neurosyphilis. Diagnosis: TPHA, VDRL/RPR (non-treponemal - disease activity). Treatment: Benzathine penicillin G IM (Doxycycline if allergic).
+Herpes (HSV-2, HSV-1): Painful vesicles/ulcers, dysuria. Primary worse than recurrence. Acyclovir for primary attack and suppression. No cure.
+Trichomoniasis: Trichomonas vaginalis. Offensive green frothy discharge, strawberry cervix. Treatment: Metronidazole 2g single dose.
+HPV: Warts (types 6,11) - treat with podophyllotoxin/imiquimod/cryotherapy. High-risk types (16,18) - cervical, oropharyngeal, anal cancer. Prevention: Gardasil 9 vaccine.
+Pelvic Inflammatory Disease (PID): Ascending infection from lower genital tract. Symptoms: lower abdominal pain, purulent cervical discharge, cervical excitation, adnexal tenderness, fever. Complications: infertility, ectopic pregnancy, chronic pelvic pain, tubo-ovarian abscess. Treatment: Ceftriaxone IM + Doxycycline + Metronidazole.

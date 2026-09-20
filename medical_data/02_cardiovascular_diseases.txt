@@ -1,0 +1,93 @@
+CARDIOVASCULAR DISEASES - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== HYPERTENSION (HIGH BLOOD PRESSURE) ===
+Definition: Persistently elevated blood pressure ≥130/80 mmHg (AHA 2017 guidelines).
+Classification: Normal (<120/80), Elevated (120-129/<80), Stage 1 (130-139/80-89), Stage 2 (≥140/≥90), Hypertensive Crisis (>180/>120).
+Primary (Essential) Hypertension: No identifiable cause, 90-95% of cases. Risk factors: age, family history, obesity, sedentary lifestyle, high sodium diet, smoking, alcohol, stress.
+Secondary Hypertension: Caused by identifiable condition (chronic kidney disease, primary aldosteronism, renovascular disease, obstructive sleep apnea, thyroid disease, pheochromocytoma).
+Symptoms: Often asymptomatic ("silent killer"). Severe: headaches, shortness of breath, nosebleeds, visual changes.
+Diagnosis: Repeated BP measurements, 24-hour ambulatory BP monitoring, urine tests, blood tests (electrolytes, creatinine, glucose, lipids), ECG, echocardiogram.
+Treatment: Lifestyle (DASH diet, reduce sodium <2.3g/day, weight loss, exercise 150 min/week, limit alcohol, stop smoking). Medications: ACE inhibitors, ARBs, calcium channel blockers, thiazide diuretics, beta-blockers.
+Target BP: <130/80 mmHg for most patients, <140/90 for elderly >65 years.
+Complications: Heart attack, stroke, heart failure, kidney disease, peripheral artery disease, aortic aneurysm, retinopathy.
+
+=== CORONARY ARTERY DISEASE (CAD) ===
+Definition: Narrowing or blockage of coronary arteries due to atherosclerosis (plaque buildup).
+Risk factors: Hypertension, hyperlipidemia, smoking, diabetes, obesity, family history, age (men >45, women >55), physical inactivity, stress.
+Symptoms: Angina (chest pain/pressure radiating to arm, jaw, back), shortness of breath, fatigue, palpitations. Women may have atypical symptoms (nausea, jaw pain, back pain).
+Stable Angina: Predictable chest pain with exertion, relieved by rest or nitroglycerin.
+Unstable Angina: New or worsening angina at rest - medical emergency.
+Diagnosis: ECG, stress test, echocardiogram, coronary CT angiography, coronary angiography (gold standard), cardiac biomarkers.
+Treatment: Medications (aspirin, statins, beta-blockers, nitrates, ACE inhibitors, anticoagulants), Percutaneous Coronary Intervention (PCI/stenting), Coronary Artery Bypass Grafting (CABG).
+Prevention: Lifestyle modification, statins for high cardiovascular risk, aspirin, blood pressure control.
+
+=== MYOCARDIAL INFARCTION (HEART ATTACK) ===
+Definition: Death of heart muscle tissue due to prolonged ischemia from complete blockage of coronary artery.
+Types: STEMI (ST-elevation MI - complete blockage, emergency reperfusion needed), NSTEMI (non-ST-elevation MI - partial blockage).
+Symptoms: Severe crushing chest pain radiating to left arm, jaw, neck, back; shortness of breath; cold sweats; nausea/vomiting; dizziness; sense of impending doom. Women: fatigue, nausea, back/jaw pain.
+CALL EMERGENCY IMMEDIATELY - time-critical condition ("time is muscle").
+Diagnosis: ECG (ST elevation, new LBBB), Cardiac troponin (gold standard biomarker), CK-MB, echocardiogram, coronary angiography.
+Treatment: Aspirin 300mg immediately, nitrates, oxygen if SpO2 <94%, morphine, anticoagulation (heparin/LMWH), Primary PCI within 90 minutes (gold standard), thrombolytics if PCI unavailable, CABG.
+Post-MI medications: Dual antiplatelet therapy (aspirin + clopidogrel/ticagrelor), statins, ACE inhibitors/ARBs, beta-blockers, aldosterone antagonists.
+Complications: Cardiogenic shock, arrhythmias (VF most dangerous early), heart failure, pericarditis, ventricular rupture, aneurysm, Dressler syndrome.
+
+=== HEART FAILURE ===
+Definition: Heart cannot pump enough blood to meet body's needs. Affects 64 million people worldwide.
+Types: HFrEF (reduced ejection fraction, EF <40% - systolic HF), HFpEF (preserved EF ≥50% - diastolic HF), HFmrEF (mildly reduced, EF 40-49%).
+Causes: CAD (most common), hypertension, cardiomyopathy, valve disease, arrhythmias, diabetes, alcohol, chemotherapy, viral myocarditis.
+Symptoms: Shortness of breath (dyspnea) on exertion, orthopnea (SOB lying flat), paroxysmal nocturnal dyspnea, fatigue, ankle/leg edema, rapid weight gain (fluid retention), reduced exercise tolerance, persistent cough/wheeze.
+NYHA Classification: Class I (no limitation), II (slight limitation), III (marked limitation), IV (symptoms at rest).
+Diagnosis: BNP/NT-proBNP (key biomarker), echocardiogram (EF measurement), ECG, chest X-ray (cardiomegaly, pulmonary edema, Kerley B lines), blood tests.
+Treatment: ACE inhibitors/ARBs/ARNI (sacubitril-valsartan), beta-blockers (carvedilol, metoprolol, bisoprolol), diuretics (furosemide), aldosterone antagonists (spironolactone, eplerenone), SGLT2 inhibitors (empagliflozin, dapagliflozin), digoxin, cardiac devices (ICD, CRT), heart transplant.
+Acute decompensated HF: IV diuretics, vasodilators, inotropes.
+Complications: Arrhythmias, sudden cardiac death, kidney failure, liver congestion, cardiac cachexia.
+
+=== ATRIAL FIBRILLATION (AF/AFib) ===
+Definition: Most common cardiac arrhythmia. Irregular, often rapid heart rate caused by chaotic electrical impulses in atria.
+Types: Paroxysmal (episodes <7 days, self-terminating), Persistent (>7 days, requires intervention), Long-standing persistent (>1 year), Permanent.
+Risk factors: Age, hypertension, heart failure, CAD, valvular disease, diabetes, obesity, sleep apnea, alcohol, hyperthyroidism.
+Symptoms: Palpitations, rapid/irregular heartbeat, shortness of breath, fatigue, chest discomfort, dizziness, syncope. Can be asymptomatic.
+Diagnosis: ECG (absent P waves, irregular R-R intervals), Holter monitor, echocardiogram, blood tests (thyroid function, electrolytes).
+Stroke risk: CHA2DS2-VASc score. AF increases stroke risk 5-fold.
+Treatment: Rate control (beta-blockers, calcium channel blockers, digoxin), Rhythm control (cardioversion, antiarrhythmics - flecainide, amiodarone, dronedarone), Anticoagulation (warfarin, NOACs - rivaroxaban, apixaban, dabigatran, edoxaban), Catheter ablation, Left atrial appendage closure (LAAC).
+
+=== STROKE ===
+Definition: Sudden death of brain cells due to interrupted blood supply. Medical emergency.
+Types: Ischemic stroke (87% - clot blocks artery), Hemorrhagic stroke (13% - vessel ruptures), TIA (transient ischemic attack - "mini-stroke", temporary symptoms).
+FAST acronym: Face drooping, Arm weakness, Speech difficulty, Time to call emergency.
+Symptoms: Sudden numbness/weakness of face, arm, leg (usually one side), confusion, trouble speaking/understanding, vision problems, severe headache, loss of balance/coordination.
+Risk factors: Hypertension (most important), AF, smoking, diabetes, hyperlipidemia, obesity, prior stroke/TIA, carotid stenosis.
+Diagnosis: Non-contrast CT brain (rule out hemorrhage), MRI/DWI, CT angiography, carotid ultrasound, ECG, echocardiogram, blood tests.
+Treatment: Ischemic: IV tPA (alteplase) within 4.5 hours, mechanical thrombectomy within 24 hours, aspirin, anticoagulation for cardioembolic. Hemorrhagic: blood pressure control, reversal of anticoagulation, surgery (craniotomy, EVD).
+Secondary prevention: Antiplatelets (aspirin, clopidogrel, aspirin+dipyridamole), anticoagulation for AF, statins, hypertension control, lifestyle changes.
+Rehabilitation: Physiotherapy, occupational therapy, speech therapy, psychological support.
+
+=== DEEP VEIN THROMBOSIS (DVT) ===
+Definition: Blood clot (thrombus) forms in a deep vein, usually in legs.
+Risk factors: Prolonged immobility (long flights, bed rest), surgery, cancer, pregnancy, oral contraceptives, obesity, dehydration, inherited clotting disorders (Factor V Leiden, antiphospholipid syndrome).
+Symptoms: Calf/thigh pain, swelling, redness, warmth, dilated superficial veins. 50% are asymptomatic.
+Diagnosis: D-dimer blood test, Doppler ultrasound (preferred), venography.
+Treatment: Anticoagulants (rivaroxaban, apixaban, dabigatran - DOACs preferred; or heparin then warfarin), IVC filter if anticoagulation contraindicated, compression stockings.
+Complication: Pulmonary embolism (life-threatening), post-thrombotic syndrome.
+
+=== HYPERLIPIDEMIA / DYSLIPIDEMIA ===
+Definition: Abnormal levels of lipids in blood. Major cardiovascular risk factor.
+Types: Hypercholesterolemia (high LDL), Hypertriglyceridemia, Mixed dyslipidemia, Low HDL.
+Target levels: LDL <70 mg/dL (very high risk), <100 mg/dL (high risk), <130 mg/dL (moderate risk). HDL >40 mg/dL (men), >50 mg/dL (women). Triglycerides <150 mg/dL.
+Treatment: Lifestyle (diet low in saturated/trans fat, exercise, weight loss), Statins (first line - atorvastatin, rosuvastatin, simvastatin), Ezetimibe, PCSK9 inhibitors (evolocumab, alirocumab), fibrates (for high triglycerides), omega-3 fatty acids.
+Familial Hypercholesterolemia: Genetic disorder, very high LDL from birth, requires early aggressive treatment.
+
+=== CARDIAC ARRHYTHMIAS ===
+Bradyarrhythmias: Heart rate <60 bpm. Causes: sick sinus syndrome, AV block. Treatment: pacemaker.
+Tachyarrhythmias: Heart rate >100 bpm. Types: SVT, VT, VF, AF, flutter.
+Ventricular Fibrillation (VF): Life-threatening, requires immediate defibrillation and CPR.
+Ventricular Tachycardia (VT): Rapid ventricular rhythm >100 bpm, can degenerate to VF.
+SVT (Supraventricular Tachycardia): Vagal maneuvers, adenosine, cardioversion.
+Long QT Syndrome: Risk of torsades de pointes and sudden cardiac death.
+
+=== VALVULAR HEART DISEASE ===
+Aortic Stenosis: Narrowing of aortic valve. Symptoms: angina, syncope, heart failure (SAD triad). Treatment: TAVR or surgical AVR.
+Aortic Regurgitation: Leaky aortic valve. Symptoms: wide pulse pressure, heart failure. Treatment: surgery when symptomatic.
+Mitral Stenosis: Usually rheumatic. Symptoms: dyspnea, AF, hemoptysis. Treatment: balloon mitral valvotomy or surgery.
+Mitral Regurgitation: Causes: MVP, rheumatic, ischemic. Treatment: surgery or TEER (MitraClip) when symptomatic.
+Infective Endocarditis: Infection of heart valves. Duke criteria for diagnosis. Treatment: IV antibiotics 4-6 weeks, surgery if complications.

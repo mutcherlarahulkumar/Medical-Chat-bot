@@ -1,0 +1,69 @@
+SOURCE: Harrison's Principles of Internal Medicine (Reference Summary — Educational Use)
+AUTHORITY: Gold standard medical textbook (McGraw-Hill) — high-priority knowledge source
+CATEGORY: Internal medicine clinical knowledge — educational reference
+
+=== HARRISON'S: CHEST PAIN DIFFERENTIAL DIAGNOSIS ===
+TOPIC: Cardiology | Chest Pain
+Chest pain is one of the most common presenting complaints requiring systematic evaluation.
+
+CARDIAC CAUSES:
+Acute Coronary Syndrome (ACS): Substernal pressure/squeezing, radiation to left arm/jaw/neck, diaphoresis, nausea. Duration >20 min in STEMI. ECG: ST elevation (STEMI), ST depression/T-wave changes (NSTEMI), normal/nonspecific (unstable angina). Biomarkers: Troponin elevated in NSTEMI/STEMI.
+Stable Angina: Predictable exertional chest pain, relieved by rest or nitrates within 5 min. CCS classification I–IV.
+Pericarditis: Sharp, pleuritic pain, worse supine, better sitting forward. Friction rub. ECG: Diffuse ST elevation, PR depression.
+Aortic Dissection: Tearing/ripping pain radiating to back. Pulse differential. Widened mediastinum on CXR. CT angiography confirms. Medical emergency.
+
+PULMONARY CAUSES:
+Pulmonary Embolism: Pleuritic chest pain + dyspnea + tachycardia. Risk: DVT, immobility, cancer, OCP. D-dimer elevated. CT-PA confirms. Wells score used for pretest probability.
+Pneumothorax: Sudden onset pleuritic pain + dyspnea. Decreased breath sounds. Tension pneumothorax: tracheal deviation, hypotension — emergency needle decompression.
+Pleuritis: Sharp pain worsened by breathing. Often accompanies pneumonia or PE.
+
+GASTROINTESTINAL CAUSES:
+GERD/Esophageal: Burning, worse after meals/lying down. Relieved by antacids. May mimic cardiac pain.
+Esophageal Spasm: Severe substernal pain, may radiate to arms. Triggered by cold liquids.
+Peptic Ulcer: Epigastric burning, relieved by food/antacids (duodenal), worse with food (gastric).
+
+NON-URGENT CAUSES:
+Musculoskeletal: Reproducible with palpation. Costochondritis most common.
+Anxiety/Panic: Palpitations, dyspnea, tingling.
+
+=== HARRISON'S: HEART FAILURE ===
+TOPIC: Cardiology | Heart Failure
+DEFINITION: Cardiac output insufficient to meet metabolic demands, or sufficient only at elevated filling pressures.
+TYPES: HFrEF (EF <40%) — systolic. HFpEF (EF ≥50%) — diastolic.
+NYHA CLASS: I (no symptoms), II (symptoms with moderate exertion), III (symptoms with mild exertion), IV (symptoms at rest).
+FRAMINGHAM CRITERIA (need 2 major OR 1 major + 2 minor):
+Major: PND, neck vein distension, rales, cardiomegaly, acute pulmonary edema, S3 gallop, weight loss >4.5 kg in 5 days in response to treatment, elevated CVP.
+Minor: bilateral ankle edema, nocturnal cough, dyspnea on exertion, hepatomegaly, pleural effusion, decrease in VC by 1/3, tachycardia >120 bpm.
+TREATMENT HFrEF: ACE inhibitors/ARBs (reduce mortality), Beta-blockers (carvedilol, metoprolol, bisoprolol), Aldosterone antagonists (spironolactone, eplerenone), Diuretics (symptom relief), SGLT2 inhibitors (dapagliflozin, empagliflozin — new addition), Hydralazine + nitrates (if ACE/ARB intolerant). Device therapy: ICD (EF <35%), CRT (EF <35% + LBBB).
+
+=== HARRISON'S: PNEUMONIA CLINICAL APPROACH ===
+TOPIC: Pulmonary | Community-Acquired Pneumonia
+PSI/PORT SCORE CLASSES: Class I–II (low risk, outpatient), Class III (low-moderate, brief hospitalization), Class IV–V (high risk, hospital/ICU).
+CURB-65 SCORE: Confusion + Urea >7 mmol/L + RR ≥30 + BP <90/60 + age ≥65. Score 0–1: outpatient. Score 2: hospital. Score ≥3: ICU consideration.
+PATHOGENS BY SETTING:
+- Community: S. pneumoniae (most common), H. influenzae, Atypicals (Mycoplasma, Chlamydia, Legionella), Viruses.
+- Aspiration: Anaerobes, gram-negative rods.
+- Hospital-acquired (HAP >48h admission): Pseudomonas, MRSA, gram-negative bacilli.
+TREATMENT:
+- Outpatient mild (no comorbidity): Amoxicillin 1g TID OR doxycycline 100mg BD OR azithromycin.
+- Outpatient with comorbidity: Amoxicillin-clavulanate + macrolide OR respiratory fluoroquinolone (levofloxacin, moxifloxacin).
+- Inpatient non-ICU: Beta-lactam + macrolide OR respiratory fluoroquinolone.
+- ICU: Beta-lactam + azithromycin OR beta-lactam + respiratory fluoroquinolone. Add MRSA cover (vancomycin/linezolid) if risk factors.
+
+=== HARRISON'S: DIABETES MANAGEMENT ===
+TOPIC: Endocrinology | Diabetes Mellitus
+TYPE 1: Absolute insulin deficiency. Autoimmune destruction of beta cells. Presents with DKA. Lifelong insulin required.
+DKA CRITERIA: Glucose >250 mg/dL + pH <7.3 + HCO3 <18 mEq/L + ketonemia/ketonuria.
+DKA TREATMENT: IV fluids (NS initially), insulin drip (0.1 units/kg/hr), potassium replacement (add K+ when <5.5 and urine output adequate), close monitoring.
+TYPE 2: Insulin resistance + progressive beta-cell failure.
+METFORMIN MECHANISM: Reduces hepatic glucose production. Contraindicated if eGFR <30.
+HbA1c TARGETS: General <7% (53 mmol/mol). More stringent <6.5% if no hypoglycemia risk. Less stringent <8% in elderly/limited life expectancy.
+HYPOGLYCEMIA: <70 mg/dL (3.9 mmol/L) — mild: 15g fast-acting glucose. Severe (unconscious): IV dextrose 25 mL of 50% or glucagon 1 mg IM.
+MICROVASCULAR COMPLICATIONS: Retinopathy, nephropathy (microalbuminuria first sign), neuropathy (stocking-glove distribution).
+MACROVASCULAR: CAD, stroke, PVD. Aspirin for secondary prevention. Statin therapy.
+
+=== HARRISON'S: HYPO/HYPERTHYROIDISM ===
+TOPIC: Endocrinology | Thyroid Disease
+HYPOTHYROIDISM: TSH high, FT4 low. Symptoms: fatigue, weight gain, cold intolerance, constipation, bradycardia, dry skin, hair loss, depression, myxedema. Treatment: Levothyroxine (T4) replacement, start 1.6 mcg/kg/day, adjust by TSH every 6–8 weeks. Target TSH 0.5–2.5 mIU/L.
+HYPERTHYROIDISM: TSH low, FT4 high. Causes: Graves' disease (most common), toxic multinodular goiter, toxic adenoma. Symptoms: heat intolerance, weight loss, palpitations, tremor, anxiety, diarrhea, goiter, exophthalmos (Graves'). Treatment: Antithyroid drugs (methimazole, PTU), radioiodine ablation, thyroidectomy. Beta-blockers for symptom control.
+THYROID STORM: Life-threatening hyperthyroidism. High fever, tachycardia, agitation, heart failure. Treat with PTU, iodine solution, beta-blockers, glucocorticoids, cooling measures.

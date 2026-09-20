@@ -1,0 +1,89 @@
+SOURCE: Medical Report Interpretation Guide — Clinical Reference
+AUTHORITY: Clinical interpretation reference for AI medical report analysis
+CATEGORY: Lab report patterns, report interpretation, clinical decision support
+
+=== MEDICAL REPORT INTERPRETATION: DIABETES MARKERS ===
+TOPIC: Laboratory | Diabetes Monitoring
+HbA1c INTERPRETATION (reflects 3-month average glucose):
+- <5.7%: Normal
+- 5.7–6.4%: Prediabetes (increased risk)
+- 6.5–7.0%: Diabetes — well controlled target for most patients
+- 7.0–8.0%: Diabetes — suboptimal control
+- 8.0–9.0%: Diabetes — poor control
+- >9.0%: Diabetes — very poor control, high complication risk
+FASTING GLUCOSE:
+- <70 mg/dL: Hypoglycemia (low blood sugar) — dizziness, sweating, confusion
+- 70–99 mg/dL: Normal fasting glucose
+- 100–125 mg/dL: Impaired fasting glucose (prediabetes)
+- ≥126 mg/dL: Diabetes (confirmed with second test)
+POSTPRANDIAL (2h after meal): <140 normal, 140–199 prediabetes, ≥200 diabetes.
+URINE ALBUMIN:
+- <30 mg/g creatinine: Normal
+- 30–300 mg/g: Microalbuminuria (early kidney involvement)
+- >300 mg/g: Macroalbuminuria (significant kidney disease)
+
+=== MEDICAL REPORT INTERPRETATION: KIDNEY FUNCTION ===
+TOPIC: Laboratory | Renal Function Tests
+CREATININE ELEVATION PATTERN:
+- 1.3–2.0 mg/dL: Mild CKD or dehydration
+- 2.0–5.0 mg/dL: Moderate-severe CKD
+- >5.0 mg/dL: Severe CKD or acute kidney injury
+BUN:CREATININE RATIO:
+- 10–20: Normal
+- >20: Pre-renal (dehydration, heart failure, GI bleeding)
+- <10: Hepatic disease, malnutrition, overhydration
+eGFR STAGING with clinical actions:
+- ≥90: Stage 1 — identify/treat underlying cause
+- 60–89: Stage 2 — slow progression
+- 45–59: Stage 3a — nephrology review
+- 30–44: Stage 3b — prepare for renal replacement
+- 15–29: Stage 4 — imminent renal failure
+- <15: Stage 5 — dialysis or transplant
+URIC ACID: >7 mg/dL men, >6 mg/dL women = hyperuricemia. Risk: gout, kidney stones, CKD.
+
+=== MEDICAL REPORT INTERPRETATION: LIVER FUNCTION ===
+TOPIC: Laboratory | Hepatic Function
+ALT/AST ELEVATION PATTERN:
+- 1–3x ULN: Mild — NAFLD, medications, alcohol
+- 3–10x ULN: Moderate — hepatitis, ischemia
+- >10x ULN: Severe — acute hepatitis, ischemic hepatitis, drug toxicity
+- >1000 U/L: Severe injury — consider acetaminophen toxicity, ischemic hepatitis, autoimmune
+AST:ALT RATIO:
+- >2:1 with alcoholic liver disease pattern: Consider alcoholic hepatitis
+- <1: Non-alcoholic causes more likely
+BILIRUBIN PATTERN:
+- Elevated indirect (unconjugated): Haemolysis, Gilbert's syndrome, ineffective erythropoiesis
+- Elevated direct (conjugated): Hepatocellular disease, cholestasis, bile duct obstruction
+- Both elevated: Hepatocellular damage (hepatitis, cirrhosis)
+ALP ISOLATED ELEVATION: Consider bone disease (Paget's, bone metastases), cholestasis, pregnancy
+GGT elevated: Alcohol, liver disease, enzyme-inducing drugs (phenytoin, rifampicin)
+
+=== MEDICAL REPORT INTERPRETATION: THYROID PATTERNS ===
+TOPIC: Laboratory | Thyroid Function Interpretation
+PRIMARY HYPOTHYROIDISM: TSH high + FT4 low → Autoimmune (Hashimoto's most common), radioiodine, thyroidectomy, iodine deficiency.
+SUBCLINICAL HYPOTHYROIDISM: TSH high + FT4 normal → Treat if TSH >10, symptomatic, or planning pregnancy.
+PRIMARY HYPERTHYROIDISM: TSH low + FT4/FT3 high → Graves' disease (diffuse goitre + ophthalmopathy), toxic multinodular goitre, toxic adenoma.
+SUBCLINICAL HYPERTHYROIDISM: TSH low + FT4/FT3 normal → Monitor, treat if symptomatic or TSH <0.1.
+SECONDARY HYPOTHYROIDISM: TSH low/normal + FT4 low → Pituitary disease (craniopharyngioma, pituitary adenoma).
+SICK EUTHYROID SYNDROME: TSH, FT3 low during critical illness → NOT primary thyroid disease. Repeat after recovery.
+
+=== MEDICAL REPORT INTERPRETATION: CARDIAC MARKERS ===
+TOPIC: Laboratory | Cardiac Biomarkers
+TROPONIN RISE-AND-FALL PATTERN: In acute MI, troponin begins rising 3–4h after injury, peaks 12–24h, returns to normal 5–14 days. Serial troponins (0h, 3h, 6h) essential.
+HIGH-SENSITIVITY TROPONIN (hsTnI):
+- <5 ng/L: Rule out ACS (if presentation >3h)
+- 5–52 ng/L: Low risk — assess clinically
+- >52 ng/L: Rule in ACS — treat as NSTEMI unless alternative diagnosis
+RISE DEFINITION: >20% relative change or absolute change >5 ng/L between 0h and 3h samples.
+BNP/NT-proBNP: Rules out heart failure if BNP <100 pg/mL or NT-proBNP <300 pg/mL. Values correlate with HF severity (NYHA class).
+
+=== MEDICAL REPORT INTERPRETATION: BLOOD COUNTS ===
+TOPIC: Laboratory | Haematology
+INFECTION PATTERN: WBC elevated (>11,000) + neutrophilia >75% + left shift (bands) = bacterial infection. WBC elevated + lymphocytosis = viral infection. Eosinophilia (>5%) = allergy, parasitic, drug reaction, eosinophilic disorders.
+ANAEMIA APPROACH (by MCV):
+MCV Low (<80 fL — Microcytic): Iron deficiency (most common, low ferritin), Thalassaemia (normal/high ferritin, ethnic background), Anaemia of chronic disease (low/normal ferritin, high CRP).
+MCV Normal (80–100 fL — Normocytic): Acute blood loss, haemolysis, chronic disease, renal failure, mixed deficiency.
+MCV High (>100 fL — Macrocytic): B12 deficiency (neurological symptoms — subacute combined degeneration), Folate deficiency, Alcohol, Hypothyroidism, Liver disease, Drugs (methotrexate, hydroxycarbamide).
+PLATELET ABNORMALITIES:
+Thrombocytopenia (<150,000): Mild (100–150) — monitor. Moderate (50–100) — bleeding risk with trauma/surgery. Severe (<50) — spontaneous bleeding. <20 — risk of spontaneous intracranial haemorrhage.
+Causes: ITP (isolated thrombocytopenia, splenomegaly absent), TTP (thrombocytopenia + microangiopathic haemolytic anaemia + organ dysfunction — emergency), HIT (heparin-induced, check PF4 antibodies), bone marrow failure.

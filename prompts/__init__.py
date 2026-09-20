@@ -1,0 +1,1 @@
+from .system_prompts import MEDICAL_RAG_PROMPT, XRAY_CORRELATION_PROMPT

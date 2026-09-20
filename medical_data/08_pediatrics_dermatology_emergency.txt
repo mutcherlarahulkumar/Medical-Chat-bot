@@ -1,0 +1,100 @@
+PEDIATRIC DISEASES - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== COMMON CHILDHOOD INFECTIONS ===
+Measles: Paramyxovirus. Prodrome (fever, cough, coryza, conjunctivitis), Koplik spots (pathognomonic - white spots inside cheek), then maculopapular rash spreading head to toe. Complications: pneumonia, encephalitis, SSPE. Prevention: MMR vaccine.
+Mumps: Paramyxovirus. Parotitis (jaw swelling), orchitis (adolescent males - infertility risk), meningitis, pancreatitis. Prevention: MMR.
+Rubella (German Measles): Togavirus. Mild illness, tender lymphadenopathy, fine maculopapular rash. DANGEROUS in pregnancy (Congenital Rubella Syndrome - cardiac defects, cataracts, deafness, microcephaly). Prevention: MMR.
+Chickenpox (Varicella): VZV. Pruritic vesicular rash (dew drops on rose petals), centripetal distribution. Complications: bacterial superinfection, pneumonia, cerebellar ataxia, Reye syndrome (aspirin). Treatment: Acyclovir for severe/immunocompromised. Vaccine available.
+Whooping Cough (Pertussis): Bordetella pertussis. Catarrhal stage → Paroxysmal stage (spasms of coughing + inspiratory whoop + post-tussive vomiting) → Convalescent stage. Dangerous in infants (<1 year). Treatment: Azithromycin.
+Roseola (HHV-6): High fever 3-5 days then rose-pink rash as fever breaks. Febrile seizures common.
+Scarlet Fever: GAS (Group A Strep). Fever, pharyngitis, strawberry tongue, sandpaper rash starting in axillae/groin. Treatment: Amoxicillin/Penicillin.
+Hand, Foot and Mouth Disease: Enterovirus (usually Coxsackievirus A16). Painful oral ulcers, vesicles on hands/feet/buttocks. Self-limiting.
+
+=== CHILDHOOD ASTHMA ===
+Most common chronic childhood disease. Triggers: viral infections, allergens, exercise, smoke. Diagnosis: Based on symptoms + reversible airflow obstruction. Treatment: Preventer (ICS), Reliever (SABA). Severe attack: Salbutamol nebulization, oxygen, IV magnesium, systemic steroids, ICU if needed.
+
+=== FEBRILE CONVULSIONS ===
+Seizures in children aged 6 months to 6 years triggered by fever. Simple (generalized, <15 min, once in 24 hrs), Complex (focal, prolonged, >1 episode in 24 hrs - requires investigation). Management: Safe positioning, rectal diazepam if prolonged, reduce fever. Benign prognosis for simple FC. 2-3% risk of developing epilepsy.
+
+=== NEONATAL JAUNDICE ===
+Physiological jaundice: Appears day 2-3, peaks day 4-5, resolves by day 14. Due to immature liver, fetal Hb breakdown. Treatment: Phototherapy if above treatment threshold.
+Pathological jaundice: Appears <24 hours (always investigate), or very severe, or persists >2 weeks (conjugated - always pathological, investigate for biliary atresia/neonatal hepatitis).
+Causes: Hemolytic (ABO/Rh incompatibility, G6PD deficiency), breast milk jaundice, biliary atresia, infection, hypothyroidism.
+Treatment: Phototherapy, exchange transfusion (severe/hydrops fetalis), treat underlying cause.
+
+=== INTUSSUSCEPTION ===
+Telescoping of one bowel segment into another. Most common in infants 3-12 months. Classic triad: episodic colicky abdominal pain, vomiting, "red currant jelly" stools (blood + mucus). Sausage-shaped abdominal mass. Diagnosis: USS (target sign), plain X-ray. Treatment: Air/hydrostatic enema (diagnostic and therapeutic), surgery if failed/perforation.
+
+=== DEVELOPMENTAL MILESTONES ===
+2 months: Social smile, head control in prone, coos.
+4 months: Head control complete, rolls front-to-back, laughs.
+6 months: Sits with support, transfers objects, babbles.
+9 months: Sits without support, crawls, pincer grip developing, mama/dada non-specifically.
+12 months: Walks with support, 3-5 words with meaning, pincer grip complete.
+18 months: Walks independently, 10+ words, points.
+2 years: Runs, 2-word phrases, 50+ words.
+3 years: Sentences, rides tricycle.
+5 years: Skips, reads simple words, ties shoelaces.
+
+=== AUTISM SPECTRUM DISORDER (ASD) ===
+Neurodevelopmental disorder characterized by deficits in social communication/interaction and restricted/repetitive behaviors. M:F ratio 4:1. Spectrum: mild (Asperger's) to severe. Diagnosis: Clinical assessment (ADI-R, ADOS), no specific biological test. Management: Early behavioral intervention (ABA), speech therapy, occupational therapy, special education, medication for specific symptoms (risperidone for irritability/aggression).
+
+==============================================
+DERMATOLOGY - COMPREHENSIVE KNOWLEDGE BASE
+==============================================
+
+=== COMMON SKIN CONDITIONS ===
+Eczema (Atopic Dermatitis): Chronic relapsing inflammatory skin condition. Itchy, dry, inflamed skin. Often begins in childhood. Associated with asthma and allergic rhinitis (atopic triad). Treatment: Emollients (cornerstone), topical corticosteroids, topical calcineurin inhibitors (tacrolimus, pimecrolimus), dupilumab (IL-4/IL-13 inhibitor - moderate-severe), JAK inhibitors.
+Psoriasis: Immune-mediated chronic inflammatory skin disease. Plaques: well-demarcated, erythematous, silver/white scales. Locations: elbows, knees, scalp, lower back. Nail changes (pitting, onycholysis). Psoriatic arthritis (30%). Treatment: Topical (corticosteroids, vitamin D analogues, calcineurin inhibitors), Phototherapy (NB-UVB), Systemics (methotrexate, cyclosporine, acitretin), Biologics (TNF, IL-17, IL-23 inhibitors).
+Acne Vulgaris: Multifactorial. Comedones, papules, pustules, nodules/cysts. Treatment: Topical (retinoids, benzoyl peroxide, antibiotics, azelaic acid), Oral (antibiotics, combined OCP, isotretinoin for severe nodulocystic).
+Urticaria (Hives): Wheals (itchy, raised, pale centers with red borders), angioedema. Acute (<6 weeks - usually allergic), Chronic (≥6 weeks - often idiopathic, autoimmune). Treatment: Identify/remove trigger, antihistamines (non-sedating H1 blockers first-line), omalizumab for chronic refractory.
+Cellulitis: Bacterial skin infection (usually Staphylococcus or Streptococcus). Spreading erythema, warmth, swelling, pain, fever. Treatment: Flucloxacillin or amoxicillin-clavulanate.
+Tinea Infections: Dermatophyte fungal infections. Tinea corporis (ringworm), tinea pedis (athlete's foot), tinea cruris (jock itch), tinea capitis (scalp - children), onychomycosis (nail). Treatment: Topical azoles/allylamines, oral terbinafine or itraconazole for nail/scalp/extensive disease.
+Melanoma: Malignant tumor of melanocytes. ABCDE criteria: Asymmetry, Border irregularity, Color variation, Diameter >6mm, Evolution. Risk factors: UV exposure, fair skin, many moles, family history. Diagnosis: dermoscopy, excisional biopsy. Treatment: Wide local excision, sentinel node biopsy, immunotherapy (PD-1 inhibitors), targeted therapy (BRAF inhibitors).
+Scabies: Sarcoptes scabiei mite. Intense nocturnal itch, burrows in web spaces/wrists/genitals, excoriated papules. Highly contagious. Treatment: Permethrin 5% cream (all household contacts), oral ivermectin.
+
+==============================================
+OPHTHALMOLOGY - COMPREHENSIVE KNOWLEDGE BASE
+==============================================
+
+=== EYE DISEASES ===
+Glaucoma: Optic neuropathy with characteristic field loss, often associated with raised IOP. Types: Primary open-angle (most common, insidious), Primary angle-closure (acute - painful red eye, halos, nausea, EMERGENCY). Treatment: IOP-lowering drops (beta-blockers, prostaglandin analogues), laser, surgery.
+Cataracts: Lens opacification. Age-related most common. Symptoms: painless progressive visual blurring, glare, halos. Treatment: Phacoemulsification + IOL implant when significantly affects vision.
+Age-related Macular Degeneration (AMD): Leading cause of blindness in elderly. Dry (drusen, geographic atrophy - no treatment), Wet (choroidal neovascularization, rapid vision loss - treat with anti-VEGF: ranibizumab, bevacizumab, aflibercept). Prevention: Smoking cessation, AREDS supplements (vitamins C/E, zinc, lutein).
+Diabetic Retinopathy: See endocrine section. Annual screening with dilated fundoscopy.
+Retinal Detachment: Separation of retina from RPE. Symptoms: flashes, floaters, then curtain/shadow over vision. Emergency. Treatment: Surgical (laser, cryotherapy, vitrectomy, scleral buckle).
+
+==============================================
+EMERGENCY MEDICINE - CRITICAL KNOWLEDGE BASE
+==============================================
+
+=== ANAPHYLAXIS ===
+Definition: Severe life-threatening systemic allergic reaction. Medical emergency.
+Triggers: Foods (peanuts, tree nuts, shellfish, milk, eggs), medications (antibiotics, NSAIDs, contrast), insect stings, latex, exercise, idiopathic.
+Diagnosis: Clinical - 2 of 3: acute onset skin/mucosal symptoms, respiratory compromise, hypotension/syncope/end-organ dysfunction. Or: ANY of above after exposure to known allergen.
+Symptoms: Urticaria, angioedema, bronchospasm (wheeze, SOB), laryngeal edema (stridor), hypotension, tachycardia, nausea, vomiting, diarrhea, confusion, loss of consciousness.
+TREATMENT (immediate):
+1. IM Epinephrine (adrenaline) 0.5mg (1:1000) in outer thigh - FIRST AND MOST IMPORTANT
+2. Call emergency services
+3. Lay patient flat with legs raised (or sitting if breathing difficulty)
+4. High-flow oxygen
+5. IV antihistamines (chlorphenamine)
+6. IV hydrocortisone
+7. IV fluid resuscitation
+8. Nebulized salbutamol for bronchospasm
+9. Observation minimum 6-12 hours (biphasic reaction risk)
+Discharge: Epinephrine auto-injector (EpiPen) prescription, allergy referral, medical alert bracelet.
+
+=== CARDIAC ARREST AND CPR ===
+Recognition: Unresponsive, not breathing normally (absent/gasping breaths).
+Chain of Survival: Early recognition → Call emergency services → Early CPR → Early defibrillation → Advanced life support.
+Basic Life Support (CPR): 30 chest compressions (5-6cm depth, 100-120/min, allow full recoil) : 2 rescue breaths. Minimize interruptions. AED as soon as available.
+Shockable rhythms: VF, pulseless VT → Defibrillate (biphasic 120-200J, monophasic 360J).
+Non-shockable: PEA, Asystole → CPR + Adrenaline 1mg IV every 3-5 min.
+Reversible causes (4Hs + 4Ts): Hypoxia, Hypovolemia, Hypo/Hyperkalemia, Hypothermia, Tension pneumothorax, Tamponade, Toxins, Thromboembolism.
+Post-resuscitation care: Target O2 sat 94-98%, temperature management (36°C), coronary angiography/PCI.
+
+=== POISONING AND OVERDOSE ===
+General principles: ABCDE assessment, decontamination (activated charcoal within 1hr if no contraindication), enhanced elimination, antidotes.
+Key antidotes: Naloxone (opioids), Flumazenil (benzodiazepines - use cautiously), N-acetylcysteine (paracetamol/acetaminophen), Atropine + Pralidoxime (organophosphates), Digoxin-specific Fab (digoxin), Glucagon (beta-blocker/Ca-channel blocker), Vitamin K + FFP (warfarin), Sodium bicarbonate (TCAs).
+Paracetamol overdose: Most common cause of acute liver failure in UK. NAC (N-acetylcysteine) antidote - highly effective if given early. Assess with Rumack-Matthew nomogram. King's College Criteria for liver transplant assessment.

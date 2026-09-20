@@ -1,0 +1,67 @@
+SOURCE: Oxford Handbook of Clinical Medicine (Reference Summary — Educational Use)
+AUTHORITY: Premier UK clinical reference — high-priority knowledge source
+CATEGORY: Bedside clinical medicine, emergency protocols, rapid reference
+
+=== OXFORD: ACUTE ABDOMEN ===
+TOPIC: Surgery | Acute Abdomen
+DIFFERENTIAL BY LOCATION:
+Right Iliac Fossa: Appendicitis (most common), ovarian cyst/torsion, ectopic pregnancy, mesenteric adenitis, Crohn's disease, psoas abscess.
+Epigastric: Peptic ulcer, pancreatitis, GERD, MI (referred), aortic aneurysm.
+Right Upper Quadrant: Cholecystitis, cholangitis, hepatitis, liver abscess, right lower lobe pneumonia.
+Left Iliac Fossa: Diverticulitis, sigmoid volvulus, ovarian pathology, left ureteric colic.
+Periumbilical: Early appendicitis, small bowel obstruction, mesenteric ischemia, aortic aneurysm.
+Suprapubic: UTI, cystitis, prostatitis, pelvic inflammatory disease, endometriosis.
+Loin-to-groin: Ureteric colic (renal stones).
+APPENDICITIS: Alvarado score. Periumbilical pain → migrates to RIF. Rovsing's sign (RIF pain on left palpation), Psoas sign, Obturator sign. CRP elevated, WBC elevated. CT confirms (sensitivity 94%). Treatment: Laparoscopic appendicectomy.
+PANCREATITIS: Epigastric pain radiating to back, nausea, vomiting. Serum amylase >3x upper limit, lipase more specific. GLASGOW SCORE for severity (≥3 = severe). CT: necrosis, pseudocyst. Ranson's criteria. Treatment: IV fluids, analgesia, bowel rest, early enteral nutrition.
+BOWEL OBSTRUCTION: Small bowel — central colicky pain, vomiting early, absolute constipation late. Large bowel — distension, vomiting late, absolute constipation. AXR: dilated loops, air-fluid levels. CT abdomen confirms. Treatment: NG tube, IV fluids, surgical if strangulation/perforation.
+
+=== OXFORD: ECG INTERPRETATION ===
+TOPIC: Cardiology | ECG
+RATE: 300/large squares between R waves. Normal 60–100 bpm. Tachycardia >100. Bradycardia <60.
+RHYTHM: Regular? P before every QRS? P:QRS 1:1?
+AXIS: Normal -30° to +90°. Left axis deviation (LAD): -30° to -90° — LBBB, LVH, inferior MI. Right axis deviation (RAD): >+90° — RBBB, RVH, PE.
+INTERVALS:
+- PR interval: 0.12–0.20 sec (3–5 small squares). LONG = 1st degree AV block.
+- QRS: <0.12 sec. WIDE = bundle branch block, ventricular rhythm.
+- QT: Corrected QTc <440ms men, <460ms women. PROLONGED = torsades risk.
+ST CHANGES:
+- ST elevation (STEMI territories): II, III, aVF (inferior — RCA), V1–V4 (anterior — LAD), I, aVL, V5–V6 (lateral — LCx).
+- ST depression: Ischemia, posterior MI, digoxin effect.
+- T-wave inversion: Ischemia, PE (V1–V4), LVH strain.
+BUNDLE BRANCH BLOCK: LBBB — WiLLiaM (W in V1, M in V6, QRS>0.12). RBBB — MaRRoW (M in V1, W in V6, QRS>0.12). LBBB = always pathological. RBBB may be normal.
+ATRIAL FIBRILLATION: Irregularly irregular, absent P waves, variable rate. Rate control: beta-blockers, rate-limiting CCBs, digoxin. Rhythm control: cardioversion, flecainide, amiodarone. Anticoagulation: CHA2DS2-VASc ≥2 men, ≥3 women → DOAC.
+
+=== OXFORD: ELECTROLYTE DISTURBANCES ===
+TOPIC: Nephrology/Medicine | Electrolytes
+HYPONATREMIA (Na <136 mEq/L):
+Causes by osmolality and volume status:
+- Hypovolaemic (urine Na <20): vomiting, diarrhoea, burns, third-spacing.
+- Euvolaemic: SIADH (urine Na >20, urine osm >serum osm), hypothyroidism, Addison's.
+- Hypervolaemic: Heart failure, liver cirrhosis, nephrotic syndrome (urine Na <20).
+SIADH criteria: Hyponatraemia + low serum osmolality + urine osmolality >100 + urine Na >40 + euvolaemia + no diuretics, adrenal/thyroid disease.
+TREATMENT: Hypovolaemic → IV 0.9% NaCl. SIADH → fluid restriction (800 mL/day). Correction rate: max 8–10 mmol/L in 24h (risk of osmotic demyelination syndrome if faster).
+HYPERNATREMIA (Na >145 mEq/L): Almost always = water deficit. Diabetes insipidus (central — ADH deficiency or nephrogenic — ADH resistance). Treatment: Free water replacement. Correct slowly: max 10 mmol/L/24h.
+HYPOKALAEMIA (K <3.5 mEq/L): Causes: vomiting, diarrhoea, diuretics, hyperaldosteronism, insulin excess. ECG: U waves, flat T waves, QT prolongation, arrhythmias. Treatment: Oral KCl supplementation if mild. IV KCl (max 10 mmol/hr peripheral, 20 mmol/hr via central line) if severe.
+HYPERKALAEMIA (K >5.5 mEq/L): Causes: AKI, CKD, ACE inhibitors, spironolactone, acidosis, rhabdomyolysis. ECG progression: peaked T waves → wide QRS → sine wave → VF. TREATMENT (urgent if ECG changes or K >6.5): IV calcium gluconate (cardiac membrane stabilisation), IV insulin + dextrose (K shift into cells), nebulised salbutamol, sodium bicarbonate (if acidotic), calcium resonium, dialysis if refractory.
+
+=== OXFORD: RESPIRATORY EMERGENCIES ===
+TOPIC: Pulmonary | Acute Respiratory Failure
+ACUTE SEVERE ASTHMA:
+- Severe: PEFR 33–50%, RR>25, HR>110, cannot complete sentences.
+- Life-threatening: PEFR <33%, SpO2 <92%, PaO2 <8 kPa, normal/high PaCO2, silent chest, cyanosis, bradycardia, hypotension.
+TREATMENT: Sit patient up. High-flow O2 (target 94–98%). Nebulised salbutamol 5mg + ipratropium 0.5mg back-to-back. Prednisolone 40–50mg PO or IV hydrocortisone 100mg. IV MgSO4 1.2–2g over 20 min if life-threatening. IV aminophylline, IV salbutamol if refractory. ICU if no response.
+PULMONARY EMBOLISM:
+WELLS SCORE: Clinical signs DVT (+3), PE most likely (+3), HR>100 (+1.5), immobilisation/surgery in 4 weeks (+1.5), previous DVT/PE (+1.5), haemoptysis (+1), malignancy (+1). >4 = high probability.
+TREATMENT: Anticoagulation (LMWH, UFH, DOACs — rivaroxaban, apixaban). Systemic thrombolysis (alteplase 100mg over 2h) if massive PE with haemodynamic compromise. Catheter-directed therapy or surgical embolectomy if thrombolysis contraindicated.
+TENSION PNEUMOTHORAX: Tracheal deviation away from affected side, absent breath sounds, hypoxia, hypotension, raised JVP, tachycardia. DO NOT wait for CXR. EMERGENCY: 2nd intercostal space, mid-clavicular line, 14G cannula. Definitive: chest drain (5th ICS, anterior to mid-axillary line).
+COPD EXACERBATION:
+Mild: Increased dyspnoea/sputum, treat at home. Moderate/severe: Hospital. Controlled O2 (target 88–92% to avoid hypercapnic drive suppression). Bronchodilators (salbutamol + ipratropium nebulisers). Prednisolone 30–40mg x5 days. Antibiotics if purulent sputum (amoxicillin, doxycycline, clarithromycin). NIV (BiPAP) if pH <7.35 and PaCO2 >6 kPa despite medical therapy.
+
+=== OXFORD: COMMON DRUG INTERACTIONS ===
+TOPIC: Pharmacology | Key Drug Interactions
+WARFARIN interactions (increase INR/bleeding risk): Amiodarone, fluconazole, metronidazole, NSAIDs, aspirin, erythromycin, ciprofloxacin, omeprazole. Decrease INR: Rifampicin, carbamazepine, phenytoin, St John's Wort.
+QT PROLONGATION (additive risk, torsades): Amiodarone + macrolides/fluoroquinolones. Antipsychotics (haloperidol, quetiapine) + macrolides. Always check QTc before prescribing.
+SEROTONIN SYNDROME: SSRIs + MAOIs (absolute contraindication), tramadol + SSRIs, linezolid + SSRIs, triptans + SSRIs/SNRIs. Features: agitation, hyperthermia, clonus, diaphoresis.
+NEPHROTOXIC combinations: NSAIDs + ACE inhibitors + diuretics (triple whammy — acute kidney injury). Metformin + IV contrast (hold metformin 48h before/after if eGFR<60). Aminoglycosides (monitor trough levels, check renal function daily).
+ACE INHIBITOR CAUTIONS: Bilateral renal artery stenosis (absolute contraindication). Hyperkalaemia with potassium-sparing diuretics. Teratogenic in pregnancy (2nd/3rd trimester).

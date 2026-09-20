@@ -1,0 +1,83 @@
+RESPIRATORY DISEASES - COMPREHENSIVE MEDICAL KNOWLEDGE BASE
+
+=== PNEUMONIA ===
+Definition: Pneumonia is an infection that inflames the air sacs (alveoli) in one or both lungs, which may fill with fluid or pus.
+Types: Bacterial pneumonia (Streptococcus pneumoniae most common), Viral pneumonia (influenza, COVID-19), Fungal pneumonia, Aspiration pneumonia, Hospital-acquired pneumonia (HAP), Community-acquired pneumonia (CAP).
+Symptoms: Chest pain when breathing or coughing, confusion or altered mental status (especially in elderly), cough producing phlegm, fatigue, fever, sweating, chills, nausea, vomiting, diarrhea, shortness of breath.
+Diagnosis: Chest X-ray (shows infiltrates/consolidation), CT scan, blood tests (CBC, CRP, procalcitonin), sputum culture, pulse oximetry, bronchoscopy in severe cases.
+Treatment: Antibiotics for bacterial (amoxicillin, azithromycin, doxycycline, levofloxacin), antivirals for viral, antifungals for fungal, oxygen therapy, IV fluids, hospitalization for severe cases.
+Complications: Bacteremia, lung abscess, pleural effusion, respiratory failure, sepsis.
+Prevention: Pneumococcal vaccine, influenza vaccine, COVID-19 vaccine, good hygiene, not smoking.
+
+=== TUBERCULOSIS (TB) ===
+Definition: A potentially serious infectious disease caused by Mycobacterium tuberculosis, mainly affecting the lungs.
+Types: Latent TB (no symptoms, not contagious), Active TB (symptomatic, contagious), Pulmonary TB, Extrapulmonary TB (affects kidneys, spine, brain).
+Symptoms: Coughing for 3+ weeks, coughing up blood, chest pain, unintentional weight loss, fatigue, fever, night sweats, chills, loss of appetite.
+Diagnosis: TB skin test (Mantoux), IGRA blood test, chest X-ray, sputum smear microscopy, sputum culture, GeneXpert MTB/RIF test.
+Treatment: Standard 6-month regimen - Isoniazid (INH), Rifampicin, Pyrazinamide, Ethambutol for 2 months, then INH and Rifampicin for 4 months. Drug-resistant TB requires longer treatment with second-line drugs.
+Complications: Spinal damage, joint damage, meningitis, liver problems, kidney problems, heart disorders.
+Prevention: BCG vaccine, early detection, contact tracing, proper ventilation, wearing masks.
+
+=== ASTHMA ===
+Definition: A chronic inflammatory disease of the airways causing recurrent episodes of wheezing, breathlessness, chest tightness, and coughing.
+Types: Allergic asthma, Non-allergic asthma, Exercise-induced asthma, Occupational asthma, Aspirin-induced asthma, Childhood asthma.
+Symptoms: Shortness of breath, chest tightness or pain, wheezing when exhaling, trouble sleeping due to breathing, coughing fits worsened by respiratory infections.
+Triggers: Airborne allergens (pollen, dust mites, mold, pet dander), respiratory infections, physical activity, cold air, air pollutants, smoke, certain medications (aspirin, beta blockers), stress.
+Diagnosis: Spirometry (measures FEV1/FVC ratio), peak flow measurement, methacholine challenge test, nitric oxide test, allergy testing, chest X-ray.
+Treatment: Quick-relief (rescue) inhalers - short-acting beta agonists (salbutamol/albuterol). Long-term control - inhaled corticosteroids (ICS), long-acting beta agonists (LABA), leukotriene modifiers, theophylline, biologics (omalizumab, mepolizumab).
+Severity: Intermittent, Mild persistent, Moderate persistent, Severe persistent.
+Complications: Severe asthma attacks, permanent airway narrowing, side effects from medications.
+
+=== CHRONIC OBSTRUCTIVE PULMONARY DISEASE (COPD) ===
+Definition: A chronic inflammatory lung disease causing obstructed airflow. Includes chronic bronchitis and emphysema.
+Causes: Smoking (primary cause - 85%), long-term exposure to irritants (dust, chemicals, air pollution), alpha-1 antitrypsin deficiency (genetic).
+Symptoms: Ongoing cough with mucus, shortness of breath especially during activity, wheezing, chest tightness, frequent respiratory infections, lack of energy, unintended weight loss (advanced stages), swelling in ankles/feet/legs (cor pulmonale).
+Diagnosis: Spirometry (FEV1/FVC < 0.70 confirms obstruction), chest X-ray, CT scan, arterial blood gas, alpha-1 antitrypsin test.
+Stages (GOLD): Stage 1 Mild (FEV1 ≥80%), Stage 2 Moderate (50-79%), Stage 3 Severe (30-49%), Stage 4 Very Severe (<30%).
+Treatment: Smoking cessation (most important), bronchodilators (SABAs, LABAs, SAMAs, LAMAs), inhaled corticosteroids, combination inhalers, phosphodiesterase-4 inhibitors, oxygen therapy, pulmonary rehabilitation, surgery (lung volume reduction, lung transplant).
+Complications: Respiratory infections, heart problems, lung cancer, pulmonary hypertension, depression, anxiety.
+
+=== PLEURAL EFFUSION ===
+Definition: Excess fluid that accumulates in the pleural cavity (space between lungs and chest wall).
+Types: Transudates (from systemic disease - heart failure, cirrhosis, nephrotic syndrome), Exudates (from local disease - infection, malignancy, pulmonary embolism).
+Causes: Congestive heart failure (most common), pneumonia, malignancy, tuberculosis, pulmonary embolism, liver cirrhosis, kidney disease, autoimmune diseases.
+Symptoms: Shortness of breath, chest pain (pleuritic - sharp, worsens with breathing), dry cough, fever (if infected), decreased breath sounds on affected side.
+Diagnosis: Chest X-ray, CT scan, ultrasound, thoracentesis with fluid analysis (protein, LDH, glucose, cell count, culture, cytology).
+Treatment: Treat underlying cause, thoracentesis (drain fluid), chest tube, pleurodesis (for recurrent effusions), surgery.
+
+=== COVID-19 ===
+Definition: Infectious disease caused by SARS-CoV-2 coronavirus, primarily affecting the respiratory system.
+Symptoms: Fever, dry cough, tiredness, loss of taste or smell, sore throat, headache, muscle aches, diarrhea, conjunctivitis, rash, shortness of breath, chest pain.
+Severity: Mild (80%), Moderate, Severe, Critical (requiring ICU).
+Diagnosis: RT-PCR (gold standard), rapid antigen test, chest CT (ground-glass opacities), blood tests.
+Treatment: Supportive care, antivirals (nirmatrelvir/ritonavir, remdesivir), anti-inflammatories (dexamethasone), anticoagulants, oxygen therapy, mechanical ventilation for severe cases.
+Long COVID: Fatigue, brain fog, breathlessness, chest pain, lasting weeks to months after infection.
+Prevention: Vaccination, masks, hand hygiene, ventilation, physical distancing.
+
+=== LUNG CANCER ===
+Definition: Malignant tumors originating in the lungs. Leading cause of cancer death worldwide.
+Types: Non-small cell lung cancer (NSCLC) - 85% (adenocarcinoma, squamous cell, large cell), Small cell lung cancer (SCLC) - 15%.
+Risk factors: Smoking (primary - 85%), radon gas, asbestos, air pollution, family history, HIV infection.
+Symptoms: New persistent cough, coughing up blood, chest pain, hoarseness, weight loss, bone pain, headache (brain metastasis), shortness of breath.
+Diagnosis: Chest X-ray, CT scan, PET scan, bronchoscopy, biopsy, sputum cytology, MRI brain.
+Staging: Stage I (localized), Stage II, Stage III (locally advanced), Stage IV (metastatic).
+Treatment: Surgery (lobectomy, pneumonectomy), radiation therapy, chemotherapy, targeted therapy (EGFR, ALK, ROS1 inhibitors), immunotherapy (PD-L1 inhibitors).
+Prognosis: 5-year survival - Stage I: 60-80%, Stage IV: 5-10%.
+
+=== PULMONARY EMBOLISM (PE) ===
+Definition: Blockage of one or more pulmonary arteries by blood clots, usually from deep vein thrombosis (DVT).
+Risk factors: Prolonged immobility, surgery, cancer, pregnancy, oral contraceptives, obesity, previous DVT/PE, genetic clotting disorders.
+Symptoms: Sudden shortness of breath, chest pain (pleuritic), rapid heart rate, coughing (sometimes with blood), dizziness, fever, leg pain/swelling (DVT signs).
+Diagnosis: D-dimer blood test, CT pulmonary angiography (CTPA - gold standard), V/Q scan, echocardiography, Doppler ultrasound of legs.
+Treatment: Anticoagulants (heparin IV, LMWH, rivaroxaban, apixaban), thrombolytics (tPA) for massive PE, embolectomy, IVC filter.
+Prevention: Early ambulation after surgery, compression stockings, prophylactic anticoagulation.
+
+=== BRONCHITIS ===
+Acute Bronchitis: Inflammation of bronchial tubes usually caused by viruses (rhinovirus, influenza). Symptoms: cough with mucus, low-grade fever, chest discomfort. Treatment: Rest, fluids, over-the-counter cough remedies, antibiotics only if bacterial.
+Chronic Bronchitis: Part of COPD. Defined as cough with mucus for at least 3 months in 2 consecutive years. Caused mainly by smoking.
+
+=== PNEUMOTHORAX ===
+Definition: Collapsed lung - air leaks into the space between lung and chest wall.
+Types: Spontaneous (primary - no underlying disease, secondary - complication of lung disease), Traumatic, Tension pneumothorax (medical emergency).
+Symptoms: Sudden chest pain, shortness of breath, rapid breathing, decreased breath sounds on affected side.
+Treatment: Observation (small), needle aspiration, chest tube, surgery (VATS pleurodesis for recurrent).
