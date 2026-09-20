@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Back up the routines database so a new phone keeps your reminders. -->
+<full-backup-content>
+    <include domain="database" path="skin-tracker.db" />
+</full-backup-content>

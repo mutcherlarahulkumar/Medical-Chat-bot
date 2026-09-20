@@ -48,3 +48,12 @@ data/
 skin_tracker/data/
 mobile/node_modules/
 mobile/android/
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+*.apk
+*.aab
