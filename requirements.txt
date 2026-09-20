@@ -31,3 +31,6 @@ pdfplumber>=0.10.0
 
 # Optional: for .doc/.docx report support
 # python-docx>=1.0.0
+
+# Skin Tracker (skin_tracker/) — only needs flask + this
+anthropic>=1.0.0
