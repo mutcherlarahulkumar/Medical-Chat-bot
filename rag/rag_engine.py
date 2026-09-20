@@ -18,9 +18,21 @@ New additions (all additive):
 
 import os
 import re
+import sys
 import logging
 from pathlib import Path
 from typing import List, Optional, Dict, Tuple
+
+# Lab-value patterns live in utils.medical_values so they can be unit-tested
+# without loading torch/faiss. Re-exported below — rag_engine's public
+# interface (LAB_VALUE_PATTERNS, extract_medical_values, build_enriched_query)
+# is unchanged.
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.medical_values import (  # noqa: E402
+    LAB_VALUE_PATTERNS,
+    extract_medical_values,
+    build_enriched_query as _build_enriched_query,
+)
 
 from langchain_community.document_loaders import (
     PyPDFLoader, DirectoryLoader, TextLoader, CSVLoader,
@@ -77,24 +89,6 @@ TOPIC_PATTERNS = {
     "emergency":       r"\b(emergency|urgent|acute|critical|resuscit|cardiac arrest|anaphylaxis|shock)\b",
 }
 
-# ── Medical value patterns (for query analysis) ───────────────────────────────
-LAB_VALUE_PATTERNS = {
-    "glucose":         r"\b(?:glucose|blood sugar|FBS|RBS|PPBS)\s*[=:>< ]*(\d+\.?\d*)\s*(?:mg/dL|mmol/L)?\b",
-    "hba1c":           r"\b(?:HbA1c|A1c|glycated haemoglobin)\s*[=:>< ]*(\d+\.?\d*)\s*%?\b",
-    "creatinine":      r"\b(?:creatinine|Cr)\s*[=:>< ]*(\d+\.?\d*)\s*(?:mg/dL|μmol/L)?\b",
-    "hemoglobin":      r"\b(?:haemoglobin|hemoglobin|Hb|Hgb)\s*[=:>< ]*(\d+\.?\d*)\s*(?:g/dL|g/L)?\b",
-    "bp_systolic":     r"\b(?:BP|blood pressure)\s*[=:>< ]*(\d{2,3})/(\d{2,3})\b",
-    "wbc":             r"\b(?:WBC|white blood cells?|leukocytes?)\s*[=:>< ]*(\d+\.?\d*)\b",
-    "platelets":       r"\b(?:platelets?|PLT|thrombocytes?)\s*[=:>< ]*(\d+\.?\d*)\b",
-    "sodium":          r"\b(?:sodium|Na\+?)\s*[=:>< ]*(\d+\.?\d*)\s*(?:mEq/L|mmol/L)?\b",
-    "potassium":       r"\b(?:potassium|K\+?)\s*[=:>< ]*(\d+\.?\d*)\s*(?:mEq/L|mmol/L)?\b",
-    "tsh":             r"\b(?:TSH|thyroid stimulating hormone)\s*[=:>< ]*(\d+\.?\d*)\s*(?:mIU/L|μIU/mL)?\b",
-    "alt":             r"\b(?:ALT|SGPT|alanine)\s*[=:>< ]*(\d+\.?\d*)\s*(?:U/L|IU/L)?\b",
-    "troponin":        r"\b(?:troponin|TnI|TnT)\s*[=:>< ]*(\d+\.?\d*)\b",
-    "cholesterol":     r"\b(?:total cholesterol|LDL|HDL|triglycerides?)\s*[=:>< ]*(\d+\.?\d*)\s*(?:mg/dL|mmol/L)?\b",
-    "spo2":            r"\b(?:SpO2|oxygen saturation|O2 sat)\s*[=:>< ]*(\d+\.?\d*)\s*%?\b",
-    "crp":             r"\b(?:CRP|C-reactive protein)\s*[=:>< ]*(\d+\.?\d*)\s*(?:mg/L|mg/dL)?\b",
-}
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -169,35 +163,15 @@ def _detect_topic(text: str) -> str:
 # ADDITION 3: Medical value extraction from queries/reports
 # ══════════════════════════════════════════════════════════════════════════════
 
-def extract_medical_values(text: str) -> Dict[str, str]:
-    """
-    NEW (PUBLIC): Extracts lab values from medical reports or user queries.
-    Returns a dict of detected values for enriched RAG querying.
-    
-    Example: "glucose 145 mg/dL" → {"glucose": "145"}
-    """
-    found = {}
-    for lab, pattern in LAB_VALUE_PATTERNS.items():
-        match = re.search(pattern, text, re.IGNORECASE)
-        if match:
-            found[lab] = match.group(1)
-    return found
-
-
 def build_enriched_query(original_query: str, extracted_values: Dict[str, str]) -> str:
     """
-    NEW: Augments the RAG query with medical value context for better retrieval.
-    If a report contains glucose=145, query is enriched to also search for
-    'glucose 145 interpretation diabetes reference range'.
+    Augments the RAG query with medical value context for better retrieval.
+    Delegates to utils.medical_values; kept here for interface compatibility
+    and for the retrieval log line.
     """
     if not extracted_values:
         return original_query
-
-    value_context_parts = []
-    for lab, value in extracted_values.items():
-        value_context_parts.append(f"{lab} level {value} interpretation reference range normal abnormal")
-
-    enriched = original_query + " " + " ".join(value_context_parts)
+    enriched = _build_enriched_query(original_query, extracted_values)
     logger.info(f"[RAG] Enriched query with {len(extracted_values)} lab value(s): {list(extracted_values.keys())}")
     return enriched
 

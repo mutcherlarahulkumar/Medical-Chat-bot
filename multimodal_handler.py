@@ -1,20 +1,27 @@
 """
-multimodal_handler.py — MediBot v5 Enhanced
+multimodal_handler.py — MediBot
 ---------------------------------------------
-EXTENSION of original multimodal_handler.py.
-✅ All original modes (text/image/multimodal) preserved.
-✅ New additions:
-   - Lab value extraction + enriched RAG queries
-   - Source-weighted retrieval via retrieve_with_priority()
-   - Medical report prompt when report text detected
-   - X-ray clinical correlation prompt
-   - Source citation in formatted output
-   - NEVER returns generic error — always structured fallback
+Routes a request (text / X-ray / report / combined) to the right prompt,
+retrieves supporting context, and returns a structured answer.
+
+Fixes in this revision
+----------------------
+* The mode-specific prompt is now actually passed to the LLM. `effective_prompt`
+  used to be computed and then thrown away, so report mode, lab mode and plain
+  chat all sent the same hard-coded prompt and came back with the same shape of
+  answer regardless of input.
+* The RAG-chain fallback now feeds the *retrieved documents* to the LLM as
+  context. It used to feed the chain's own JSON answer back in as "context",
+  which collapsed two different questions into near-identical output.
+* The lab-value path keeps the user's real question instead of replacing it
+  with a fixed sentence.
+* Works with llm=None (knowledge-base-only mode) instead of erroring.
+* `degraded` / `error` are propagated so the caller can tell the user the model
+  did not answer.
 """
 
 import logging
-import json
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
 from image_model.xray_analyzer import analyze_xray, format_xray_for_rag
 from services.llm_service import call_llm_with_fallback, _default_structured
@@ -35,6 +42,11 @@ logger = logging.getLogger(__name__)
 # Detect medical report text prefix added by app.py
 REPORT_MARKER = "[MEDICAL REPORT CONTENT]"
 
+# Cap the context handed to the model — an over-long context makes free-tier
+# models truncate their JSON, which then fails to parse and drops the request
+# into the canned fallback.
+MAX_CONTEXT_CHARS = 6000
+
 
 class MultimodalHandler:
     def __init__(self, rag_chain, llm=None, vectorstore=None):
@@ -42,7 +54,7 @@ class MultimodalHandler:
         self.llm        = llm
         # Extract vectorstore for direct priority retrieval
         self._vectorstore = vectorstore or getattr(rag_chain, "vectorstore", None)
-        if not self._vectorstore:
+        if not self._vectorstore and rag_chain is not None:
             try:
                 # LangChain chain → retriever → vectorstore
                 self._vectorstore = rag_chain.retriever.vectorstore
@@ -75,8 +87,52 @@ class MultimodalHandler:
             "mode":       "empty",
             "xray_analysis": None,
             "rag_used":   False,
+            "degraded":   False,
             "error":      "No input provided",
         }
+
+    # ── Retrieval (shared by all three modes) ─────────────────────────────────
+    def _retrieve(self, query: str, k: int = 6, lab_values: Optional[Dict] = None):
+        """
+        Returns (context_text, citation, rag_used).
+        Tries priority retrieval first, then the plain RAG chain's retriever.
+        """
+        if self._vectorstore is not None:
+            try:
+                enriched_q = build_enriched_query(query[:600], lab_values or {})
+                docs, citation = retrieve_with_priority(self._vectorstore, enriched_q, k=k)
+                if docs:
+                    return self._join_docs(docs), citation, True
+                logger.info("[Multimodal] Priority retrieval returned no documents.")
+            except Exception as e:
+                logger.warning(f"[Multimodal] Priority retrieval failed: {e}, falling back to chain.")
+
+        if self.rag_chain is not None:
+            try:
+                rag_response = self.rag_chain.invoke({"input": query})
+                # Use the retrieved DOCUMENTS as context, not the chain's answer.
+                docs = rag_response.get("context") or []
+                if docs:
+                    return self._join_docs(docs), "", True
+                logger.info("[Multimodal] RAG chain returned no context documents.")
+            except Exception as e:
+                logger.warning(f"[Multimodal] RAG chain also failed: {e}")
+
+        return "", "", False
+
+    @staticmethod
+    def _join_docs(docs: List) -> str:
+        parts, total = [], 0
+        for doc in docs:
+            content = getattr(doc, "page_content", str(doc)).strip()
+            if not content:
+                continue
+            if total + len(content) > MAX_CONTEXT_CHARS:
+                parts.append(content[: max(0, MAX_CONTEXT_CHARS - total)])
+                break
+            parts.append(content)
+            total += len(content)
+        return "\n\n---\n\n".join(parts)
 
     # ── Text / Report only ────────────────────────────────────────────────────
     def _handle_text_only(self, query: str) -> Dict:
@@ -84,63 +140,37 @@ class MultimodalHandler:
         mode_label = "report" if is_report else "text"
         logger.info(f"[Multimodal] Mode: {mode_label.upper()}")
 
-        # ── NEW: Extract lab values from query/report ─────────────────────────
         lab_values = extract_medical_values(query)
         has_labs   = bool(lab_values)
         logger.info(f"[Multimodal] Lab values detected: {lab_values if has_labs else 'none'}")
 
-        context   = ""
-        citation  = ""
-        rag_used  = False
+        context, citation, rag_used = self._retrieve(query, k=6, lab_values=lab_values)
 
-        # ── NEW: Priority retrieval path ──────────────────────────────────────
-        if self._vectorstore is not None:
-            try:
-                enriched_q = build_enriched_query(query[:500], lab_values)
-                docs, citation = retrieve_with_priority(self._vectorstore, enriched_q, k=6)
-                context = "\n\n".join(d.page_content for d in docs)
-                rag_used = True
-                logger.info(f"[Multimodal] Priority retrieval: {len(docs)} docs, citation={bool(citation)}")
-            except Exception as e:
-                logger.warning(f"[Multimodal] Priority retrieval failed: {e}, falling back to chain.")
+        # ── Select the prompt for this content type and USE it ────────────────
+        # Order matters: a full report gets the report prompt even when it also
+        # contains lab values, because that prompt reads values as a pattern
+        # rather than one at a time. The detected values are still handed over.
+        prompt_fields = {}
+        formatted_labs = ", ".join(f"{k.replace('_', ' ')}={v}" for k, v in lab_values.items())
 
-        # ── Fallback: use original rag_chain ─────────────────────────────────
-        if not rag_used:
-            try:
-                rag_response = self.rag_chain.invoke({"input": query})
-                context  = rag_response.get("answer", "")
-                rag_used = True
-            except Exception as e:
-                logger.warning(f"[Multimodal] RAG chain also failed: {e}")
-
-        # ── NEW: Select prompt based on content type ──────────────────────────
-        if has_labs and context:
-            effective_prompt = LAB_VALUE_PROMPT.replace("{lab_values}", str(lab_values))
-            llm_query = (
-                f"Lab values detected: {lab_values}\n\n"
-                f"Full context: {query[:1200]}\n\n"
-                "Please interpret these values with reference ranges."
-            )
-        elif is_report and context:
+        if is_report:
             effective_prompt = MEDICAL_REPORT_PROMPT
-            llm_query = query
+            mode_label = "report"
+            if formatted_labs:
+                context += f"\n\nAUTO-DETECTED VALUES IN THIS REPORT: {formatted_labs}"
+        elif has_labs:
+            effective_prompt = LAB_VALUE_PROMPT
+            prompt_fields["lab_values"] = formatted_labs
+            mode_label = "lab_values"
         else:
-            effective_prompt = None  # use call_llm_with_fallback default
-            llm_query = query
+            effective_prompt = MEDICAL_RAG_PROMPT
+            mode_label = "text"
 
-        # ── LLM call ──────────────────────────────────────────────────────────
-        try:
-            structured = call_llm_with_fallback(
-                self.llm,
-                llm_query,
-                context=context + citation,
-            )
-        except Exception as e:
-            logger.error(f"[Multimodal] LLM failed: {e}")
-            structured = _default_structured(query)
+        structured = self._call_llm(
+            query, context + citation, effective_prompt, prompt_fields
+        )
 
-        # ── Enrich summary with source citation ───────────────────────────────
-        if citation and "problem_summary" in structured:
+        if citation:
             structured["_sources"] = citation.strip()
 
         return {
@@ -150,7 +180,8 @@ class MultimodalHandler:
             "xray_analysis": None,
             "rag_used":      rag_used,
             "lab_values":    lab_values,
-            "error":         None,
+            "degraded":      bool(structured.get("_degraded")),
+            "error":         structured.get("_error"),
         }
 
     # ── Image only ────────────────────────────────────────────────────────────
@@ -160,44 +191,31 @@ class MultimodalHandler:
         finding     = xray_result.get("primary_finding", "UNKNOWN")
         xray_text   = format_xray_for_rag(xray_result)
 
-        context  = xray_text
-        citation = ""
-        rag_used = False
-
-        # NEW: Use priority retrieval for X-ray context
-        if self._vectorstore is not None and finding != "ANALYSIS_FAILED":
+        context, citation, rag_used = "", "", False
+        if finding != "ANALYSIS_FAILED":
             rag_q = self._build_image_rag_query(finding, xray_result.get("severity", ""))
-            try:
-                docs, citation = retrieve_with_priority(self._vectorstore, rag_q, k=5)
-                context = xray_text + "\n\n" + "\n\n".join(d.page_content for d in docs)
-                rag_used = True
-                logger.info(f"[Multimodal] X-ray RAG: {len(docs)} priority docs retrieved")
-            except Exception as e:
-                logger.warning(f"[Multimodal] X-ray priority retrieval failed: {e}")
-        elif finding != "ANALYSIS_FAILED":
-            try:
-                rag_q = self._build_image_rag_query(finding, xray_result.get("severity", ""))
-                rag_resp = self.rag_chain.invoke({"input": rag_q})
-                context  = xray_text + "\n\n" + rag_resp.get("answer", "")
-                rag_used = True
-            except Exception as e:
-                logger.warning(f"[Multimodal] X-ray RAG chain failed: {e}")
+            context, citation, rag_used = self._retrieve(rag_q, k=5)
 
-        # Build X-ray correlation prompt query
+        full_context = (xray_text + "\n\n" + context).strip() if context else xray_text
+
         img_query = (
-            f"X-ray finding: {finding}. "
+            f"An X-ray was analysed and the finding is: {finding}. "
             f"{xray_result.get('interpretation', '')} "
-            f"Severity: {xray_result.get('severity', 'unknown')}. "
-            "Provide full clinical explanation and management."
+            f"Explain what this means clinically, the likely symptoms, the recommended "
+            f"work-up, and how it is usually managed."
         )
 
-        try:
-            structured = call_llm_with_fallback(self.llm, img_query, context=context + citation)
-        except Exception as e:
-            logger.error(f"[Multimodal] LLM failed for image: {e}")
-            structured = _xray_to_structured(xray_result)
+        structured = self._call_llm(
+            img_query, full_context + citation, XRAY_CORRELATION_PROMPT,
+            {
+                "xray_finding": finding,
+                "confidence":   round(xray_result.get("confidence", 0) * 100, 1),
+                "severity":     xray_result.get("severity", "unknown"),
+            },
+            xray_fallback=xray_result,
+        )
 
-        if citation and "problem_summary" in structured:
+        if citation:
             structured["_sources"] = citation.strip()
 
         return {
@@ -207,7 +225,8 @@ class MultimodalHandler:
             "xray_analysis": xray_result,
             "rag_used":      rag_used,
             "lab_values":    {},
-            "error":         None,
+            "degraded":      bool(structured.get("_degraded")),
+            "error":         structured.get("_error"),
         }
 
     # ── Text + Image ──────────────────────────────────────────────────────────
@@ -224,34 +243,20 @@ class MultimodalHandler:
             f"Patient question: {query}"
         )
 
-        context  = xray_text
-        citation = ""
-        rag_used = False
+        context, citation, rag_used = self._retrieve(augmented_query, k=6, lab_values=lab_values)
+        full_context = (xray_text + "\n\n" + context).strip() if context else xray_text
 
-        if self._vectorstore is not None:
-            try:
-                enriched_q = build_enriched_query(augmented_query[:600], lab_values)
-                docs, citation = retrieve_with_priority(self._vectorstore, enriched_q, k=6)
-                context  = xray_text + "\n\n" + "\n\n".join(d.page_content for d in docs)
-                rag_used = True
-            except Exception as e:
-                logger.warning(f"[Multimodal] Combined priority retrieval failed: {e}")
+        structured = self._call_llm(
+            augmented_query, full_context + citation, XRAY_CORRELATION_PROMPT,
+            {
+                "xray_finding": finding,
+                "confidence":   round(xray_result.get("confidence", 0) * 100, 1),
+                "severity":     xray_result.get("severity", "unknown"),
+            },
+            xray_fallback=xray_result,
+        )
 
-        if not rag_used:
-            try:
-                rag_resp = self.rag_chain.invoke({"input": augmented_query})
-                context  = xray_text + "\n\n" + rag_resp.get("answer", "")
-                rag_used = True
-            except Exception as e:
-                logger.warning(f"[Multimodal] Combined RAG chain failed: {e}")
-
-        try:
-            structured = call_llm_with_fallback(self.llm, augmented_query, context=context + citation)
-        except Exception as e:
-            logger.error(f"[Multimodal] LLM failed: {e}")
-            structured = _xray_to_structured(xray_result)
-
-        if citation and "problem_summary" in structured:
+        if citation:
             structured["_sources"] = citation.strip()
 
         return {
@@ -261,10 +266,26 @@ class MultimodalHandler:
             "xray_analysis": xray_result,
             "rag_used":      rag_used,
             "lab_values":    lab_values,
-            "error":         None,
+            "degraded":      bool(structured.get("_degraded")),
+            "error":         structured.get("_error"),
         }
 
     # ── Helpers ───────────────────────────────────────────────────────────────
+    def _call_llm(self, query: str, context: str, system_prompt: str,
+                  prompt_fields: Dict, xray_fallback: Optional[Dict] = None) -> Dict:
+        try:
+            return call_llm_with_fallback(
+                self.llm, query,
+                context=context,
+                system_prompt=system_prompt,
+                prompt_fields=prompt_fields,
+            )
+        except Exception as e:
+            logger.error(f"[Multimodal] LLM call raised: {e}")
+            if xray_fallback:
+                return _xray_to_structured(xray_fallback, error=str(e))
+            return _default_structured(query, context)
+
     def _run_xray_analysis(self, image_bytes: bytes) -> Dict:
         try:
             result = analyze_xray(image_bytes)
@@ -305,13 +326,27 @@ class MultimodalHandler:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _format_structured_html(structured: dict, xray_result: dict = None) -> str:
+    """
+    Plain-text rendering of the structured answer.
+
+    The browser UI renders the `structured` dict itself so it can style each
+    section; this text version is kept for API clients and for the transcript
+    fallback when `structured` is missing.
+    """
     parts = []
+
+    if structured.get("_degraded"):
+        parts.append(
+            "⚠️ SERVICE NOTICE\nThe AI model did not return an answer for this "
+            "request, so the text below is a system message rather than a "
+            "medical assessment."
+        )
 
     if xray_result and xray_result.get("primary_finding") != "ANALYSIS_FAILED":
         finding = xray_result.get("primary_finding", "Unknown")
         conf    = round(xray_result.get("confidence", 0) * 100, 1)
         sev     = xray_result.get("severity", "unknown")
-        parts.append(f"🩻 X-RAY ANALYSIS\nFinding: {finding} ({conf}% confidence) | Severity: {sev.upper()}\n")
+        parts.append(f"🩻 X-RAY ANALYSIS\nFinding: {finding} ({conf}% confidence) | Severity: {sev.upper()}")
 
     summary = structured.get("problem_summary", "")
     if summary:
@@ -322,7 +357,7 @@ def _format_structured_html(structured: dict, xray_result: dict = None) -> str:
         cond_list = "\n".join(f"  • {c}" for c in conditions)
         parts.append(f"🔍 POSSIBLE CONDITIONS\n{cond_list}")
 
-    severity_level = structured.get("severity_level", "moderate").upper()
+    severity_level = str(structured.get("severity_level", "moderate")).upper()
     severity_emoji = {"LOW": "🟢", "MODERATE": "🟡", "HIGH": "🔴"}.get(severity_level, "🟡")
     parts.append(f"⚠️ SEVERITY\n{severity_emoji} {severity_level}")
 
@@ -335,30 +370,31 @@ def _format_structured_html(structured: dict, xray_result: dict = None) -> str:
     if when:
         parts.append(f"🚨 WHEN TO SEEK HELP\n{when}")
 
-    # NEW: Show source citation if available
     sources = structured.get("_sources", "")
     if sources:
         parts.append(f"📚 KNOWLEDGE SOURCES\n{sources}")
 
     parts.append(
-        "\n⚠️ This AI analysis is for informational purposes only. "
+        "⚠️ This AI analysis is for informational purposes only. "
         "Always consult a qualified healthcare professional for diagnosis, "
         "treatment, or interpretation of medical results."
     )
     return "\n\n".join(parts)
 
 
-def _xray_to_structured(xray_result: dict) -> dict:
+def _xray_to_structured(xray_result: dict, error: str = None) -> dict:
     finding  = xray_result.get("primary_finding", "Unknown finding")
     severity = xray_result.get("severity", "moderate")
     recs     = xray_result.get("recommendations", ["Consult a physician."])
     return {
         "problem_summary": xray_result.get("interpretation", f"X-ray finding: {finding}"),
         "possible_conditions": [finding.replace("_", " ").title()],
-        "severity_level": severity if severity in ["low","moderate","high"] else "moderate",
+        "severity_level": severity if severity in ["low", "moderate", "high"] else "moderate",
         "recommendations": recs,
         "when_to_seek_help": (
             "Seek immediate care if you have difficulty breathing, chest pain, "
             "or rapidly worsening symptoms. ⚠️ Always consult a qualified physician."
-        )
+        ),
+        "_degraded": True,
+        "_error": error,
     }
