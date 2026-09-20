@@ -6,6 +6,12 @@
 <meta name="theme-color" content="#ffeaf1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B8%3C/text%3E%3C/svg%3E">
 <title>Skin Tracker</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Skin Tracker">
+<link rel="apple-touch-icon" href="/icon-192.png">
 <style>
 :root{
   color-scheme: light;
@@ -221,8 +227,11 @@ hr.soft{border:0;border-top:1px solid var(--pink-line);margin:16px 0}
     <div id="analyzeOut"></div>
   </div>
 
+  <button class="btn block ghost" id="btnInstall" style="display:none">📲 Install on my phone</button>
+
   <p class="disclaimer">
-    Photos stay on this device — they're only sent to Claude when you tap Analyze.<br>
+    Photos are saved on your Skin Tracker server, so every device sees the same
+    timeline. They're sent to Anthropic only when you tap Analyze.<br>
     This is a habit tracker, not medical advice. See a dermatologist for anything that worries you.
   </p>
 </section>
@@ -239,7 +248,7 @@ hr.soft{border:0;border-top:1px solid var(--pink-line);margin:16px 0}
     </div>
     <div id="routineErr"></div>
   </div>
-  <p class="disclaimer">Removing a product won't change entries you've already saved.</p>
+  <p class="disclaimer">Your routine is stored on the server, so it follows you between devices. Removing a product won't change entries you've already saved.</p>
 </section>
 
 <!-- ───────── TIMELINE ───────── -->
@@ -260,37 +269,28 @@ hr.soft{border:0;border-top:1px solid var(--pink-line);margin:16px 0}
 <script>
 "use strict";
 
-/* ───────────── storage (IndexedDB — photos are too big for localStorage) ───────────── */
-const DB_NAME = "skintracker", DB_VER = 1;
-let _db = null;
-
-function openDB(){
-  if (_db) return Promise.resolve(_db);
-  return new Promise((resolve, reject) => {
-    const req = indexedDB.open(DB_NAME, DB_VER);
-    req.onupgradeneeded = () => {
-      const db = req.result;
-      if (!db.objectStoreNames.contains("entries")) db.createObjectStore("entries", {keyPath:"id"});
-      if (!db.objectStoreNames.contains("settings")) db.createObjectStore("settings", {keyPath:"key"});
-    };
-    req.onsuccess = () => { _db = req.result; resolve(_db); };
-    req.onerror = () => reject(req.error);
-  });
+/* ───────────── server API (photos live on the server, not this device) ───────────── */
+async function api(path, opts){
+  let res;
+  try {
+    res = await fetch(path, opts);
+  } catch (e) {
+    throw new Error("Can't reach the Skin Tracker server. Is it still running?");
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || ("Request failed (" + res.status + ")."));
+  return data;
 }
-function tx(store, mode, fn){
-  return openDB().then(db => new Promise((resolve, reject) => {
-    const t = db.transaction(store, mode);
-    const req = fn(t.objectStore(store));
-    t.onerror = () => reject(t.error);
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  }));
-}
-const putEntry  = e  => tx("entries","readwrite", s => s.put(e));
-const delEntry  = id => tx("entries","readwrite", s => s.delete(id));
-const allEntries= () => tx("entries","readonly",  s => s.getAll()).then(r => r.sort((a,b)=>b.ts-a.ts));
-const getSetting= k  => tx("settings","readonly", s => s.get(k)).then(r => r ? r.value : null);
-const putSetting= (k,v)=>tx("settings","readwrite",s => s.put({key:k,value:v}));
+const fetchEntries = ()  => api("/api/entries").then(d => d.entries);
+const fetchRoutine = ()  => api("/api/routine").then(d => d.products);
+const saveRoutine  = ps  => api("/api/routine", {
+  method:"PUT", headers:{"Content-Type":"application/json"},
+  body: JSON.stringify({products: ps})
+});
+const createEntry  = body => api("/api/entries", {
+  method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)
+}).then(d => d.entry);
+const destroyEntry = id => api("/api/entries/" + id, {method:"DELETE"});
 
 /* ───────────── state ───────────── */
 const DEFAULT_PRODUCTS = ["Face Wash","Serum","Moisturizer","Sunscreen"];
@@ -425,15 +425,12 @@ async function pickPhoto(input){
 
 async function saveDraft(){
   if (!draft) return null;
-  const ts = Date.now();
-  const entry = {
-    id: ts, ts,
-    photo: draft.blob,
-    products: products.filter(p => checked.has(p)),   // stored in routine order
-    note: $("note").value.trim(),
-    analysis: ""
-  };
-  await putEntry(entry);
+  const dataUrl = await blobToDataURL(draft.blob);
+  const entry = await createEntry({
+    photo: dataUrl,
+    products: products.filter(p => checked.has(p)),   // sent in routine order
+    note: $("note").value.trim()
+  });
   URL.revokeObjectURL(draft.url);
   draft = null;
   checked.clear();
@@ -446,38 +443,25 @@ async function saveDraft(){
 async function analyze(){
   if (busy) return;
   clearMsg("analyzeOut");
-
-  // An unsaved photo is still today's photo — save it before comparing.
-  if (draft) await saveDraft();
-  if (!entries.length){ showErr("analyzeOut","Add a photo first."); return; }
-
   busy = true;
   $("btnAnalyze").disabled = true;
   $("analyzeOut").innerHTML =
-    '<div class="analysis"><span class="spinner"></span>Comparing your photos…</div>';
+    '<div class="analysis"><span class="spinner"></span>Saving and comparing your photos…</div>';
 
-  const recent = entries.slice(0, 4).reverse();   // oldest → newest
   try {
-    const payload = {entries: []};
-    for (const e of recent){
-      payload.entries.push({
-        photo: await blobToDataURL(e.photo),
-        label: fmtDate(e.ts) + ", " + fmtTime(e.ts),
-        products: e.products,
-        note: e.note
-      });
-    }
-    const res  = await fetch("/api/analyze", {
-      method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload)
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || "Analysis failed (" + res.status + ").");
+    // An unsaved photo is still today's photo — store it before comparing.
+    if (draft) await saveDraft();
+    if (!entries.length) throw new Error("Add a photo first.");
 
-    const newest = entries[0];
-    newest.analysis = data.analysis;
-    await putEntry(newest);
-    $("analyzeOut").innerHTML =
-      '<div class="analysis">' + renderText(data.analysis) + '</div>';
+    // The server already has the photos; it only needs their local date labels.
+    const labels = {};
+    entries.slice(0, 4).forEach(e => { labels[e.id] = fmtDate(e.ts) + ", " + fmtTime(e.ts); });
+
+    const data = await api("/api/analyze", {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({labels})
+    });
+    $("analyzeOut").innerHTML = '<div class="analysis">' + renderText(data.analysis) + '</div>';
     await refresh();
   } catch (e){
     $("analyzeOut").innerHTML = "";
@@ -540,17 +524,14 @@ function addProduct(){
   saveProducts();
 }
 function saveProducts(){
-  putSetting("products", products).catch(e => {
-    showErr("routineErr", "Couldn't save your routine to this device's storage.");
+  saveRoutine(products).catch(e => {
+    showErr("routineErr", e.message);
     console.warn(e);
   });
 }
 
 /* ───────────── timeline panel ───────────── */
-let thumbs = [];
 function renderTimeline(){
-  thumbs.forEach(URL.revokeObjectURL);
-  thumbs = [];
   const box = $("timeline");
   $("timelineCount").textContent = entries.length
     ? entries.length + (entries.length === 1 ? " entry saved" : " entries saved")
@@ -562,13 +543,11 @@ function renderTimeline(){
     return;
   }
   box.innerHTML = entries.map(e => {
-    const url = URL.createObjectURL(e.photo);
-    thumbs.push(url);
     const chips = e.products.length
       ? e.products.map(p => '<span class="chip">'+esc(p)+'</span>').join("")
       : '<span class="chip none">nothing logged</span>';
     return '<div class="entry">'+
-      '<img alt="Face photo from '+esc(fmtDate(e.ts))+'" src="'+url+'">'+
+      '<img loading="lazy" alt="Face photo from '+esc(fmtDate(e.ts))+'" src="'+e.photo_url+'">'+
       '<div class="meta">'+
         '<div class="when">'+esc(fmtDate(e.ts))+'</div>'+
         '<div class="ago">'+esc(fmtTime(e.ts))+' · '+esc(ago(e.ts))+'</div>'+
@@ -590,9 +569,9 @@ function renderTimeline(){
     }));
   box.querySelectorAll("[data-remove]").forEach(b =>
     b.addEventListener("click", async () => {
-      if (!confirm("Delete this entry and its photo? This can't be undone.")) return;
-      await delEntry(+b.dataset.remove);
-      await refresh();
+      if (!confirm("Delete this entry and its photo from the server? This can't be undone.")) return;
+      try { await destroyEntry(+b.dataset.remove); await refresh(); }
+      catch (e){ alert(e.message); }
     }));
 }
 
@@ -601,7 +580,7 @@ function showErr(where, msg){ $(where).innerHTML = '<div class="err">'+esc(msg)+
 function clearMsg(where){ $(where).innerHTML = ""; }
 
 async function refresh(){
-  entries = await allEntries();
+  entries = await fetchEntries();
   renderTimeline();
   renderPhoto();
 }
@@ -627,15 +606,20 @@ $("newProduct").addEventListener("keydown", e => { if (e.key === "Enter") addPro
 
 (async function boot(){
   $("todayDate").textContent = fmtDate(Date.now());
+
   try {
-    const saved = await getSetting("products");
-    if (Array.isArray(saved) && saved.length) products = saved;
+    products = await fetchRoutine();
   } catch (e){
-    console.warn("Storage unavailable:", e);
+    showErr("routineErr", e.message);
   }
   renderRoutine();
   renderChecklist();
-  await refresh();
+
+  try {
+    await refresh();
+  } catch (e){
+    showErr("analyzeOut", e.message);
+  }
 
   try {
     const h = await (await fetch("/health")).json();
@@ -648,8 +632,23 @@ $("newProduct").addEventListener("keydown", e => { if (e.key === "Enter") addPro
     }
   } catch (e){
     $("statusBadge").className = "badge warn";
-    $("statusBadge").textContent = "⚠ Offline";
+    $("statusBadge").textContent = "⚠ Server unreachable";
   }
+
+  // Installable on Android: Chrome fires this instead of showing its own prompt.
+  if ("serviceWorker" in navigator){
+    navigator.serviceWorker.register("/sw.js").catch(e => console.warn("SW:", e));
+  }
+  window.addEventListener("beforeinstallprompt", ev => {
+    ev.preventDefault();
+    const btn = $("btnInstall");
+    btn.style.display = "block";
+    btn.onclick = async () => {
+      btn.style.display = "none";
+      ev.prompt();
+      await ev.userChoice;
+    };
+  });
 })();
 </script>
 </body>

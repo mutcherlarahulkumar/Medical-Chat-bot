@@ -21,25 +21,48 @@ Open <http://localhost:5001>. To use it on your phone, open
 Without an `ANTHROPIC_API_KEY` everything still works — photos, routine,
 timeline — only the **Analyze** button is disabled, and the header says so.
 
+Photos and entries are written to `skin_tracker/data/`, which is gitignored.
+
 ## What's where
 
 | File | Purpose |
 |---|---|
-| `app.py` | Flask routes + the Claude call (`/api/analyze`) |
+| `app.py` | Routes, PWA plumbing, and the Claude call |
+| `store.py` | SQLite + photo storage |
 | `templates/skin_tracker.html` | The whole UI — HTML, CSS and JS in one file |
+| `data/` | Your photos and database (gitignored) |
 | `../run_skin_tracker.py` | Entry point, port 5001 |
+| `../mobile/` | Capacitor config for building an APK |
+| `../ANDROID.md` | Getting it onto your phone |
 
 ## How it stores things
 
-Photos never reach the server's disk. Every entry — the JPEG, the timestamp,
-the product list, your note and Claude's last update — lives in the browser's
-**IndexedDB**, on that device only. Photos are downscaled to 1200px and
-re-encoded as JPEG (quality 0.82) before being stored, which keeps a year of
-daily photos comfortably inside the browser's quota.
+Everything lives **on the server**, in `skin_tracker/data/` (gitignored):
 
-Images are only transmitted when you tap **Analyze**: the newest entry plus up
-to three previous ones are base64-encoded, POSTed to `/api/analyze`, forwarded
-to Claude, and dropped. Clearing your browser data deletes everything.
+- `tracker.db` — SQLite: timestamps, product logs, notes, Claude's updates
+- `photos/<timestamp>.jpg` — the images themselves
+
+That means your phone and your laptop see the same timeline, and clearing your
+browser data doesn't lose anything. Photos are downscaled to 1200px JPEG in the
+browser before upload (quality 0.82), so a year of daily photos is ~70 MB.
+
+Photos are sent to Anthropic only when you tap **Analyze**, and only the latest
+four. Back up by copying `skin_tracker/data/`.
+
+## Cost
+
+Analysis runs on the Claude API, which bills separately from any Claude.ai
+subscription — a Pro or Max plan does **not** cover it. Add credits at
+[console.anthropic.com](https://console.anthropic.com) → Plans & Billing.
+Roughly 2¢ per analysis (4 photos + prompt on Sonnet 4.6), so $5 is about 250
+progress checks. Everything except the Analyze button works with no credits at
+all.
+
+## On your phone
+
+See [`../ANDROID.md`](../ANDROID.md). Short version: run the server, open
+`http://<your-computer-ip>:5001` on your phone, tap **Install on my phone**.
+It installs as a PWA with its own icon and fullscreen window.
 
 ## The three tabs
 
@@ -58,8 +81,13 @@ note and progress update.
 
 ## The Claude call
 
-`POST /api/analyze` takes `{"entries": [{photo, label, products, note}, ...]}`
-oldest-first and returns `{"analysis": "..."}`.
+`POST /api/analyze` takes only `{"labels": {entry_id: "Friday, 19 September, 8:30 AM"}}`
+— the photos are already on the server, so the browser doesn't re-upload them.
+It returns `{"analysis": "...", "entry_id": N}` and saves the update onto the
+newest entry.
+
+Other endpoints: `GET/POST /api/entries`, `DELETE /api/entries/<id>`,
+`GET /api/photo/<id>`, `GET/PUT /api/routine`, `GET /health`.
 
 - Model: `claude-sonnet-4-6` (override with `SKIN_TRACKER_MODEL`)
 - Adaptive thinking on, `max_tokens` 4000
@@ -70,7 +98,7 @@ oldest-first and returns `{"analysis": "..."}`.
   "show this to a dermatologist" when something looks like it needs real
   medical attention.
 
-Limits: 4 photos per request, 4 MB each, 25 MB per request.
+Limits: 4 photos per analysis, 6 MB per upload.
 
 ## Not medical advice
 

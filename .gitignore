@@ -44,3 +44,7 @@ outputs/
 huggingface/
 
 .env
+data/
+skin_tracker/data/
+mobile/node_modules/
+mobile/android/

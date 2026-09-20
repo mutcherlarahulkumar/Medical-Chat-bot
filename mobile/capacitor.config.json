@@ -1,0 +1,19 @@
+{
+  "appId": "com.skintracker.app",
+  "appName": "Skin Tracker",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.1.10:5001",
+    "cleartext": true,
+    "androidScheme": "http"
+  },
+  "android": {
+    "allowMixedContent": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#fff5f8",
+      "launchShowDuration": 600
+    }
+  }
+}
