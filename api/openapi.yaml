@@ -1,0 +1,773 @@
+openapi: 3.1.0
+
+info:
+  title: Skin Tracker API
+  version: "1.0.0"
+  summary: Routines, products and daily check-offs for the Skin Tracker app.
+  description: |
+    Sync backend for the Skin Tracker Android app.
+
+    The app is **offline-first**: the phone owns a full local copy and must keep
+    working with no network. Three consequences shape this API.
+
+    **1. The client generates every id.** Ids are UUIDs (v7 recommended, so they
+    sort by creation time) minted on the device. Creates are therefore `PUT`, not
+    `POST`, and are idempotent — a retried create after a flaky connection
+    updates the same row instead of producing a duplicate.
+
+    **2. Reminder times are wall-clock, never instants.** "07:00 every day" must
+    stay 07:00 when the user flies to another country, and must survive daylight
+    saving. A routine stores `hour`, `minute`, `repeat_mask` and an IANA
+    `timezone` — never a UTC timestamp. Only `done_at` on a check-off, which
+    records a real moment, is a UTC instant.
+
+    **3. Everything soft-deletes.** A row deleted on one device has to be
+    distinguishable from a row the other device has not seen yet, so deletes set
+    `deleted_at` and the tombstone is returned by sync. Purge them server-side
+    once every device has moved past that cursor.
+
+    Errors are `application/problem+json` per RFC 9457.
+
+servers:
+  - url: https://api.skintracker.app/v1
+    description: Production
+  - url: http://localhost:8080/v1
+    description: Local development
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: auth
+  - name: products
+  - name: routines
+  - name: checkoffs
+  - name: sync
+
+paths:
+  /health:
+    get:
+      tags: [sync]
+      summary: Liveness probe
+      operationId: getHealth
+      security: []
+      responses:
+        "200":
+          description: Service is up
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, enum: [ok] }
+                  version: { type: string, examples: ["1.0.0"] }
+
+  /auth/register:
+    post:
+      tags: [auth]
+      summary: Create an account
+      operationId: register
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/Credentials" }
+      responses:
+        "201":
+          description: Account created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TokenPair" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+  /auth/token:
+    post:
+      tags: [auth]
+      summary: Exchange credentials for tokens
+      operationId: createToken
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/Credentials" }
+      responses:
+        "200":
+          description: Tokens issued
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TokenPair" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /auth/refresh:
+    post:
+      tags: [auth]
+      summary: Swap a refresh token for a new access token
+      operationId: refreshToken
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token: { type: string }
+      responses:
+        "200":
+          description: Tokens issued
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TokenPair" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /products:
+    get:
+      tags: [products]
+      summary: List products
+      description: The user's catalogue. Routines reference these by id.
+      operationId: listProducts
+      parameters:
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+        - name: include_deleted
+          in: query
+          schema: { type: boolean, default: false }
+          description: Include tombstones. Sync clients want this; UIs do not.
+      responses:
+        "200":
+          description: A page of products
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/Product" }
+                  next_cursor:
+                    type: [string, "null"]
+                    description: Pass as `cursor` for the next page; null when done.
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /products/{productId}:
+    parameters:
+      - $ref: "#/components/parameters/ProductId"
+    get:
+      tags: [products]
+      summary: Fetch one product
+      operationId: getProduct
+      responses:
+        "200":
+          description: The product
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Product" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    put:
+      tags: [products]
+      summary: Create or replace a product
+      description: |
+        Idempotent upsert — the client supplies the id, so a retry is safe.
+        Send `If-Unmodified-Since` with the `updated_at` you last saw to get a
+        `412` instead of clobbering a newer version from another device.
+      operationId: putProduct
+      parameters:
+        - $ref: "#/components/parameters/IfUnmodifiedSince"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/ProductInput" }
+      responses:
+        "200":
+          description: Product replaced
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Product" }
+        "201":
+          description: Product created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Product" }
+        "412": { $ref: "#/components/responses/PreconditionFailed" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+    delete:
+      tags: [products]
+      summary: Soft-delete a product
+      description: |
+        Sets `deleted_at`. Routines referencing it keep the reference; clients
+        should hide deleted products from pickers but leave history intact.
+      operationId: deleteProduct
+      responses:
+        "204": { description: Deleted }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /routines:
+    get:
+      tags: [routines]
+      summary: List routines
+      operationId: listRoutines
+      parameters:
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+        - name: include_deleted
+          in: query
+          schema: { type: boolean, default: false }
+      responses:
+        "200":
+          description: A page of routines
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/Routine" }
+                  next_cursor: { type: [string, "null"] }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /routines/{routineId}:
+    parameters:
+      - $ref: "#/components/parameters/RoutineId"
+    get:
+      tags: [routines]
+      summary: Fetch one routine
+      operationId: getRoutine
+      responses:
+        "200":
+          description: The routine
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Routine" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    put:
+      tags: [routines]
+      summary: Create or replace a routine, including its ordered products
+      description: |
+        The product list is part of the routine, so reordering is one atomic
+        write and one `updated_at` bump — there is no separate items endpoint to
+        get out of step with its parent.
+      operationId: putRoutine
+      parameters:
+        - $ref: "#/components/parameters/IfUnmodifiedSince"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/RoutineInput" }
+      responses:
+        "200":
+          description: Routine replaced
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Routine" }
+        "201":
+          description: Routine created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Routine" }
+        "412": { $ref: "#/components/responses/PreconditionFailed" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+    delete:
+      tags: [routines]
+      summary: Soft-delete a routine
+      operationId: deleteRoutine
+      responses:
+        "204": { description: Deleted }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /checkoffs:
+    get:
+      tags: [checkoffs]
+      summary: Check-offs in a local-date range
+      description: |
+        Dates are the user's **local** calendar dates, not UTC — "did I do my
+        morning routine on the 3rd" is a question about their day, not a UTC one.
+      operationId: listCheckOffs
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema: { type: string, format: date }
+          example: "2026-09-01"
+        - name: to
+          in: query
+          required: true
+          schema: { type: string, format: date }
+          example: "2026-09-30"
+        - name: routine_id
+          in: query
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Matching check-offs
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/CheckOff" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+    put:
+      tags: [checkoffs]
+      summary: Tick or untick, in bulk
+      description: |
+        Upsert by the natural key `(routine_id, product_id, local_date)`. Send
+        `done: false` to untick. Bulk because a phone coming back online has a
+        batch of taps to flush, and because "mark all" is one gesture.
+      operationId: putCheckOffs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [items]
+              properties:
+                items:
+                  type: array
+                  maxItems: 500
+                  items: { $ref: "#/components/schemas/CheckOffInput" }
+      responses:
+        "200":
+          description: Applied
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/CheckOff" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+  /sync:
+    get:
+      tags: [sync]
+      summary: Pull everything changed since a cursor
+      description: |
+        The client's whole download path. Returns products, routines and
+        check-offs changed since `cursor`, **including tombstones**, plus a new
+        cursor. Omit `cursor` for a full initial download.
+
+        Keep calling while `has_more` is true, and only persist the new cursor
+        once the page is committed locally — a crash mid-page must re-fetch, not
+        skip.
+      operationId: pullChanges
+      parameters:
+        - name: cursor
+          in: query
+          schema: { type: string }
+          description: Opaque; from a previous response. Omit for a full sync.
+        - $ref: "#/components/parameters/Limit"
+      responses:
+        "200":
+          description: Changes since the cursor
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SyncPull" }
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+    post:
+      tags: [sync]
+      summary: Push local changes
+      description: |
+        Upload everything changed locally since the last successful push.
+
+        Conflicts resolve last-write-wins on `updated_at`, ties broken by the
+        server's copy. Anything the server rejected comes back in `conflicts`
+        with the authoritative row, so the client can overwrite its local copy —
+        the client must not simply retry.
+
+        Idempotent: replaying the same batch is a no-op, because ids are
+        client-generated and resolution compares timestamps.
+      operationId: pushChanges
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/SyncPush" }
+      responses:
+        "200":
+          description: Push processed
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SyncResult" }
+        "409": { $ref: "#/components/responses/Conflict" }
+        "413":
+          description: Batch too large — split it and retry
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+        "422": { $ref: "#/components/responses/ValidationFailed" }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    ProductId:
+      name: productId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    RoutineId:
+      name: routineId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    Cursor:
+      name: cursor
+      in: query
+      schema: { type: string }
+      description: Opaque pagination cursor from `next_cursor`.
+    Limit:
+      name: limit
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 500, default: 100 }
+    IfUnmodifiedSince:
+      name: If-Unmodified-Since
+      in: header
+      schema: { type: string, format: date-time }
+      description: |
+        The `updated_at` the client last saw. If the server's row is newer the
+        write is refused with `412`, so a stale device cannot silently clobber.
+
+  responses:
+    BadRequest:
+      description: Malformed request
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    Unauthorized:
+      description: Missing or invalid credentials
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    NotFound:
+      description: No such resource for this user
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    Conflict:
+      description: Conflicts with existing state
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    PreconditionFailed:
+      description: The server's copy is newer than `If-Unmodified-Since`
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    ValidationFailed:
+      description: Well-formed but semantically invalid
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+
+  schemas:
+    Problem:
+      type: object
+      description: RFC 9457 problem details.
+      required: [type, title, status]
+      properties:
+        type: { type: string, format: uri, default: "about:blank" }
+        title: { type: string, examples: ["Validation failed"] }
+        status: { type: integer, minimum: 100, maximum: 599 }
+        detail: { type: string, examples: ["repeat_mask must be between 0 and 127"] }
+        instance: { type: string, format: uri }
+        errors:
+          type: array
+          description: Field-level detail, when the problem is a validation failure.
+          items:
+            type: object
+            required: [field, message]
+            properties:
+              field: { type: string, examples: ["items[2].product_id"] }
+              message: { type: string, examples: ["unknown product"] }
+
+    Credentials:
+      type: object
+      required: [email, password]
+      properties:
+        email: { type: string, format: email, maxLength: 254 }
+        password: { type: string, format: password, minLength: 10, maxLength: 200 }
+
+    TokenPair:
+      type: object
+      required: [access_token, refresh_token, token_type, expires_in]
+      properties:
+        access_token: { type: string }
+        refresh_token: { type: string }
+        token_type: { type: string, enum: [Bearer] }
+        expires_in:
+          type: integer
+          description: Access-token lifetime in seconds.
+          examples: [3600]
+
+    Timestamps:
+      type: object
+      required: [created_at, updated_at]
+      properties:
+        created_at: { type: string, format: date-time }
+        updated_at:
+          type: string
+          format: date-time
+          description: |
+            Server-assigned UTC time of the last write. Drives sync ordering and
+            last-write-wins resolution, so clients must not invent it.
+        deleted_at:
+          type: [string, "null"]
+          format: date-time
+          description: Set on soft delete. A non-null value is a tombstone.
+
+    ProductInput:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string, minLength: 1, maxLength: 80, examples: ["Niacinamide 10%"] }
+        brand: { type: string, maxLength: 80 }
+        notes: { type: string, maxLength: 500 }
+        client_updated_at:
+          type: string
+          format: date-time
+          description: |
+            When the change happened on the device. Used for conflict resolution
+            when the write arrives late after being queued offline.
+
+    Product:
+      allOf:
+        - type: object
+          required: [id, name]
+          properties:
+            id: { type: string, format: uuid }
+            name: { type: string, maxLength: 80 }
+            brand: { type: string, maxLength: 80 }
+            notes: { type: string, maxLength: 500 }
+        - $ref: "#/components/schemas/Timestamps"
+
+    RoutineItem:
+      type: object
+      description: One product inside a routine. **Array order is the order of application** — there is no position field to drift out of sync.
+      required: [product_id]
+      properties:
+        product_id: { type: string, format: uuid }
+        note:
+          type: string
+          maxLength: 200
+          description: Step-specific note, e.g. "2 pumps, avoid the eye area".
+
+    RoutineInput:
+      type: object
+      required: [name, hour, minute, repeat_mask, timezone]
+      properties:
+        name: { type: string, minLength: 1, maxLength: 40, examples: ["Morning"] }
+        hour: { type: integer, minimum: 0, maximum: 23 }
+        minute: { type: integer, minimum: 0, maximum: 59 }
+        repeat_mask:
+          type: integer
+          minimum: 0
+          maximum: 127
+          description: |
+            7-bit day mask. **Bit 0 is Monday** (matching `java.time.DayOfWeek`,
+            where Monday is 1), through bit 6 for Sunday.
+
+            `0` means fire once at the next occurrence, then disable.
+            `127` is every day, `31` weekdays, `96` weekends.
+          examples: [127]
+        timezone:
+          type: string
+          description: |
+            IANA zone the wall-clock time is interpreted in, e.g.
+            `Asia/Kolkata`. Required because 07:00 means 07:00 where the user is
+            — storing a UTC instant would shift the reminder on travel and break
+            it twice a year at daylight saving.
+          examples: ["Asia/Kolkata"]
+        enabled: { type: boolean, default: true }
+        items:
+          type: array
+          maxItems: 50
+          items: { $ref: "#/components/schemas/RoutineItem" }
+        client_updated_at: { type: string, format: date-time }
+
+    Routine:
+      allOf:
+        - type: object
+          required: [id, name, hour, minute, repeat_mask, timezone, enabled, items]
+          properties:
+            id: { type: string, format: uuid }
+            name: { type: string, maxLength: 40 }
+            hour: { type: integer, minimum: 0, maximum: 23 }
+            minute: { type: integer, minimum: 0, maximum: 59 }
+            repeat_mask: { type: integer, minimum: 0, maximum: 127 }
+            timezone: { type: string }
+            enabled: { type: boolean }
+            items:
+              type: array
+              items: { $ref: "#/components/schemas/RoutineItem" }
+            next_occurrence_at:
+              type: [string, "null"]
+              format: date-time
+              description: |
+                Server's view of the next firing, as a UTC instant, for
+                convenience on clients that don't compute it. Advisory only —
+                the phone schedules its own alarms and is authoritative.
+        - $ref: "#/components/schemas/Timestamps"
+
+    CheckOffInput:
+      type: object
+      description: Natural key is (routine_id, product_id, local_date).
+      required: [routine_id, product_id, local_date, done]
+      properties:
+        routine_id: { type: string, format: uuid }
+        product_id: { type: string, format: uuid }
+        local_date:
+          type: string
+          format: date
+          description: The user's local calendar date, not derived from UTC.
+        done: { type: boolean, description: "false unticks an existing check-off." }
+        done_at:
+          type: string
+          format: date-time
+          description: When the user actually tapped. A real instant, so UTC.
+
+    CheckOff:
+      allOf:
+        - type: object
+          required: [routine_id, product_id, local_date, done]
+          properties:
+            routine_id: { type: string, format: uuid }
+            product_id: { type: string, format: uuid }
+            local_date: { type: string, format: date }
+            done: { type: boolean }
+            done_at: { type: [string, "null"], format: date-time }
+        - $ref: "#/components/schemas/Timestamps"
+
+    SyncPull:
+      type: object
+      required: [cursor, has_more, products, routines, checkoffs]
+      properties:
+        cursor:
+          type: string
+          description: Persist only after the page is committed locally.
+        has_more:
+          type: boolean
+          description: Call again with the new cursor while true.
+        server_time:
+          type: string
+          format: date-time
+          description: Lets a client spot a badly skewed device clock.
+        products:
+          type: array
+          items: { $ref: "#/components/schemas/Product" }
+        routines:
+          type: array
+          items: { $ref: "#/components/schemas/Routine" }
+        checkoffs:
+          type: array
+          items: { $ref: "#/components/schemas/CheckOff" }
+
+    SyncPush:
+      type: object
+      description: Everything changed locally since the last successful push.
+      properties:
+        client_id:
+          type: string
+          format: uuid
+          description: Stable per-device id, so the server can skip echoing a device's own writes back to it.
+        products:
+          type: array
+          maxItems: 500
+          items:
+            allOf:
+              - type: object
+                required: [id]
+                properties:
+                  id: { type: string, format: uuid }
+                  deleted_at: { type: [string, "null"], format: date-time }
+              - $ref: "#/components/schemas/ProductInput"
+        routines:
+          type: array
+          maxItems: 500
+          items:
+            allOf:
+              - type: object
+                required: [id]
+                properties:
+                  id: { type: string, format: uuid }
+                  deleted_at: { type: [string, "null"], format: date-time }
+              - $ref: "#/components/schemas/RoutineInput"
+        checkoffs:
+          type: array
+          maxItems: 1000
+          items: { $ref: "#/components/schemas/CheckOffInput" }
+
+    SyncApplied:
+      type: object
+      description: How many rows of each kind the push actually wrote.
+      required: [products, routines, checkoffs]
+      properties:
+        products: { type: integer, minimum: 0 }
+        routines: { type: integer, minimum: 0 }
+        checkoffs: { type: integer, minimum: 0 }
+
+    SyncConflict:
+      type: object
+      description: |
+        One row where the server's copy won.
+
+        `stale_write` — the server's `updated_at` is newer; take `server_value`.
+        `unknown_reference` — a routine item or check-off pointed at a product
+        the server has never seen, usually because its create was lost; re-push
+        the product first.
+        `deleted_on_server` — another device deleted it; `server_value` is null
+        and the client should delete locally too.
+      required: [resource, id, reason]
+      properties:
+        resource: { type: string, enum: [product, routine, checkoff] }
+        id:
+          type: string
+          description: |
+            The uuid, or for a check-off the composite
+            `routine_id:product_id:local_date`.
+        reason:
+          type: string
+          enum: [stale_write, unknown_reference, deleted_on_server]
+        server_value:
+          description: The authoritative row, or null when it was deleted.
+          oneOf:
+            - { $ref: "#/components/schemas/Product" }
+            - { $ref: "#/components/schemas/Routine" }
+            - { $ref: "#/components/schemas/CheckOff" }
+            - { type: "null" }
+
+    SyncResult:
+      type: object
+      required: [cursor, applied, conflicts]
+      properties:
+        cursor: { type: string }
+        applied: { $ref: "#/components/schemas/SyncApplied" }
+        conflicts:
+          type: array
+          description: |
+            Rows where the server's copy won. The client must replace its local
+            copy with `server_value` — retrying the push will not help.
+          items: { $ref: "#/components/schemas/SyncConflict" }
